@@ -66,3 +66,34 @@ M02 can add typed snapshot/instrument contracts, canonical hashes, and explicit
 quality states using synthetic inputs. M00 can resume after the issuer domains
 are enabled through environment settings. Source coverage, permissions, and
 production readiness remain unverified.
+
+## 1 November 2026 — M02 candidate data contracts
+
+Implemented on feat/m02-data-contracts; review/merge remains the gate. The
+[data-contract reference](data-contracts.md) documents schema 1.0.0 and canonical
+hash format fund-ledger-records-v1.
+
+- Added frozen source-document, snapshot, position and instrument models.
+- Kept source completeness, identity/classification coverage, disposition and
+  reasons separate; preserved signed/unsupported candidate evidence for later
+  ingestion checks.
+- Added explicit Arrow schemas and lossless in-memory round trips.
+- Added order-independent canonical record hashes with duplicate-key rejection,
+  record-kind/version separation and source-precision preservation.
+- Added Pydantic, PyArrow and Hypothesis with allowlist reasons and an updated
+  lockfile. No existing golden values or financial engine versions changed.
+
+Tests were written first and failed because the new modules did not exist.
+Further failing regressions exposed decimal exponent-casing dependence and
+UTC normalization overflow; both were corrected and rechecked.
+
+Final local validation: make check passed (112 tests, strict typing, formatting,
+four import contracts and dependency checks); make golden passed (9 fixture
+checks included in those 112); git diff --check passed. The original source
+archive checksum remains unchanged. No live issuer, database, or hosted CI
+validation is claimed by these results.
+
+Creating the PR through the GitHub CLI requires api.github.com, which the
+current runtime does not allow. Its domain addition is saved in the environment
+draft alongside the two pending issuer hosts; that draft must be activated
+through environment settings before the API operation can proceed.
