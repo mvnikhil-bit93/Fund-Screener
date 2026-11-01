@@ -3,7 +3,7 @@ name = "fund-access"
 version = "0.1.0"
 description = "Authenticated fund queries and web views"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = ["psycopg[binary,pool]>=3.2,<4"]
 
 [build-system]
 requires = ["hatchling==1.27.0"]

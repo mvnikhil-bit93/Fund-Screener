@@ -47,6 +47,9 @@ pytest = "Run offline fixture and tooling tests."
 ruff = "Lint and format Python."
 pydantic = "Validate immutable ledger records and precise financial values."
 pyarrow = "Represent ledger records with explicit, lossless Arrow schemas."
+psycopg = "Typed PostgreSQL connections, binary driver and connection pool."
+sqlalchemy = "Transactional database migration connections."
+alembic = "Versioned and reversible PostgreSQL schema migrations."
 
 [tool.ruff]
 target-version = "py312"
@@ -82,3 +85,4 @@ ignore_missing_imports = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-config --strict-markers"
+markers = ["integration: requires the explicitly configured disposable PostgreSQL test service"]

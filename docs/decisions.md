@@ -69,7 +69,7 @@ production readiness remain unverified.
 
 ## 1 November 2026 — M02 candidate data contracts
 
-Implemented on feat/m02-data-contracts; review/merge remains the gate. The
+Merged through PR #1 into main at c6bbce2. The
 [data-contract reference](data-contracts.md) documents schema 1.0.0 and canonical
 hash format fund-ledger-records-v1.
 
@@ -93,7 +93,69 @@ checks included in those 112); git diff --check passed. The original source
 archive checksum remains unchanged. No live issuer, database, or hosted CI
 validation is claimed by these results.
 
-Creating the PR through the GitHub CLI requires api.github.com, which the
-current runtime does not allow. Its domain addition is saved in the environment
-draft alongside the two pending issuer hosts; that draft must be activated
-through environment settings before the API operation can proceed.
+At implementation time, creating the PR through the GitHub CLI was blocked by
+the runtime's api.github.com policy. The user subsequently created and merged
+PR #1. The pending domain addition in the environment draft does not establish
+runtime API access; the issuer access limitations remain recorded in sources.md.
+
+## 1 November 2026 — M03 PostgreSQL foundation
+
+Implemented on feat/m03-postgres-foundation after the M02 merge. Review and merge
+remain the gate for this ticket. The [database guide](database.md) records the
+local commands, schema, role grants, and integration setup.
+
+### Approach and scope
+
+- Use PostgreSQL 17 and packaged Alembic revisions. Keep administrative role
+  bootstrap separate from transactional schema changes, and require an explicit
+  database name for every migration API call.
+- Separate NOLOGIN owner, runtime, and publisher groups. Reject unsafe existing
+  group roles instead of silently accepting or downgrading their privileges.
+  Application logins are provisioned separately and never receive owner rights.
+- Store dataset manifests, append-only catalog history under publisher grants,
+  and a singleton current pointer. Parent references and the current pointer
+  require an existing catalog commit. M07 owns atomic publication, concurrency,
+  knowledge-cutoff semantics, and point-in-time readers.
+- Add tenant, membership, basket, and audit tables. Force RLS on every tenant
+  table, check both visible and written tenant IDs, and deny rows when context
+  is absent. Runtime grants make membership/tenant rows read-only and audit rows
+  append-only; basket writes remain tenant-scoped.
+- Scope each pooled request to a transaction-local UUID supplied by the trusted
+  backend, clear stale session context before and after use, and reject unsafe
+  connection roles. M12 must authenticate callers and authorize membership
+  before selecting this UUID.
+- Run a repository-labelled Docker container through the local Unix socket,
+  pinned by image digest, bound to loopback, and backed by disposable tmpfs.
+  Local trust authentication contains no real credentials and is intended only
+  for this isolated development/test service.
+- Keep offline checks independent of PostgreSQL. A separate integration command
+  and CI job use real restricted logins and unique temporary databases. The
+  fixture rejects remote targets and removes only resources it allocated.
+
+### Verification record
+
+Migration and permission tests were written first. The initial missing-module
+failure established the baseline; later failing regressions exposed implicit
+database selection, an uncommitted catalog parent, and privileged pool
+connections. These behaviors received explicit guards or constraints.
+
+Local validation after the security fixes:
+
+| Check | Result |
+| --- | --- |
+| Disposable service restart and make db-status | Passed SQL readiness on a fresh cluster |
+| make db-migrate, repeated | Passed twice at 0001_foundation |
+| make integration | Passed: 32 tests, including migration rollback/re-upgrade, tenant isolation, grants, pool reuse, and security regressions |
+| make check | Passed: 112 offline tests, lock consistency, Ruff, strict typing, import boundaries, and dependency policy |
+| Final connection-timeout adjustment | Integration suite, lint, and strict typing passed again |
+| Hostile ambient PostgreSQL routing settings | Local migration helper retained its fixed loopback target |
+| Ledger wheel build | Passed; packaged Alembic environment and revision files were present |
+
+The original golden expectations remain unchanged. These are local results;
+hosted CI remains a separate verification gate. Database startup guidance was
+saved in the cloud environment configuration draft without publishing it;
+the existing installation instructions were retained.
+
+This ticket does not deploy a database service, publish the cloud environment,
+implement authentication, or establish source-data coverage. No production
+credentials, Terraform, application server, or financial engine is introduced.
