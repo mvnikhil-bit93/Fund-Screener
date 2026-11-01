@@ -1,0 +1,165 @@
+{
+  "name": "synthetic_fund",
+  "methodology_version": {
+    "exposures": "1.0.0",
+    "overlap": "1.0.0",
+    "attribution": "1.0.0",
+    "alerts": "1.0.0"
+  },
+  "tolerances": {
+    "weights_abs": 1e-9,
+    "returns_abs": 1e-9,
+    "attribution_reconciliation_bp": 5,
+    "alert_threshold_abs": 0.03
+  },
+  "inputs": {
+    "securities": [
+      {
+        "security": "A",
+        "figi": "BBG00SYNTH00A",
+        "sector": "Tech",
+        "country": "US",
+        "fund1_day1": 0.40,
+        "bench": 0.20,
+        "fund2": 0.10,
+        "fund3": 0.30,
+        "fund1_day2": 0.45,
+        "period_return": 0.12
+      },
+      {
+        "security": "B",
+        "figi": "BBG00SYNTH00B",
+        "sector": "Tech",
+        "country": "US",
+        "fund1_day1": 0.20,
+        "bench": 0.30,
+        "fund2": 0.50,
+        "fund3": 0.20,
+        "fund1_day2": 0.15,
+        "period_return": 0.04
+      },
+      {
+        "security": "C",
+        "figi": "BBG00SYNTH00C",
+        "sector": "Health",
+        "country": "UK",
+        "fund1_day1": 0.25,
+        "bench": 0.25,
+        "fund2": 0.20,
+        "fund3": 0.20,
+        "fund1_day2": 0.25,
+        "period_return": -0.03
+      },
+      {
+        "security": "D",
+        "figi": "BBG00SYNTH00D",
+        "sector": "Health",
+        "country": "US",
+        "fund1_day1": 0.15,
+        "bench": 0.25,
+        "fund2": 0.20,
+        "fund3": 0.20,
+        "fund1_day2": 0.00,
+        "period_return": 0.06
+      },
+      {
+        "security": "E",
+        "figi": "BBG00SYNTH00E",
+        "sector": "Health",
+        "country": "US",
+        "fund1_day1": 0.00,
+        "bench": 0.00,
+        "fund2": 0.00,
+        "fund3": 0.00,
+        "fund1_day2": 0.15,
+        "period_return": 0.01
+      },
+      {
+        "security": "Cash",
+        "figi": "CASH",
+        "sector": "Cash",
+        "country": "-",
+        "fund1_day1": 0.00,
+        "bench": 0.00,
+        "fund2": 0.00,
+        "fund3": 0.10,
+        "fund1_day2": 0.00,
+        "period_return": 0.00
+      }
+    ]
+  },
+  "expected": {
+    "exposures": {
+      "sector": [
+        {"node": "Tech", "fund1_day1": 0.60, "bench": 0.50, "fund2": 0.60, "fund3": 0.50},
+        {"node": "Health", "fund1_day1": 0.40, "bench": 0.50, "fund2": 0.40, "fund3": 0.40},
+        {"node": "Cash", "fund1_day1": 0.00, "bench": 0.00, "fund2": 0.00, "fund3": 0.10}
+      ],
+      "country": [
+        {"node": "US", "fund1_day1": 0.75, "bench": 0.75, "fund2": 0.80, "fund3": 0.70},
+        {"node": "UK", "fund1_day1": 0.25, "bench": 0.25, "fund2": 0.20, "fund3": 0.20},
+        {"node": "Cash", "fund1_day1": 0.00, "bench": 0.00, "fund2": 0.00, "fund3": 0.10}
+      ]
+    },
+    "overlap": {
+      "fund1_vs_bench": 0.80,
+      "fund1_vs_fund2": 0.65,
+      "active_share_fund1_vs_bench": {
+        "one_minus_overlap": 0.20,
+        "half_sum_absolute_weight_differences": 0.20
+      }
+    },
+    "crowding": [
+      {"security": "A", "count_of_funds_holding": 3, "aggregate_weight": 0.80},
+      {"security": "B", "count_of_funds_holding": 3, "aggregate_weight": 0.90},
+      {"security": "C", "count_of_funds_holding": 3, "aggregate_weight": 0.65},
+      {"security": "D", "count_of_funds_holding": 3, "aggregate_weight": 0.55},
+      {"security": "E", "count_of_funds_holding": 0, "aggregate_weight": 0.00},
+      {"security": "Cash", "count_of_funds_holding": 1, "aggregate_weight": 0.10}
+    ],
+    "attribution": {
+      "fund_return": 0.0575,
+      "benchmark_return": 0.0435,
+      "active_return": 0.0140,
+      "sectors": [
+        {
+          "node": "Tech",
+          "wf": 0.60,
+          "wb": 0.50,
+          "fund_sector_return": 0.0933333333,
+          "benchmark_sector_return": 0.0720,
+          "allocation": 0.00285,
+          "selection": 0.0106666667,
+          "interaction": 0.0021333333,
+          "total": 0.01565
+        },
+        {
+          "node": "Health",
+          "wf": 0.40,
+          "wb": 0.50,
+          "fund_sector_return": 0.00375,
+          "benchmark_sector_return": 0.0150,
+          "allocation": 0.00285,
+          "selection": -0.005625,
+          "interaction": 0.001125,
+          "total": -0.00165
+        }
+      ],
+      "totals": {
+        "allocation": 0.0057,
+        "selection": 0.0050416667,
+        "interaction": 0.0032583333,
+        "total": 0.0140
+      },
+      "reconciliation_bp": 0.0
+    },
+    "alerts": [
+      {"security": "A", "day_1": 0.40, "day_2": 0.45, "change": 0.05, "event": "change"},
+      {"security": "B", "day_1": 0.20, "day_2": 0.15, "change": -0.05, "event": "change"},
+      {"security": "C", "day_1": 0.25, "day_2": 0.25, "change": 0.00, "event": "none"},
+      {"security": "D", "day_1": 0.15, "day_2": 0.00, "change": -0.15, "event": "exit"},
+      {"security": "E", "day_1": 0.00, "day_2": 0.15, "change": 0.15, "event": "new"},
+      {"security": "Cash", "day_1": 0.00, "day_2": 0.00, "change": 0.00, "event": "none"}
+    ]
+  }
+}

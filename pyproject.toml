@@ -1,0 +1,76 @@
+[project]
+name = "fund-intelligence"
+version = "0.1.0"
+description = "Auditable ETF competitor intelligence"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fund-access",
+    "fund-engines",
+    "fund-ingest",
+    "fund-ledger",
+]
+
+[dependency-groups]
+dev = [
+    "hatchling==1.27.0",
+    "import-linter>=2.3,<3",
+    "mypy>=1.14,<2",
+    "packaging>=24.2,<27",
+    "pytest>=8.3,<10",
+    "ruff>=0.9,<1",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+fund-access = { workspace = true }
+fund-engines = { workspace = true }
+fund-ingest = { workspace = true }
+fund-ledger = { workspace = true }
+
+[tool.fund-intel.allowlist]
+fund-access = "Local authenticated query and UI boundary."
+fund-engines = "Local deterministic analytics boundary."
+fund-ingest = "Local source acquisition and parsing boundary."
+fund-ledger = "Local data contracts, storage, and snapshot reader boundary."
+hatchling = "Build typed workspace packages."
+import-linter = "Enforce package import contracts."
+mypy = "Check Python types."
+packaging = "Parse and normalize dependency requirements in policy checks."
+pytest = "Run offline fixture and tooling tests."
+ruff = "Lint and format Python."
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["docs/reference"]
+src = [
+    "packages/access/src",
+    "packages/engines/src",
+    "packages/ingest/src",
+    "packages/ledger/src",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "S", "T20"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*.py" = ["T201"]
+"tests/**/*.py" = ["S603"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["scripts"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-config --strict-markers"

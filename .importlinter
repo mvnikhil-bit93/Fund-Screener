@@ -1,0 +1,53 @@
+[importlinter]
+root_packages =
+    ledger
+    ingest
+    engines
+    access
+include_external_packages = True
+
+[importlinter:contract:ledger]
+name = Ledger does not depend on application layers
+type = forbidden
+source_modules =
+    ledger
+forbidden_modules =
+    ingest
+    engines
+    access
+
+[importlinter:contract:ingest]
+name = Ingestion does not depend on analysis or access
+type = forbidden
+source_modules =
+    ingest
+forbidden_modules =
+    engines
+    access
+
+[importlinter:contract:access]
+name = Access does not reach ingestion internals
+type = forbidden
+source_modules =
+    access
+forbidden_modules =
+    ingest
+
+[importlinter:contract:engines]
+name = Engines do not depend on I/O or application layers
+type = forbidden
+source_modules =
+    engines
+forbidden_modules =
+    ingest
+    access
+    httpx
+    requests
+    boto3
+    duckdb
+    psycopg
+    sqlalchemy
+    redis
+    anthropic
+    openai
+    dagster

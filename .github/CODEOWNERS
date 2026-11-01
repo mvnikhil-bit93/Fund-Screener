@@ -1,0 +1,10 @@
+# Enforce these ownership rules with branch protection in GitHub.
+/AGENTS.md @mvnikhil-bit93
+/docs/spec.md @mvnikhil-bit93
+/docs/reference/ @mvnikhil-bit93
+/docs/methodology/ @mvnikhil-bit93
+/tests/golden/ @mvnikhil-bit93
+/pyproject.toml @mvnikhil-bit93
+/packages/*/pyproject.toml @mvnikhil-bit93
+/uv.lock @mvnikhil-bit93
+/.github/ @mvnikhil-bit93
