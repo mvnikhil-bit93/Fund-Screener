@@ -47,6 +47,15 @@ Run from the repository root with Python 3.12 and uv:
 - make setup — frozen dependency installation.
 - make check — lint, format check, strict typing, boundaries, allowlist, tests.
 - make golden — fixture integrity now; engine golden cases when implemented.
+- make db-start / make db-status — start and check disposable local PostgreSQL.
+- make db-migrate — bootstrap roles and migrate the local fund_dev database.
+- make integration — real PostgreSQL tests, separate from offline make check.
+- make db-stop — remove the managed local database and discard its data.
+
+See docs/database.md for the local service, restricted login provisioning, and
+integration isolation. Runtime tenant connections must use a dedicated fi_runtime
+login and a UUID selected by the trusted backend. Database RLS does not replace
+the authentication and membership checks scheduled for M12.
 
 Do not claim a service, engine, or integration test exists until its ticket lands.
 New direct dependencies need an explanatory allowlist entry and a lockfile update.
