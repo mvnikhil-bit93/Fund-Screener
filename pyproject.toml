@@ -13,6 +13,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "hatchling==1.27.0",
+    "hypothesis>=6.120,<7",
     "import-linter>=2.3,<3",
     "mypy>=1.14,<2",
     "packaging>=24.2,<27",
@@ -38,11 +39,14 @@ fund-engines = "Local deterministic analytics boundary."
 fund-ingest = "Local source acquisition and parsing boundary."
 fund-ledger = "Local data contracts, storage, and snapshot reader boundary."
 hatchling = "Build typed workspace packages."
+hypothesis = "Generate invariant cases for canonical records and contract round trips."
 import-linter = "Enforce package import contracts."
 mypy = "Check Python types."
 packaging = "Parse and normalize dependency requirements in policy checks."
 pytest = "Run offline fixture and tooling tests."
 ruff = "Lint and format Python."
+pydantic = "Validate immutable ledger records and precise financial values."
+pyarrow = "Represent ledger records with explicit, lossless Arrow schemas."
 
 [tool.ruff]
 target-version = "py312"
@@ -70,6 +74,10 @@ known-first-party = ["scripts"]
 python_version = "3.12"
 strict = true
 warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = ["pyarrow"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

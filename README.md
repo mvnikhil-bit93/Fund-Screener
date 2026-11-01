@@ -8,8 +8,9 @@ retains the source golden numbers.
 ## Current stage
 
 M01 establishes four Python package boundaries, pinned development tooling, the
-original six-security fixture, and offline verification. The packages are
-namespaces for future implementation, not running services.
+original six-security fixture, and offline verification. M02 adds immutable ledger
+records, explicit quality states, lossless Arrow schemas, and deterministic
+record hashes. See [the data-contract reference](docs/data-contracts.md).
 
 Financial engines, source adapters, databases, authentication, and the UI are
 later tickets. The current golden tests validate the fixture's integrity against

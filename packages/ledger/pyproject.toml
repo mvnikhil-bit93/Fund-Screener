@@ -3,7 +3,10 @@ name = "fund-ledger"
 version = "0.1.0"
 description = "Fund data contracts, immutable storage, and point-in-time readers"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "pydantic>=2.10,<3",
+    "pyarrow>=18,<24",
+]
 
 [build-system]
 requires = ["hatchling==1.27.0"]
