@@ -17,6 +17,8 @@ original-document retention and financial suitability are separate questions.
 - [Register guide](source-register.md): how to add evidence and extend the mapping.
 - [Importer plan](importer-plan.md): source contract, then M04 acquisition and
   M05 parsing; no production importer is implemented by this research change.
+- [JPMorgan validation](jpmorgan-source-validation.md): complete 31-fund active
+  equity screen, second-date check, weight diagnostics and an unapproved scope proposal.
 
 | Issuer | Verified finding | Next evidence needed |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ original-document retention and financial suitability are separate questions.
 | Dimensional | General website commercial restrictions and an automation clause concerning damaging/overburdening conduct, with an issuer-tool exception | Official disclosure/tool and applicable conditions; no holdings sample acquired |
 | T. Rowe Price | Explicit scraping restriction, section-specific terms precedence and a separate approved/issuer-tool clause must be read together | A supported disclosure mechanism; no exception assumed or holdings acquired |
 | Fidelity | Website commercial/automated-access clauses recognize authorized tools and page-specific terms; homepage international-use gate unaccepted | Legitimate official disclosure route and conditions; no holdings sample acquired |
-| JPMorgan | Official JGRO Download All Holdings control returned an XLSX with 140 positions, dated inside the workbook | Second date, two weight bases, negative cash, money-market/ADR treatment, identifiers and factual-use basis |
+| JPMorgan | All 31 active equity funds screened: 13 derivative/short exclusions; all 31 hold money-market investments. JGRO's repeat download still reports 5 November; financial rows unchanged. | Explicit scope decision, second date, denominator/calendar, identities, ten-fund roster and operation-specific use basis; no source admitted |
 
 The mapping preserves earlier general-site decisions as history and links scoped
 superseding reviews. Missing permission text does not prove permission is needed
@@ -34,9 +36,12 @@ material rights still govern production admission under the specification.
 
 ## Measured holdings evidence
 
-Five exact observations cover four funds on **5 November 2026**: three Avantis
+Five initial samples cover four funds on **5 November 2026**: three Avantis
 product-page captures, an additional AVUS All Holdings page, and one JGRO XLSX.
 The two AVUS captures contain identical holdings; they are not two portfolio dates.
+The later JGRO repeat acquisition changes document metadata only and is recorded
+separately. Screening 31 product JSON datasets does not mean 31 XLSX files or
+31 admitted funds; their aggregate findings are in the linked validation mapping.
 
 | Fund | Positions | Reported weight totals | Reported zero-weight rows |
 | --- | ---: | --- | ---: |
@@ -74,7 +79,8 @@ was attempted. A failed advisor route does not imply all holdings are gated.
 The saved environment draft preserves current settings and setup/start instructions.
 It includes the previously proposed avantisinvestors.prospectus-express.com for
 observed quarterly-report links, plus www.ecfr.gov to verify current Rule 6c-11 text.
-Both remain outside active policy. Saving the draft does not enable them or publish
+Revision 5 also adds connect.rightprospectus.com after the official JGRO prospectus
+wrapper linked it. All three remain outside active policy. Saving the draft does not enable them or publish
 the environment. No regulatory text, quarterly-report content or fund-specific
 reliance on the rule is claimed live verified. Quarterly reports would not by
 themselves demonstrate daily delivery history.
@@ -93,6 +99,13 @@ unit totals or silently treat money-market/sweep investments as explicit cash.
 Any change to supported positions or numerical rules is a separate reviewed
 methodology decision. No ten-fund roster, scheduled importer or customer coverage
 is claimed complete.
+
+The latest JPMorgan screen establishes zero admissions under current scope.
+The narrow proposal to support identified money-market fund units separately
+from cash would leave five structural research candidates: JAVA, JPEF, LGDS,
+LVDS and JPSV. It remains unapproved and would not by itself establish ten funds
+or remove numerical/identity/source-use gaps. The full proposal and alternatives
+are in the JPMorgan validation report; the active specification is unchanged.
 
 ## Earlier investigation
 

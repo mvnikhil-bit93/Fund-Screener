@@ -14,6 +14,11 @@ position. These findings improve the source evidence; they do not yet resolve
 the second portfolio date, source contract, or fund eligibility. No source is
 admitted for production.
 
+The subsequent [JPMorgan validation](jpmorgan-source-validation.md) screens all
+31 active equity funds in its US directory and records the current roster/scope
+decision, repeat-download result and denominator diagnostics. The initial sample
+measurements below remain valid; they do not establish an approved launch roster.
+
 The [source register](../config/issuer_sources.json) holds structured findings
 and provenance; its [spreadsheet view](issuer-sources.csv) summarizes status.
 The [review guide](source-register.md) explains the evidence fields and the

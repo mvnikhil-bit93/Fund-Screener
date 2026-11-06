@@ -19,6 +19,12 @@ trading. This supports an issuer-declared daily disclosure; it does not establis
 independently reconciled completeness, delivery reliability, a second portfolio
 date, production-use approval, or an approved launch roster.
 
+The [JPMorgan validation report](jpmorgan-source-validation.md) and its
+[structured mapping](../config/jpmorgan_source_validation.json) extend this
+register with a 31-fund active-equity screen and a proposed source contract.
+Research-cohort records are separate from the register's directly sampled funds;
+screening public product JSON does not establish workbook capture or admission.
+
 ## Investigation sample
 
 Priority is an investigation order, not a measured quality or licensing score.
@@ -62,6 +68,9 @@ The draft now also includes www.ecfr.gov to verify the current Rule 6c-11 text.
 This addition remains inactive; the issuer's daily-disclosure statements are
 recorded independently of unverified fund-specific reliance on that rule.
 
+Draft revision 5 adds connect.rightprospectus.com from the official JGRO prospectus
+wrapper. It remains inactive; reaching the wrapper is not reading the prospectus.
+
 Verify the active policy before requesting a newly approved host. Record actual
 redirects and investigate the applicable document terms; discovery of a URL is
 not a commercial licence. No unknown destination is followed automatically.
@@ -103,6 +112,7 @@ provenance URL is not a fetchable endpoint or a substitute for a refresh mechani
 | rights_decisions | One reviewed use for a specific scope | decision_id, issuer_id, fund_ids or explicit issuer-wide scope, use, status, evidence and exact clause references, conditions, reviewer, reviewed_at, expiry/review date if applicable, supersedes_decision_id when updated; distinguish a licence grant from another documented lawful-use basis and unresolved applicability |
 | funds | One fund identity and source-contract assessment | fund_id, source_id, issuer_id, issuer_fund_id, verified ticker/exchange/name/currency, strategy and transparency evidence, fund page, holdings endpoint, verified hosts, rights review references, file/schema/calendar versions, admission decision |
 | samples | One exact file received for a fund | sample_id, fund_id, source_id, exact URL and redirect chain, fetched_at UTC, evidenced publication time, portfolio date, SHA-256, bytes, MIME/format, permitted storage path, field_mapping_id and quality measurements |
+| retrieval_observations | A subsequent acquisition compared with an existing sample | observation_id, evidence_id, previous_sample_id, raw hash, portfolio date, financial-payload comparison and basis; metadata-only changes do not establish a new date or correction |
 | field_mappings | One versioned, observed file layout | mapping_id, source_id, version, supporting sample_ids, encoding, delimiter or sheet, header/footer rules, raw columns/locations, target fields, units, date rules, denominator and completeness checks |
 
 Fund records must carry their own effective terms assessment where restrictions
@@ -199,6 +209,9 @@ For each sample, record:
   prevents unit-total metrics. Never normalize or invent balancing cash.
 - Expected publication calendar, timezone, deadline, corrections, and available
   historical dates, each with evidence. Mark unobserved schedules unknown.
+- A changed raw hash can reflect document properties or ZIP timestamps alone.
+  Preserve that acquisition as evidence and compare the financial payload before
+  declaring a restatement. JGRO's repeated 5 November file demonstrates this case.
 
 Suggested sample quality object (shape only; this is not a measured sample):
 

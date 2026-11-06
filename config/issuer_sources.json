@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "updated_on": "2026-11-06",
   "assessment_status": "refined_daily_disclosure_review_no_source_admitted",
   "purpose": "Expandable research register; not executable importer configuration or source-use authorization.",
@@ -80,6 +80,15 @@
         "www.ecfr.gov"
       ],
       "conclusion": "Issuer discovery hosts remain active. Current regulatory text and quarterly-documents host remain outside active policy; no requests to those hosts made. Setup, start instructions, repository, presets and credentials preserved; no publication performed."
+    },
+    {
+      "evidence_id": "network-2026-11-06-jpm-prospectus",
+      "recorded_at": "2026-11-06T21:46:45.331135+00:00",
+      "source": "Current runtime policy and environment draft revision5 readback",
+      "observed_document_host": "connect.rightprospectus.com",
+      "draft_only": true,
+      "issuer_link_evidence_id": "jpmorgan-jgro-prospectus-wrapper-2026-11-06",
+      "conclusion": "Prospectus wrapper verified; embedded document host outside active policy. Exact host added to draft; setup/start instructions, repository and presets preserved. No request to blocked host and no environment publication."
     }
   ],
   "issuers": [
@@ -625,7 +634,10 @@
         "verified_download_hosts": [
           "am.jpmorgan.com"
         ],
-        "verified_us_url": "https://am.jpmorgan.com/us/en/asset-management/per/"
+        "verified_us_url": "https://am.jpmorgan.com/us/en/asset-management/per/",
+        "discovered_pending_document_hosts": [
+          "connect.rightprospectus.com"
+        ]
       },
       "terms_review": {
         "status": "reviewed_protected_content_use_basis_unresolved",
@@ -686,6 +698,9 @@
         ],
         "portfolio_dates": [
           "2026-11-05"
+        ],
+        "repeat_observation_ids": [
+          "jpmorgan-jgro-recheck-2026-11-06-213947"
         ]
       },
       "decision": {
@@ -695,12 +710,14 @@
         "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
         "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "specific_route_and_intended_use_basis_unresolved",
-          "negative_cash_and_money_market_position_treatment",
-          "ADR_and_position_identity_mapping_unresolved",
-          "two_reported_weight_bases_need_source_contract",
+          "money_market_investments_outside_current_scope",
+          "ten_fund_eligible_roster_not_established",
+          "negative_cash_non_USD_cash_or_other_instruments_block_specific_funds",
+          "source_reported_denominator_reconciliation_unresolved",
+          "position_identity_namespace_and_ADR_REIT_mapping_unverified",
           "second_portfolio_date_not_obtained",
-          "ten_fund_eligible_roster_not_established"
+          "publication_calendar_and_deadline_unverified",
+          "specific_operation_use_and_retention_basis_unresolved"
         ]
       },
       "review_questions": [
@@ -709,10 +726,19 @@
         "Confirm US-market fund identity and applicable regional terms for each download.",
         "Separate factual holdings, protected artifacts and third-party enrichment; document the specific route and applicable conditions without presuming a paid licence is required."
       ],
-      "live_summary": "JGRO official All Holdings XLS control returned a 140-position XLSX dated 2026-11-05. Market-value weights total100.00%, net-assets weights100.06%; negative USD cash displays0.0%. Money-market position, identity, denominator, factual-use basis and second date remain unresolved. No paid-licence requirement established.",
+      "live_summary": "All 31 active equity funds in the official 78-ETF US directory screened: eight options/ELN strategies, one short strategy and four additional futures cases excluded; 18 scope-review candidates remain. All 31 hold money-market investments outside current scope. Five candidates have no observed derivative/short exclusion, negative cash or non-USD cash, but require a separately approved money-market extension and other checks. JGRO re-download still reports 5 November; raw metadata changed, financial payload identical; public history has no dates. No source admitted or paid-licence requirement established.",
       "disclosure_route_ids": [
         "jpmorgan-jgro-daily-disclosure"
-      ]
+      ],
+      "validation_report": {
+        "validation_id": "jpmorgan-source-validation-2026-11-06",
+        "path": "config/jpmorgan_source_validation.json",
+        "summary_path": "docs/jpmorgan-source-validation.md",
+        "status": "bounded_research_complete_source_contract_not_admitted",
+        "screened_active_equity_funds": 31,
+        "current_contract_admitted_funds": 0,
+        "distinct_daily_portfolio_dates": 1
+      }
     }
   ],
   "terms_documents": [
@@ -1117,8 +1143,8 @@
       "ticker": "JGRO",
       "name": "JPMorgan Active Growth ETF",
       "cusip": "46654Q609",
-      "isin": null,
-      "exchange": null,
+      "isin": "US46654Q6098",
+      "exchange": "NYSE-Arca",
       "reporting_currency": "USD",
       "identity_status": "issuer_public_directory_and_product_route_observed",
       "fund_page_url": "https://am.jpmorgan.com/us/en/asset-management/per/products/jpmorgan-active-growth-etf-etf-shares-46654q609",
@@ -1153,7 +1179,8 @@
         "jpmorgan-jgro-product-data-2026-11-06"
       ],
       "management_style": "active",
-      "management_style_evidence": "Official directory managementStyle A; fund identity verified against product page."
+      "management_style_evidence": "Official directory managementStyle A; fund identity verified against product page.",
+      "identity_evidence_note": "NYSE-Arca from public product JSON; fund-level ISIN explicitly present in product HTML. Neither establishes position identifier namespace."
     }
   ],
   "samples": [
@@ -1773,7 +1800,7 @@
       "third_party_field_caution": "Presence of a field does not by itself establish proprietary ownership or a licence requirement; identify provenance and applicable terms before adopting classifications/reference datasets."
     }
   ],
-  "evidence_note": "Limited source excerpts, hashes, safe URLs and aggregate measurements only. Five exact holdings observations cover four funds on one portfolio date: four Avantis HTML captures and one JPMorgan XLSX. A client-side Avantis CSV mechanism was inspected, not captured as a standalone server file. No raw constituent rows, source scripts or workbook bytes are committed; no source is admitted. Historical rights decisions are retained with explicit superseding current decisions.",
+  "evidence_note": "Limited excerpts, safe URLs, hashes and aggregate measures only. Five initial holdings samples remain four Avantis HTML captures and one JGRO XLSX, covering four funds on one portfolio date. A separate JGRO repeat acquisition has changed file metadata but identical financial payload, not a second date or financial revision. The linked JPMorgan validation report screens31 public productJSON datasets, not31 downloaded workbooks or admitted funds. No raw constituent datasets, source scripts or workbook bytes are committed.",
   "rights_decisions": [
     {
       "decision_id": "capital_group-identifier_reuse-2026-11-06",
@@ -3079,6 +3106,47 @@
       "content_sha256": "f67a32045112859efb03a1c6fcc724dfd0fbd976a5e26ce6d10958d368de6c91",
       "byte_length": 889776,
       "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-current-recheck-2026-11-06-213947",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_XLSX_repeat_observation",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "fetched_at": "2026-11-06T21:39:47.031224+00:00",
+      "http_status": 200,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+      "content_sha256": "2914192f48a0735d674f0e03ce26bb49dd00cf654b18cafc5f4d91400fc5fd37",
+      "byte_length": 27245,
+      "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-history-data-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_public_historicalData_JSON",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/historicalData?cusip=46654Q609&country=us&role=per&userLoggedIn=false&language=en&version=9.19_1793249641",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/historicalData?cusip=46654Q609&country=us&role=per&userLoggedIn=false&language=en&version=9.19_1793249641",
+      "fetched_at": "2026-11-06T21:40:50.470629+00:00",
+      "http_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "content_sha256": "bdef95e2e3e50ba560a919124097b4461020a335313bfea72b822f17dae61c2a",
+      "byte_length": 430321,
+      "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-prospectus-wrapper-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_HTML_prospectus_wrapper_not_prospectus_document",
+      "source_url": "https://am.jpmorgan.com/JPMorgan/TVT/46654Q609/P?site=JPMorganv3",
+      "fetched_at": "2026-11-06T21:41:02.662786+00:00",
+      "http_status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "content_sha256": "fdadc7c9247ee388c3a3d0a764424297a33833b8dbcce87eae0be71932d95389",
+      "byte_length": 307,
+      "raw_content_in_repository": false,
+      "observed_iframe_url": "https://connect.rightprospectus.com/JPMorgan/TVT/46654Q609/P?site=JPMorganv3&SPV=",
+      "iframe_requested": false,
+      "finding": "Official product documents link resolves to a 307-byte wrapper embedding connect.rightprospectus.com. Host is outside active policy; document contents were not read."
     }
   ],
   "disclosure_routes": [
@@ -3258,8 +3326,37 @@
         "location": "authored disclosures.pdpCardPortfolioHoldings"
       },
       "additional_identity_lead": "Public product JSON dailyHoldingsAll.securityId is populated140/140, but namespace not verified. securityCusip/securityIsin/securitySedol all null; do not relabel securityId by pattern alone. XLSX has no position identifier column beyond ticker.",
-      "history": "No fund-specific historical daily endpoint or second date established. Generic script PCF history features were not assumed applicable to JGRO.",
-      "linked_legal_page_result": "Fund-directory HTML schema.org license points to https://am.jpmorgan.com/us/en/asset-management/adv/legal-disclosures/ which returned404; neither a permission grant nor a separate prohibition established."
+      "history": "Current download rechecked at21:39UTC stillNov5; official historicalData exposes no holdings or available dates. See linked validation report; this bounded result does not prove no archive exists anywhere.",
+      "linked_legal_page_result": "Fund-directory HTML schema.org license points to https://am.jpmorgan.com/us/en/asset-management/adv/legal-disclosures/ which returned404; neither a permission grant nor a separate prohibition established.",
+      "validation_report_path": "config/jpmorgan_source_validation.json"
+    }
+  ],
+  "retrieval_observations": [
+    {
+      "observation_id": "jpmorgan-jgro-recheck-2026-11-06-213947",
+      "evidence_id": "jpmorgan-jgro-current-recheck-2026-11-06-213947",
+      "fund_id": "fund-jpmorgan-3844539800",
+      "previous_sample_id": "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+      "portfolio_date": "2026-11-05",
+      "portfolio_date_evidence": "Holdings!H6 = As of Date: 11/05/2026",
+      "source_published_at": null,
+      "row_count": 140,
+      "new_content_sha256": "2914192f48a0735d674f0e03ce26bb49dd00cf654b18cafc5f4d91400fc5fd37",
+      "previous_content_sha256": "3c68e5376bb476e89cc746370f9bb5cfbbc4b32391da7728a283d30a46105d9e",
+      "byte_length": 27245,
+      "financial_payload_equal": true,
+      "changed_zip_member_contents": [
+        "docProps/core.xml"
+      ],
+      "zip_entry_timestamps_changed": true,
+      "comparison_basis": "Every ZIP entry except docProps/core.xml has identical uncompressed bytes, including the entire worksheet and sharedStrings. Thus the 140 positions, all source fields, date and notices are identical.",
+      "reported_weight_sums_fraction": {
+        "percent_of_market_value": "1.0000",
+        "percent_of_net_assets": "1.0006"
+      },
+      "counts_as_second_portfolio_date": false,
+      "financial_revision_evidenced": false,
+      "interpretation": "Different XLSX bytes alone do not establish a holdings correction or new date. This is a distinct acquisition observation of the same financial disclosure, with changed document/ZIP metadata."
     }
   ]
 }

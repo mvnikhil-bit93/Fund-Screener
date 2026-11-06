@@ -26,6 +26,8 @@ route and a directly downloaded JPMorgan JGRO workbook have been inspected.
 The mapping separates factual holdings from access conditions and proprietary
 additions; a paid data licence is not assumed necessary. Specific use basis,
 fund eligibility and a second portfolio date remain open admission requirements.
+The [JPMorgan validation](docs/jpmorgan-source-validation.md) records the complete
+31-fund active equity screen and a concrete, unapproved money-market scope proposal.
 Local verification and remaining review gates are recorded in
 [docs/decisions.md](docs/decisions.md).
 

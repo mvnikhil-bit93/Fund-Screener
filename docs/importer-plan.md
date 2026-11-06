@@ -8,6 +8,11 @@ records terms applicability, access gates, Avantis's official All Holdings/expor
 route, and JPMorgan's actual JGRO Excel download. A complete first-source contract
 and two-date sample set remain open.
 
+The subsequent [JPMorgan validation](jpmorgan-source-validation.md) screens all
+31 active equity funds and records a repeat acquisition with unchanged financial
+data. None is admitted under current scope. Its money-market proposal is a separate
+decision, not authorization to begin M04 against an incomplete source contract.
+
 The expandable research inventory is [issuer_sources.json](../config/issuer_sources.json),
 with a [CSV view](issuer-sources.csv) and [register guide](source-register.md).
 The financial and dependency contracts remain [specification v1.1](spec.md).
@@ -80,6 +85,13 @@ do not prefer the former merely because its displayed total is 100%. Net-assets
 weights total 100.06%, and negative cash rounds to zero in both columns. No basis
 is approved as analytical W by this comparison. A second portfolio date and a
 suitable fund roster remain necessary whichever delivery format is selected.
+
+The full JPMorgan screen finds money-market investments in every active equity
+fund. Five candidates avoid observed derivative/short, negative-cash and non-USD
+cash issues, but still need instrument identities, a scope decision and the other
+M00 gates. Do not present them as an approved roster or silently reduce the target
+of ten funds. The proposed net-assets denominator remains unadopted while the
+source-reference reconciliation and comparison basis are unresolved.
 
 ### Proposed field profile for the first source
 
@@ -229,6 +241,7 @@ record live capture results separately. Preserve all original golden values.
 | M00 source decision | Verified fund roster, terms/use findings, two distinct dated samples, measured schema/weights, and open blockers |
 | M04 acquisition PR | Allowed/denied redirects, timeout/429/5xx bounds, truncated/oversized/compressed files, HTML masquerading as data, crash before object commit, hash dedupe with distinct observations, and credential-safe metadata tests |
 | M05 parser PR | Both actual fixtures parse; schema/section drift fails; date/units/decimals/provenance survive; missing identifiers/weights, negative/unsupported rows, explicit cash, residual boundaries, and same-date corrections are covered |
+| Metadata-only XLSX repeat | A changed raw hash with identical worksheet/sharedStrings and date creates a new observation, not a second portfolio date or financial revision; M04 archives bytes, M05 compares canonical financial payload, M07 preserves the appropriate publication history |
 | Subsequent milestones | M06 reviewed identity/taxonomy mappings; M07 atomic publication and knowledge-cutoff readers; M08 pinned replay; M11 scheduling/freshness |
 
 M04/M05 produce archived evidence and assessed candidates. They must not update

@@ -306,3 +306,64 @@ admission, historical numeric measurements, local documentation links and
 archived-spec checksum passed. Independent review reproduced the JGRO workbook
 counts, two weight totals and negative-cash finding, and checked exact source
 quotes. No database changes required an integration rerun; hosted CI is unobserved.
+
+## 6 November 2026 — JPMorgan second-date, roster and source-contract validation
+
+The user authorized continued source validation before M04. The new
+[JPMorgan report](jpmorgan-source-validation.md) and
+[structured validation](../config/jpmorgan_source_validation.json) record the
+complete 31-fund active-equity subset of the official 78-ETF US directory.
+Thirty new public product JSON requests supplemented cached JGRO data. Eight
+options/ELN strategies, one short strategy and four additional funds holding
+futures are excluded by current strategy/position rules. Eighteen remain scope
+research candidates; all 31 contain money-market investments. Every International/
+Global fund also has known non-USD cash. No fund is admitted under current scope.
+
+Five candidates avoid observed derivative/short, negative-cash and non-USD-cash
+issues: JAVA, JPEF, LGDS, LVDS and JPSV. Their money-market rows suggest two fund
+instruments, but truncated descriptions and unverified source IDs do not establish
+exact fund/share-class identities. REIT/ADR mappings remain necessary. Every
+reported net-assets total in this set differs from one; current full-overlap and
+active-share gates would still apply. This is not an approved ten-fund roster.
+
+A separately reviewable proposal would support identified money-market fund units
+as direct securities, retaining their identities/weights and treating them as
+non-cash securities. It does not authorize look-through, matching different funds
+as cash, signed-cash analytics, non-USD cash, derivatives, relaxed numerical rules
+or a lower pilot fund count. The current specification/models/golden expectations
+remain unchanged. The user must decide whether to change the supported-asset
+scope or retain it and continue investigating other sources.
+
+The JGRO workbook was re-fetched at 21:39:47 UTC and still reports 5 November. All
+financial ZIP member contents are identical to the earlier sample; only document
+properties and ZIP timestamps changed. The official historicalData response has
+no populated holdings history or available dates. This is a new retrieval
+observation, not a second portfolio date or financial revision. Register schema
+1.3.0 adds that distinction and a source-validation reference. No recurring job,
+speculative date URL or pricing-basket substitute was introduced.
+
+The source contract proposes reported percent-of-net-assets as the primary basis
+pending reconciliation, retaining market-value weights separately. Same-date
+public NAV×shares agrees with the published assets reference within $0.015, but
+holding-value ratios do not reproduce all reported weights under ordinary nearest
+0.01-percentage-point rounding: 12 rows lie outside that assumed interval. The
+issuer rounding algorithm and precise denominator semantics remain unverified.
+No gap is assigned to cash, no weights are overwritten and no source error is
+asserted. Exact publication calendar/deadline and negative-cash cause remain open.
+
+The official prospectus link returned a wrapper for connect.rightprospectus.com.
+That exact host was added to saved environment draft revision 5; readback verified
+preserved setup/start instructions, repository and presets. It remains outside
+active policy, so the prospectus content was not fetched. No environment was
+published. No new paid-licence requirement was established; operation-specific
+use and original-artifact retention remain separate review questions.
+
+Validation passed: make check with 112 offline tests and required static checks;
+CSV drift; 70 document/sample/evidence records against private hashes/byte lengths;
+31 unique fund records,13 disjoint exclusions and the conditional five-fund set;
+local links and unchanged archived-spec checksum. Independent review reparsed
+the XLSX and reproduced both weight totals, the conditional rounding diagnostic
+and metadata-only comparison, and checked source strategy quotes and roster
+measurements. No raw constituent data or source files were committed. Database
+integration was not rerun for this documentation/research update; hosted CI is
+not claimed observed.
