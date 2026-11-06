@@ -198,3 +198,54 @@ disabled admission, documentation links, and spreadsheet formula escaping were
 checked. git diff --check passed. The archived specification checksum and
 golden expectations are unchanged. No database test rerun was needed for these
 research/export changes; hosted CI and all live issuer checks remain unverified.
+
+## 6 November 2026 — environment activation and first live issuer review
+
+The user published a newer environment version. Its replacement runtime applies
+the six issuer discovery hosts and api.github.com; all six homepages returned
+HTTP success or same-host redirects through the configured proxy. The earlier
+blocked network status is historical. The new draft lacked installation and
+startup instructions, so the previously tested make setup/check script and
+PostgreSQL startup guidance were restored. New published network settings,
+repository selection, variables, credentials, and presets were preserved, with
+no conflicting settings found. No environment publication was performed by the
+agent. Frozen setup and all 112 offline tests passed in the replacement instance.
+
+The [live assessment](issuer-assessment.md) records source-linked terms or policy
+findings for the six issuers. Dimensional, T. Rowe Price, and Fidelity have
+commercial/automated-use restrictions; JPMorgan has protected-content reuse and
+storage conditions subject to stated exceptions. Capital Group's reviewed
+third-party notices do not establish rights to its own holdings, and its linked
+advisor composites route led to authentication. No credentials or consent gate
+were used. These are preliminary evidence findings, not issuer permission or a
+legal determination applying indiscriminately to every underlying fact.
+
+Avantis's main terms grant a limited download licence. Three actual product pages
+were inspected: AVUS, AVUV, and AVTM, each with holdings dated 5 November 2026.
+Their embedded arrays contain 1,943, 793, and 1,709 rows respectively. Independent
+Decimal sums reproduced displayed totals of 99.19%, 99.83%, and 98.95%. These
+are raw all-row values, not admitted analytical W. Rounded-zero rows, sweep
+vehicles, rights, and other position types require explicit scope and quality
+review. No normalizing, balancing cash, new financial methodology, or source
+admission was performed. No standalone CSV/XLSX or second portfolio date was
+obtained. Source pages and constituent rows remain in private ignored cache;
+Git stores only the research mapping, aggregate observations, and limited evidence.
+
+An actual Avantis catalog link identifies quarterly holdings documents on
+avantisinvestors.prospectus-express.com. That exact host was added to the saved
+draft while preserving existing settings; it remains outside the current runtime
+policy until user activation. No request to that host was made. The separately
+observed factsheet host was not added because factsheets do not establish full
+holdings. No wildcard or alternate route was introduced.
+
+The mapping and importer plan now reflect actual source constraints. M00 remains
+open for an approved roster, permissions, a complete source contract, and two
+distinct dated samples. M04/M05 implementation and customer-facing source use
+remain dependent on those requirements; no importer or scheduled job was added.
+
+Final local checks passed after integration of the live findings: make check
+(112 offline tests and required static checks), CSV regeneration/drift, unique
+IDs and references, document/sample hashes and byte lengths, measurement
+arithmetic, disabled admission, and local documentation links. Independent
+review matched the quoted clauses to cached source bodies. The archived spec
+and golden expectations remain unchanged; hosted CI has not been observed.

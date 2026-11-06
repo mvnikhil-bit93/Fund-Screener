@@ -20,11 +20,23 @@ def render(register: dict[str, Any]) -> str:
         "issuer",
         "research_priority",
         "discovery_url",
-        "unverified_seed_tickers",
+        "seed_tickers",
+        "seed_ticker_status",
+        "verified_product_tickers",
         "access_status",
         "terms_status",
+        "reviewed_terms_urls",
+        "automated_retrieval_rights",
+        "commercial_analysis_rights",
+        "customer_holdings_display_rights",
         "holdings_status",
         "sample_count",
+        "sample_artifact_kinds",
+        "standalone_holdings_file_count",
+        "portfolio_dates",
+        "raw_displayed_weight_measurements",
+        "sample_source_urls",
+        "live_findings",
         "production_import_enabled",
         "reviewed_at",
         "blocking_reasons",
@@ -33,17 +45,55 @@ def render(register: dict[str, Any]) -> str:
     ]
     writer = csv.DictWriter(output, fieldnames=columns, lineterminator="\n")
     writer.writeheader()
+    terms = {item["document_id"]: item for item in register["terms_documents"]}
+    funds = {item["fund_id"]: item for item in register["funds"]}
+    samples = {item["sample_id"]: item for item in register["samples"]}
     for issuer in sorted(register["issuers"], key=lambda item: item["research_priority"]):
+        reviewed_samples = [samples[key] for key in issuer["holdings_review"]["sample_ids"]]
         row = {
             "issuer_id": issuer["issuer_id"],
             "issuer": issuer["name"],
             "research_priority": issuer["research_priority"],
             "discovery_url": issuer["discovery_url"],
-            "unverified_seed_tickers": "; ".join(issuer["seed_tickers"]),
+            "seed_tickers": "; ".join(issuer["seed_tickers"]),
+            "seed_ticker_status": issuer["seed_ticker_status"],
+            "verified_product_tickers": "; ".join(
+                funds[key]["ticker"] for key in issuer["holdings_review"]["fund_ids"]
+            ),
             "access_status": issuer["access"]["status"],
             "terms_status": issuer["terms_review"]["status"],
+            "reviewed_terms_urls": "; ".join(
+                terms[key]["source_url"] for key in issuer["terms_review"]["document_ids"]
+            ),
+            "automated_retrieval_rights": issuer["terms_review"]["permissions"][
+                "automated_retrieval"
+            ],
+            "commercial_analysis_rights": issuer["terms_review"]["permissions"][
+                "commercial_internal_analysis"
+            ],
+            "customer_holdings_display_rights": issuer["terms_review"]["permissions"][
+                "customer_display_of_holdings"
+            ],
             "holdings_status": issuer["holdings_review"]["status"],
-            "sample_count": str(len(issuer["holdings_review"]["sample_ids"])),
+            "sample_count": str(len(reviewed_samples)),
+            "sample_artifact_kinds": "; ".join(
+                sorted({item["artifact_kind"] for item in reviewed_samples})
+            ),
+            "standalone_holdings_file_count": str(
+                sum(item["standalone_holdings_file"] for item in reviewed_samples)
+            ),
+            "portfolio_dates": "; ".join(
+                sorted({item["portfolio_date"] for item in reviewed_samples})
+            ),
+            "raw_displayed_weight_measurements": "; ".join(
+                f"{item['ticker']}: {item['quality']['row_count']} rows, "
+                f"fraction sum {item['quality']['all_rows_reported_weight_sum_fraction']}, "
+                f"{item['quality']['zero_rounded_weight_rows']} rounded 0.00% rows; "
+                "admitted W unknown"
+                for item in reviewed_samples
+            ),
+            "sample_source_urls": "; ".join(item["source_url"] for item in reviewed_samples),
+            "live_findings": issuer["live_summary"],
             "production_import_enabled": str(
                 issuer["decision"]["production_import_enabled"]
             ).lower(),

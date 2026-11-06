@@ -20,8 +20,10 @@ UI are later tickets. The current golden tests validate the fixture's integrity
 against the original specification; they do not validate implemented financial engines.
 Source feasibility and access status are recorded in [docs/sources.md](docs/sources.md).
 The expandable [issuer register](docs/source-register.md) includes a spreadsheet
-summary, evidence fields, and an [importer plan](docs/importer-plan.md). Live terms
-and holdings evaluation remains pending issuer-site access.
+summary, a [live six-issuer assessment](docs/issuer-assessment.md), and an
+[importer plan](docs/importer-plan.md). Terms and Avantis embedded holdings have
+been inspected; source permissions, full files, and historical samples remain
+open admission requirements.
 Local verification and remaining review gates are recorded in
 [docs/decisions.md](docs/decisions.md).
 

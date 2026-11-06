@@ -1,9 +1,10 @@
 # Direct issuer importer plan
 
-Prepared 6 November 2026. This is a proposed implementation plan, not an
-implemented importer or a verified source recommendation. Issuer-site access
-remains blocked by the enforced environment policy; no terms pages or holdings
-files were retrieved for this assessment.
+Updated 6 November 2026 after the first live issuer review. This is a proposed
+implementation plan, not an implemented importer or source-use approval.
+Issuer discovery sites are now reachable. The [live assessment](issuer-assessment.md)
+records terms restrictions, access gates, and measured Avantis data embedded in
+issuer HTML; a complete first-source contract and two-date sample set remain open.
 
 The expandable research inventory is [issuer_sources.json](../config/issuer_sources.json),
 with a [CSV view](issuer-sources.csv) and [register guide](source-register.md).
@@ -11,8 +12,11 @@ The financial and dependency contracts remain [specification v1.1](spec.md).
 
 ## 1. Complete the first-source evidence gate — M00
 
-Investigate Capital Group first and Avantis second, then the additional issuers
-in the register. These are discovery priorities, not approved sources. Select
+Capital Group and Avantis remain the initial discovery priorities. Capital Group
+needs a verified public or authorized complete-holdings route and a first-party
+licensing review; Avantis needs intended-use permission decisions and a suitable
+verified fund/delivery contract. The other four reviewed issuers have permission
+or consent issues to resolve before automated commercial acquisition. Select
 US-listed, USD-reporting, active, long-only equity ETFs with complete disclosed
 portfolios. Exclude unsupported derivatives, short/inverse/leverage strategies,
 and funds whose published baskets or proxy portfolios are not their actual full
@@ -65,12 +69,20 @@ display. Validate source ID, fund ID, explicit HTTPS endpoints, allowed hosts,
 contract version, rights scope, and operational limits before any request.
 Research seed URLs and unreviewed register rows are never executable defaults.
 
+Distinguish an issuer's research/discovery configuration from an enabled runtime
+contract. Carry exact scoped rights-decision IDs, evidence versions, expiry or
+review dates, and conditions into the runtime validation. A reachable page or
+limited download licence is not an approval for recurring retrieval or display.
+
 1. Fetch one selected fund/date, recording the requested URL and each redirect.
    Check every destination before following it; retain normal TLS verification,
    configured proxy routing, and source-specific access requirements.
 2. Stream into a bounded temporary object, validate the response, and calculate
    SHA-256 over the exact downloaded artifact. Reject HTML error/consent pages
-   masquerading as CSV/XLSX, incomplete responses, and oversized payloads.
+   masquerading as CSV/XLSX, incomplete responses, and oversized payloads. If an
+   approved contract explicitly uses issuer HTML with embedded structured data,
+   preserve that HTML and use a versioned, non-executing extractor; never treat
+   arbitrary page HTML as an accepted holdings response.
 3. Commit the complete original artifact through ledger's immutable storage
    boundary. Keep downloaded artifact bytes distinct from any decoded or parsed
    representation; record transport encoding and the hashing convention.
@@ -84,6 +96,17 @@ Research seed URLs and unreviewed register rows are never executable defaults.
    later retrievals must not reset that knowledge time. Identical bytes do not
    establish a new portfolio date. Changed bytes for the same fund/date remain
    candidates for amendment assessment, not automatic accepted replacements.
+
+HTML presentation or unrelated page content can change while holdings stay the
+same. Preserve each original hash and observation, then compare the extracted
+canonical candidate independently; raw-page changes alone do not establish a
+financial correction. A fund fact sheet, creation basket, or proxy portfolio
+cannot substitute for the complete holdings artifact specified by the contract.
+Use the verified canonical US routes in runtime configuration: the Avantis
+legacy catalog route looped between slash variants, while its canonical US
+catalog succeeded. This is evidence for canonicalization and redirect-loop tests,
+not a reason to raise redirect limits or guess archive endpoints. Quarterly
+document hosts need separate network/terms verification and are not daily feeds.
 
 Proposed initial limits below require confirmation against issuer terms and
 measured samples. A source's stricter requirements take precedence.
@@ -111,6 +134,18 @@ percentages to decimal fractions only when the source unit is established.
 Keep missing values missing; do not guess identity from a name or replace an
 absent weight with zero. Source-scoped provisional identities need evidence and
 discriminating fields; shared identity resolution remains M06.
+
+The observed Avantis layout includes percentage strings with two decimal places.
+Preserve that source precision and distinguish a displayed 0.00% from a missing
+weight or proof of an economically zero position. Record a raw all-row weight
+sum separately from admitted analytical W; do not apply the analytical residual
+gate to an unverified denominator or silently discard unsupported rows. Version
+field mappings against the exact artifact schema and supporting sample hashes.
+AVUS and AVUV contain sweep vehicles and rights; AVUS also contains warrants and
+preferred stock. Do not silently treat pooled sweep vehicles as explicit USD
+cash or remove rounded-zero unsupported positions. The source-admission decision
+must resolve those cases within the current scope or obtain a separately reviewed
+scope/methodology change. Current evidence does not admit either fund.
 
 Read asof_date from evidenced portfolio metadata. Keep it separate from
 first_observed_at and fetched_at; populate source_published_at only with evidence.

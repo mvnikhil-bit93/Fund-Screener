@@ -5,23 +5,26 @@ Assessment date: 6 November 2026. Preferred route: official issuer downloads.
 The [JSON register](../config/issuer_sources.json) is the canonical, expandable
 research mapping. The [CSV summary](issuer-sources.csv) opens in a spreadsheet.
 The [importer plan](importer-plan.md) describes the work after source validation.
+The register's schema_version identifies this research format, not the canonical
+ledger-record schema or a financial methodology version.
 
-**Live assessment is blocked.** The current environment's enforced policy permits
-none of the six issuer discovery hosts. No terms pages or holdings files have
-been retrieved in this review. There are zero verified download endpoints,
-zero reviewed terms documents, zero measured samples, and no approved funds.
-This is an investigation shortlist and evidence structure, not a completed
-licensing review, quality assessment, or launch roster.
+**Live assessment is now underway.** The replacement environment permits all six
+issuer discovery hosts. The [live assessment](issuer-assessment.md) records terms
+or policy evidence for all six issuers, including the limited scope of Capital
+Group's policy review. Three Avantis HTML-embedded holdings snapshots were
+measured for one portfolio date. No standalone CSV/XLSX holdings file, second
+portfolio date, commercial-use approval, or approved launch roster is established.
 
 ## Investigation sample
 
 Priority is an investigation order, not a measured quality or licensing score.
 Capital Group and Avantis remain the original first two candidates; the other
-four extend the research sample at the user's request. Seed tickers are discovery
-leads from prior knowledge. Current names, listings, strategy, and eligibility
-must be established from issuer evidence before admitting a fund.
+four extend the research sample at the user's request. Initial seed tickers were
+discovery leads from prior knowledge. AVUS and AVUV product identities have now
+been verified through the official catalog and product pages; their portfolio
+eligibility remains unresolved. Other seeds retain their recorded evidence state.
 
-| Priority | Issuer and discovery homepage | Unverified seed tickers | Main question to resolve |
+| Priority | Issuer and discovery homepage | Discovery tickers | Main question to resolve |
 | --- | --- | --- | --- |
 | 1 | [Capital Group](https://www.capitalgroup.com/) | CGUS, CGDV | Can complete, dated files support enough eligible funds for the pilot? |
 | 2 | [Avantis Investors](https://www.avantisinvestors.com/) | AVUS, AVUV | What denominator, precision, identifiers, and instrument types occur in the files? |
@@ -36,21 +39,24 @@ The six issuers and nine seed tickers are not the target 10–25-fund pilot rost
 
 ## Access and evidence status
 
-The latest runtime check and its interpretation are recorded under
-network_evidence in the JSON. No blocked issuer request was retried or routed
-through another host. This establishes an environment limitation; it says
-nothing about issuer availability, authentication, terms, or file quality.
+The JSON preserves the earlier blocked-policy evidence separately from the
+replacement environment's active policy and live observations. All six sites
+now return public responses; access gates and permissions remain source-specific.
+Capital Group's linked advisor composites route redirected to authentication,
+and Fidelity's homepage presented an international-use agreement. Neither gate
+was accepted or bypassed; neither observation proves all issuer routes are gated.
 
-The environment draft contains the six exact discovery hosts above and preserves
-the existing api.github.com entry. Four hosts were newly added: www.dimensional.com,
-www.troweprice.com, www.fidelity.com, and am.jpmorgan.com. Saving does not enable
-runtime access. The user must review/save the settings and publish the updated
-environment through the supported workflow. The agent has not published it.
+The published network settings include the six discovery hosts and api.github.com.
+The new draft preserves them and restores the earlier setup/start instructions.
+It additionally proposes avantisinvestors.prospectus-express.com after the
+official Avantis catalog linked quarterly holdings documents there. That new
+host remains inactive until the user reviews/saves and publishes the draft.
+The observed res.avantisinvestors.com factsheet host has not been requested or
+added; a factsheet is not assumed to be complete holdings.
 
-Recheck the runtime policy after activation. Verify each HTTP response, then
-record redirects and request any additional exact download hostname only when
-issuer evidence establishes it. Homepage access is not proof that the file host
-is accessible. Do not follow redirects to unknown hosts automatically.
+Verify the active policy before requesting a newly approved host. Record actual
+redirects and investigate the applicable document terms; discovery of a URL is
+not a commercial licence. No unknown destination is followed automatically.
 
 ## Extending the mapping
 
@@ -79,12 +85,12 @@ authorization headers here. Retain exact secret-bearing request evidence only
 in appropriately restricted storage when necessary and permitted. A redacted
 provenance URL is not a fetchable endpoint or a substitute for a refresh mechanism.
 
-| Collection | One record represents | Required evidence when populated |
+| Collection | One record represents | Fields to record; unknowns remain explicit |
 | --- | --- | --- |
 | issuers | A candidate organization and current assessment summary | Stable issuer_id, discovery lead, review status, linked records, questions and decision |
 | terms_documents | A particular version of a terms document | document_id, issuer_id, exact source_url, applicable fund_ids or explicit issuer-wide scope, retrieved_at UTC, effective date if stated, content_sha256, relevant clauses/excerpts, storage permission/path, reviewer and reviewed_at |
 | rights_decisions | One reviewed use for a specific scope | decision_id, issuer_id, fund_ids or explicit issuer-wide scope, use, status, document_ids with exact clause references, conditions, reviewer, reviewed_at, expiry/review date if applicable, supersedes_decision_id when updated |
-| funds | One verified ETF source contract | fund_id, source_id, issuer_id, issuer_fund_id, verified ticker/exchange/name/currency, strategy and transparency evidence, fund page, holdings endpoint, verified hosts, rights review references, file/schema/calendar versions, admission decision |
+| funds | One fund identity and source-contract assessment | fund_id, source_id, issuer_id, issuer_fund_id, verified ticker/exchange/name/currency, strategy and transparency evidence, fund page, holdings endpoint, verified hosts, rights review references, file/schema/calendar versions, admission decision |
 | samples | One exact file received for a fund | sample_id, fund_id, source_id, exact URL and redirect chain, fetched_at UTC, evidenced publication time, portfolio date, SHA-256, bytes, MIME/format, permitted storage path, field_mapping_id and quality measurements |
 | field_mappings | One versioned, observed file layout | mapping_id, source_id, version, supporting sample_ids, encoding, delimiter or sheet, header/footer rules, raw columns/locations, target fields, units, date rules, denominator and completeness checks |
 

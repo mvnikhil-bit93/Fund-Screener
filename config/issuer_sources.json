@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "updated_on": "2026-11-06",
-  "assessment_status": "blocked_live_review",
+  "assessment_status": "partial_live_review_no_source_admitted",
   "purpose": "Expandable research register; not executable importer configuration or source-use authorization.",
   "preferred_acquisition_route": "official_issuer_downloads",
   "scope": {
@@ -42,6 +42,33 @@
       "candidate_hosts_permitted_by_runtime": [],
       "conclusion": "All six discovery hosts are outside the enforced policy. No issuer response was obtained; this does not assess issuer availability or terms.",
       "draft_update": "Discovery hosts saved for user review; draft persistence does not establish runtime access."
+    },
+    {
+      "evidence_id": "network-2026-11-06-published-update",
+      "recorded_at": "2026-11-06T17:22:45.359353+00:00",
+      "source": "Root runtime-policy verification and bounded public issuer HTTPS checks after environment replacement",
+      "observations_current": true,
+      "policy_mode": "restricted",
+      "policy_state": "enforced",
+      "runtime_custom_allowed_hosts": [
+        "am.jpmorgan.com",
+        "api.github.com",
+        "www.avantisinvestors.com",
+        "www.capitalgroup.com",
+        "www.dimensional.com",
+        "www.fidelity.com",
+        "www.troweprice.com"
+      ],
+      "candidate_hosts_permitted_by_runtime": [
+        "am.jpmorgan.com",
+        "www.avantisinvestors.com",
+        "www.capitalgroup.com",
+        "www.dimensional.com",
+        "www.fidelity.com",
+        "www.troweprice.com"
+      ],
+      "conclusion": "All six issuer discovery hosts now respond with HTTP success or redirects. Reachability does not establish consent, a holdings endpoint, commercial rights, or source quality. Detailed document/sample records identify actual retrieved evidence.",
+      "supersedes_evidence_id": "network-2026-11-06"
     }
   ],
   "issuers": [
@@ -50,7 +77,7 @@
       "name": "Capital Group",
       "research_priority": 1,
       "discovery_url": "https://www.capitalgroup.com/",
-      "discovery_url_status": "unverified_seed",
+      "discovery_url_status": "reachable_research_lead",
       "seed_tickers": [
         "CGUS",
         "CGDV"
@@ -58,17 +85,21 @@
       "seed_ticker_status": "unverified_search_leads_not_roster",
       "research_rationale": "First candidate in the MVP research order; investigate its active US equity ETF range.",
       "access": {
-        "status": "blocked_by_environment_policy",
-        "checked_at": "2026-11-06T11:05:25Z",
+        "status": "public_pages_reachable_observed_advisor_route_requires_authentication",
+        "checked_at": "2026-11-06T17:22:45.359353+00:00",
         "required_discovery_host": "www.capitalgroup.com",
-        "network_evidence_id": "network-2026-11-06",
-        "issuer_request_attempted_this_review": false,
-        "issuer_http_status": null,
-        "verified_download_hosts": []
+        "network_evidence_id": "network-2026-11-06-published-update",
+        "issuer_request_attempted_this_review": true,
+        "issuer_http_status": 200,
+        "verified_download_hosts": [],
+        "verified_us_url": "https://www.capitalgroup.com/individual/"
       },
       "terms_review": {
-        "status": "not_reviewed",
-        "document_ids": [],
+        "status": "partial_policy_review_first_party_holdings_rights_unresolved",
+        "document_ids": [
+          "capital-group-third-party-content-2026-11-06",
+          "capital-group-account-agreement-2026-11-06"
+        ],
         "permissions": {
           "manual_research_download": "unknown",
           "automated_retrieval": "unknown",
@@ -78,34 +109,52 @@
           "customer_display_of_derived_analytics": "unknown",
           "raw_file_redistribution": "unknown",
           "public_git_fixture_publication": "unknown",
-          "identifier_reuse": "unknown",
-          "classification_reuse": "unknown"
+          "identifier_reuse": "conditional",
+          "classification_reuse": "conditional"
         },
-        "reviewer": null,
-        "reviewed_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
         "conditions": [],
-        "notes": "No issuer terms have been retrieved or read in this assessment.",
-        "decision_ids": []
+        "notes": "Third-party content and account-information pages were reviewed. Neither establishes a first-party commercial holdings licence; the account accuracy disclaimer is not a measured holdings defect.",
+        "decision_ids": [
+          "capital_group-identifier_reuse-2026-11-06",
+          "capital_group-classification_reuse-2026-11-06"
+        ]
       },
       "holdings_review": {
         "status": "not_measured",
         "fund_ids": [],
         "sample_ids": [],
         "verified_download_url_count": 0,
-        "verified_distinct_portfolio_date_count": 0
+        "verified_distinct_portfolio_date_count": 0,
+        "standalone_holdings_file_count": 0,
+        "endpoint_discovery": {
+          "official_link_observed": "https://www.capitalgroup.com/advisor/investments/exchange-traded-funds/composites",
+          "link_source": "https://www.capitalgroup.com/individual/investments/returns?term=monthly",
+          "result": "redirected_to_advisor_authentication",
+          "response_sha256": "cc2cef28659942ef80e8bccce51dc30198bd29fde2584a092c86324d60f3ac45",
+          "redirect_chain": [
+            "https://www.capitalgroup.com/advisor/investments/exchange-traded-funds/composites",
+            "https://www.capitalgroup.com/advisor/public/authentication.htm?next=/advisor/investments/exchange-traded-funds/composites?",
+            "https://www.capitalgroup.com/advisor/login-auth-required.htm?next=%2Fadvisor%2Finvestments%2Fexchange-traded-funds%2Fcomposites%3F",
+            "https://www.capitalgroup.com/advisor/public/authentication-0.htm?next=/advisor/login-auth-required.htm?next=%2Fadvisor%2Finvestments%2Fexchange-traded-funds%2Fcomposites%3F"
+          ],
+          "authentication_attempted": false,
+          "holdings_download_url": null
+        }
       },
       "decision": {
-        "status": "research_candidate",
+        "status": "research_candidate_not_admitted",
         "selected_for_pilot": false,
         "production_import_enabled": false,
-        "reviewer": null,
-        "decided_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "issuer_access_not_enabled",
-          "terms_not_reviewed",
+          "requested_use_permissions_unresolved",
+          "observed_composites_route_requires_authorized_access",
           "fund_eligibility_not_verified",
-          "holdings_endpoint_not_verified",
-          "two_dated_samples_not_obtained",
+          "full_holdings_endpoint_not_verified",
+          "two_distinct_dated_samples_not_obtained",
           "quality_not_measured"
         ]
       },
@@ -113,34 +162,56 @@
         "Establish an authoritative full-holdings download and portfolio date for each fund.",
         "Count eligible US equity funds; do not assume this issuer alone meets the ten-fund pilot target.",
         "Review website terms and any file-specific conditions separately."
-      ]
+      ],
+      "live_summary": "US pages reachable. The linked advisor composites route leads to authentication; this does not establish that all holdings routes are gated. Third-party reuse needs separate permission; first-party holdings use remains unresolved."
     },
     {
       "issuer_id": "avantis",
       "name": "Avantis Investors",
       "research_priority": 2,
       "discovery_url": "https://www.avantisinvestors.com/",
-      "discovery_url_status": "unverified_seed",
+      "discovery_url_status": "reachable_research_lead",
       "seed_tickers": [
         "AVUS",
         "AVUV"
       ],
-      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "seed_ticker_status": "identity_and_product_page_verified_not_admitted",
       "research_rationale": "Second candidate in the MVP research order; investigate systematic active equity comparisons.",
       "access": {
-        "status": "blocked_by_environment_policy",
-        "checked_at": "2026-11-06T11:05:25Z",
+        "status": "reachable",
+        "checked_at": "2026-11-06T17:22:45.359353+00:00",
         "required_discovery_host": "www.avantisinvestors.com",
-        "network_evidence_id": "network-2026-11-06",
-        "issuer_request_attempted_this_review": false,
-        "issuer_http_status": null,
-        "verified_download_hosts": []
+        "network_evidence_id": "network-2026-11-06-published-update",
+        "issuer_request_attempted_this_review": true,
+        "issuer_http_status": 200,
+        "verified_download_hosts": [],
+        "verified_us_url": "https://www.avantisinvestors.com/home/en-us/",
+        "additional_document_hosts": [
+          {
+            "host": "res.avantisinvestors.com",
+            "basis": "Exact factSheet URLs in official catalog for verified funds; not requested because host is outside approved policy.",
+            "purpose": "Factsheet evidence, not assumed complete holdings.",
+            "example_url": "https://res.avantisinvestors.com/docs/avantis-us-equity-avus-etf-fact-sheet.pdf"
+          },
+          {
+            "host": "avantisinvestors.prospectus-express.com",
+            "basis": "Exact q1FiscalHoldings/q3FiscalHoldings and prospectus URLs in official catalog; not requested because host is outside approved policy.",
+            "purpose": "Investigate authoritative quarterly holdings and prospectus documentation; do not equate quarterly documents with daily history.",
+            "example_urls": [
+              "https://avantisinvestors.prospectus-express.com/summary.asp?doctype=phq1&cid=avantisll&fid=025072885",
+              "https://avantisinvestors.prospectus-express.com/summary.asp?doctype=phq3&cid=avantisll&fid=025072885"
+            ]
+          }
+        ],
+        "additional_document_hosts_runtime_access_verified": false
       },
       "terms_review": {
-        "status": "not_reviewed",
-        "document_ids": [],
+        "status": "main_terms_reviewed_commercial_and_automation_scope_unresolved",
+        "document_ids": [
+          "avantis-terms-2026-11-06"
+        ],
         "permissions": {
-          "manual_research_download": "unknown",
+          "manual_research_download": "conditional",
           "automated_retrieval": "unknown",
           "raw_file_retention": "unknown",
           "commercial_internal_analysis": "unknown",
@@ -151,46 +222,64 @@
           "identifier_reuse": "unknown",
           "classification_reuse": "unknown"
         },
-        "reviewer": null,
-        "reviewed_at": null,
-        "conditions": [],
-        "notes": "No issuer terms have been retrieved or read in this assessment.",
-        "decision_ids": []
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+        "conditions": [
+          "Limited, nonexclusive, nontransferable website license; comply with the terms and applicable third-party rights.",
+          "Do not infer ongoing commercial distribution rights or indefinite retention from download permission."
+        ],
+        "notes": "A limited nonexclusive/nontransferable view/use/download/print licence is explicit. It does not establish production automation, customer display, raw redistribution, public fixture publication, or indefinite retention permission. Terms disclaim accuracy/completeness/timeliness.",
+        "decision_ids": [
+          "avantis-manual_research_download-2026-11-06"
+        ]
       },
       "holdings_review": {
-        "status": "not_measured",
-        "fund_ids": [],
-        "sample_ids": [],
+        "status": "three_embedded_holdings_samples_inspected_no_standalone_file",
+        "fund_ids": [
+          "fund-avantis-75",
+          "fund-avantis-114",
+          "fund-avantis-119"
+        ],
+        "sample_ids": [
+          "avantis-avtm-2026-11-05-html-3732fe37f15b",
+          "avantis-avus-2026-11-05-html-0e7f452d1841",
+          "avantis-avuv-2026-11-05-html-f0ae343a6988"
+        ],
         "verified_download_url_count": 0,
-        "verified_distinct_portfolio_date_count": 0
+        "verified_distinct_portfolio_date_count": 1,
+        "standalone_holdings_file_count": 0,
+        "portfolio_dates": [
+          "2026-11-05"
+        ]
       },
       "decision": {
-        "status": "research_candidate",
+        "status": "research_candidate_not_admitted",
         "selected_for_pilot": false,
         "production_import_enabled": false,
-        "reviewer": null,
-        "decided_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "issuer_access_not_enabled",
-          "terms_not_reviewed",
-          "fund_eligibility_not_verified",
-          "holdings_endpoint_not_verified",
-          "two_dated_samples_not_obtained",
-          "quality_not_measured"
+          "commercial_use_and_automation_scope_unresolved",
+          "full_portfolio_completeness_and_denominator_unverified",
+          "unsupported_or_unresolved_position_treatment",
+          "standalone_holdings_download_not_verified",
+          "second_portfolio_date_not_obtained",
+          "ten_fund_eligible_roster_not_established"
         ]
       },
       "review_questions": [
         "Select US equity funds rather than assuming the whole product range fits the pilot.",
         "Measure reported weight precision and denominator before promising full overlap.",
         "Check identifier coverage, cash treatment, and actual supported instrument types."
-      ]
+      ],
+      "live_summary": "AVUS, AVUV and AVTM product-page holdings inspected for 2026-11-05. All are HTML-embedded arrays, not standalone holdings files. Rounded weights and unsupported/unresolved asset types prevent admission under the current contract; commercial-use scope remains unresolved."
     },
     {
       "issuer_id": "dimensional",
       "name": "Dimensional",
       "research_priority": 3,
       "discovery_url": "https://www.dimensional.com/",
-      "discovery_url_status": "unverified_seed",
+      "discovery_url_status": "reachable_research_lead",
       "seed_tickers": [
         "DFAU",
         "DFAC"
@@ -198,54 +287,81 @@
       "seed_ticker_status": "unverified_search_leads_not_roster",
       "research_rationale": "Additional candidate for systematic active US equity comparisons; current suitability is unverified.",
       "access": {
-        "status": "blocked_by_environment_policy",
-        "checked_at": "2026-11-06T11:05:25Z",
+        "status": "reachable",
+        "checked_at": "2026-11-06T17:22:45.359353+00:00",
         "required_discovery_host": "www.dimensional.com",
-        "network_evidence_id": "network-2026-11-06",
-        "issuer_request_attempted_this_review": false,
-        "issuer_http_status": null,
-        "verified_download_hosts": []
+        "network_evidence_id": "network-2026-11-06-published-update",
+        "issuer_request_attempted_this_review": true,
+        "issuer_http_status": 200,
+        "verified_download_hosts": [],
+        "verified_us_url": "https://www.dimensional.com/us-en/search"
       },
       "terms_review": {
-        "status": "not_reviewed",
-        "document_ids": [],
+        "status": "reviewed_restrictions_found",
+        "document_ids": [
+          "dimensional-us-terms-2026-11-06"
+        ],
         "permissions": {
           "manual_research_download": "unknown",
-          "automated_retrieval": "unknown",
+          "automated_retrieval": "conditional",
           "raw_file_retention": "unknown",
-          "commercial_internal_analysis": "unknown",
-          "customer_display_of_holdings": "unknown",
-          "customer_display_of_derived_analytics": "unknown",
-          "raw_file_redistribution": "unknown",
-          "public_git_fixture_publication": "unknown",
+          "commercial_internal_analysis": "conditional",
+          "customer_display_of_holdings": "conditional",
+          "customer_display_of_derived_analytics": "conditional",
+          "raw_file_redistribution": "conditional",
+          "public_git_fixture_publication": "conditional",
           "identifier_reuse": "unknown",
           "classification_reuse": "unknown"
         },
-        "reviewer": null,
-        "reviewed_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
         "conditions": [],
-        "notes": "No issuer terms have been retrieved or read in this assessment.",
-        "decision_ids": []
+        "notes": "Stopped before fund/file acquisition after finding commercial-use and file-license restrictions. No consent acceptance or contact was attempted.",
+        "decision_ids": [
+          "dimensional-automated_retrieval-2026-11-06",
+          "dimensional-commercial_internal_analysis-2026-11-06",
+          "dimensional-customer_display_of_holdings-2026-11-06",
+          "dimensional-customer_display_of_derived_analytics-2026-11-06",
+          "dimensional-raw_file_redistribution-2026-11-06",
+          "dimensional-public_git_fixture_publication-2026-11-06"
+        ]
       },
       "holdings_review": {
-        "status": "not_measured",
+        "status": "not_measured_permission_blocker",
         "fund_ids": [],
         "sample_ids": [],
         "verified_download_url_count": 0,
-        "verified_distinct_portfolio_date_count": 0
+        "verified_distinct_portfolio_date_count": 0,
+        "standalone_holdings_file_count": 0,
+        "discovery_leads": [
+          {
+            "ticker": "DFAU",
+            "identity_status": "unverified_search_lead",
+            "fund_page_url": null,
+            "holdings_download_url": null,
+            "eligibility": "not_verified"
+          },
+          {
+            "ticker": "DFAC",
+            "identity_status": "unverified_search_lead",
+            "fund_page_url": null,
+            "holdings_download_url": null,
+            "eligibility": "not_verified"
+          }
+        ]
       },
       "decision": {
-        "status": "research_candidate",
+        "status": "research_candidate_not_admitted",
         "selected_for_pilot": false,
         "production_import_enabled": false,
-        "reviewer": null,
-        "decided_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "issuer_access_not_enabled",
-          "terms_not_reviewed",
+          "commercial_use_permission_required",
+          "automated_access_permission_required",
           "fund_eligibility_not_verified",
-          "holdings_endpoint_not_verified",
-          "two_dated_samples_not_obtained",
+          "full_holdings_endpoint_not_verified",
+          "two_distinct_dated_samples_not_obtained",
           "quality_not_measured"
         ]
       },
@@ -253,68 +369,92 @@
         "Verify official fund identifiers, holdings delivery, and daily disclosure for each selected fund.",
         "Check cash, currency, and any unsupported positions in complete files.",
         "Establish stable fund identifiers independently of tickers or product-name changes."
-      ]
+      ],
+      "live_summary": "Commercial use requires written approval; downloaded files are limited to personal/noncommercial use and repeated automated access is restricted. No holdings acquired."
     },
     {
       "issuer_id": "t_rowe_price",
       "name": "T. Rowe Price",
       "research_priority": 4,
       "discovery_url": "https://www.troweprice.com/",
-      "discovery_url_status": "unverified_seed",
+      "discovery_url_status": "reachable_research_lead",
       "seed_tickers": [
         "TCAF"
       ],
       "seed_ticker_status": "unverified_search_leads_not_roster",
       "research_rationale": "Additional candidate for discretionary active US equity comparisons; current suitability is unverified.",
       "access": {
-        "status": "blocked_by_environment_policy",
-        "checked_at": "2026-11-06T11:05:25Z",
+        "status": "reachable",
+        "checked_at": "2026-11-06T17:22:45.359353+00:00",
         "required_discovery_host": "www.troweprice.com",
-        "network_evidence_id": "network-2026-11-06",
-        "issuer_request_attempted_this_review": false,
-        "issuer_http_status": null,
-        "verified_download_hosts": []
+        "network_evidence_id": "network-2026-11-06-published-update",
+        "issuer_request_attempted_this_review": true,
+        "issuer_http_status": 200,
+        "verified_download_hosts": [],
+        "verified_us_url": "https://www.troweprice.com/en/us"
       },
       "terms_review": {
-        "status": "not_reviewed",
-        "document_ids": [],
+        "status": "reviewed_restrictions_found",
+        "document_ids": [
+          "t_rowe_price-us-terms-2026-11-06"
+        ],
         "permissions": {
           "manual_research_download": "unknown",
-          "automated_retrieval": "unknown",
+          "automated_retrieval": "conditional",
           "raw_file_retention": "unknown",
-          "commercial_internal_analysis": "unknown",
-          "customer_display_of_holdings": "unknown",
-          "customer_display_of_derived_analytics": "unknown",
-          "raw_file_redistribution": "unknown",
-          "public_git_fixture_publication": "unknown",
+          "commercial_internal_analysis": "conditional",
+          "customer_display_of_holdings": "conditional",
+          "customer_display_of_derived_analytics": "conditional",
+          "raw_file_redistribution": "conditional",
+          "public_git_fixture_publication": "conditional",
           "identifier_reuse": "unknown",
           "classification_reuse": "unknown"
         },
-        "reviewer": null,
-        "reviewed_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
         "conditions": [],
-        "notes": "No issuer terms have been retrieved or read in this assessment.",
-        "decision_ids": []
+        "notes": "Stopped further T. Rowe Price requests once the explicit automation/AI restriction was read. No consent acceptance or contact was attempted.",
+        "decision_ids": [
+          "t_rowe_price-automated_retrieval-2026-11-06",
+          "t_rowe_price-commercial_internal_analysis-2026-11-06",
+          "t_rowe_price-customer_display_of_holdings-2026-11-06",
+          "t_rowe_price-customer_display_of_derived_analytics-2026-11-06",
+          "t_rowe_price-raw_file_redistribution-2026-11-06",
+          "t_rowe_price-public_git_fixture_publication-2026-11-06"
+        ]
       },
       "holdings_review": {
-        "status": "not_measured",
+        "status": "not_measured_permission_blocker",
         "fund_ids": [],
         "sample_ids": [],
         "verified_download_url_count": 0,
-        "verified_distinct_portfolio_date_count": 0
+        "verified_distinct_portfolio_date_count": 0,
+        "standalone_holdings_file_count": 0,
+        "discovery_leads": [
+          {
+            "ticker": "TCAF",
+            "linked_fund_page": "https://www.troweprice.com/personal-investing/tools/fund-research/etf/TCAF",
+            "link_evidence_url": "https://www.troweprice.com/personal-investing/funds/etfs/prospectuses-reports.html",
+            "link_evidence_sha256": "1a59203d464469dd1580aaeb0690b5f6363040bf9c1d4ee97b3377bf8eda80d6",
+            "fund_page_retrieved": false,
+            "identity_status": "ticker_link_observed_in_official_ETF_reports_page",
+            "eligibility": "not_verified",
+            "holdings_download_url": null
+          }
+        ]
       },
       "decision": {
-        "status": "research_candidate",
+        "status": "research_candidate_not_admitted",
         "selected_for_pilot": false,
         "production_import_enabled": false,
-        "reviewer": null,
-        "decided_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "issuer_access_not_enabled",
-          "terms_not_reviewed",
+          "commercial_use_permission_required",
+          "automated_access_permission_required",
           "fund_eligibility_not_verified",
-          "holdings_endpoint_not_verified",
-          "two_dated_samples_not_obtained",
+          "full_holdings_endpoint_not_verified",
+          "two_distinct_dated_samples_not_obtained",
           "quality_not_measured"
         ]
       },
@@ -322,68 +462,81 @@
         "Verify each fund discloses the actual complete portfolio, not a proxy portfolio.",
         "Distinguish complete downloadable holdings from top-holdings marketing tables.",
         "Review the exact product and regional website terms applying to the file."
-      ]
+      ],
+      "live_summary": "Personal/noncommercial use only under the general grant; explicit automated scraping/AI restrictions. Further retrieval stopped; no holdings acquired."
     },
     {
       "issuer_id": "fidelity",
       "name": "Fidelity",
       "research_priority": 5,
       "discovery_url": "https://www.fidelity.com/",
-      "discovery_url_status": "unverified_seed",
+      "discovery_url_status": "reachable_research_lead",
       "seed_tickers": [
         "FELC"
       ],
       "seed_ticker_status": "unverified_search_leads_not_roster",
       "research_rationale": "Additional candidate for active US equity comparisons; current suitability is unverified.",
       "access": {
-        "status": "blocked_by_environment_policy",
-        "checked_at": "2026-11-06T11:05:25Z",
+        "status": "reachable_international_usage_consent_gate_not_accepted",
+        "checked_at": "2026-11-06T17:22:45.359353+00:00",
         "required_discovery_host": "www.fidelity.com",
-        "network_evidence_id": "network-2026-11-06",
-        "issuer_request_attempted_this_review": false,
-        "issuer_http_status": null,
-        "verified_download_hosts": []
+        "network_evidence_id": "network-2026-11-06-published-update",
+        "issuer_request_attempted_this_review": true,
+        "issuer_http_status": 200,
+        "verified_download_hosts": [],
+        "verified_us_url": "https://www.fidelity.com/terms-of-use",
+        "consent_accepted": false
       },
       "terms_review": {
-        "status": "not_reviewed",
-        "document_ids": [],
+        "status": "reviewed_restrictions_found",
+        "document_ids": [
+          "fidelity-terms-2026-11-06"
+        ],
         "permissions": {
           "manual_research_download": "unknown",
-          "automated_retrieval": "unknown",
+          "automated_retrieval": "conditional",
           "raw_file_retention": "unknown",
-          "commercial_internal_analysis": "unknown",
-          "customer_display_of_holdings": "unknown",
+          "commercial_internal_analysis": "conditional",
+          "customer_display_of_holdings": "conditional",
           "customer_display_of_derived_analytics": "unknown",
-          "raw_file_redistribution": "unknown",
-          "public_git_fixture_publication": "unknown",
+          "raw_file_redistribution": "conditional",
+          "public_git_fixture_publication": "conditional",
           "identifier_reuse": "unknown",
           "classification_reuse": "unknown"
         },
-        "reviewer": null,
-        "reviewed_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
         "conditions": [],
-        "notes": "No issuer terms have been retrieved or read in this assessment.",
-        "decision_ids": []
+        "notes": "Homepage presents an International Usage Agreement that was not accepted. Public terms were reviewed; commercial use and automated third-party access require an authorized basis.",
+        "decision_ids": [
+          "fidelity-automated_retrieval-2026-11-06",
+          "fidelity-commercial_internal_analysis-2026-11-06",
+          "fidelity-customer_display_of_holdings-2026-11-06",
+          "fidelity-raw_file_redistribution-2026-11-06",
+          "fidelity-public_git_fixture_publication-2026-11-06"
+        ]
       },
       "holdings_review": {
-        "status": "not_measured",
+        "status": "not_measured_consent_and_permission_blocker",
         "fund_ids": [],
         "sample_ids": [],
         "verified_download_url_count": 0,
-        "verified_distinct_portfolio_date_count": 0
+        "verified_distinct_portfolio_date_count": 0,
+        "standalone_holdings_file_count": 0
       },
       "decision": {
-        "status": "research_candidate",
+        "status": "research_candidate_not_admitted",
         "selected_for_pilot": false,
         "production_import_enabled": false,
-        "reviewer": null,
-        "decided_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "issuer_access_not_enabled",
-          "terms_not_reviewed",
+          "international_usage_consent_unresolved",
+          "commercial_use_permission_required",
+          "automated_access_permission_required",
           "fund_eligibility_not_verified",
-          "holdings_endpoint_not_verified",
-          "two_dated_samples_not_obtained",
+          "full_holdings_endpoint_not_verified",
+          "two_distinct_dated_samples_not_obtained",
           "quality_not_measured"
         ]
       },
@@ -391,68 +544,92 @@
         "Establish each selected fund's transparency, portfolio date, and download format independently.",
         "Confirm the file is for the ETF share class and correct market, not a related mutual fund.",
         "Identify any third-party identifier or classification restrictions in supplied data."
-      ]
+      ],
+      "live_summary": "Network access works but homepage has an unaccepted International Usage Agreement. Terms restrict commercial use and automated/repeated third-party access; no holdings acquired."
     },
     {
       "issuer_id": "jpmorgan_am",
       "name": "JPMorgan Asset Management",
       "research_priority": 6,
       "discovery_url": "https://am.jpmorgan.com/",
-      "discovery_url_status": "unverified_seed",
+      "discovery_url_status": "reachable_research_lead",
       "seed_tickers": [
         "JGRO"
       ],
       "seed_ticker_status": "unverified_search_leads_not_roster",
       "research_rationale": "Additional candidate for active US equity comparisons; current suitability is unverified.",
       "access": {
-        "status": "blocked_by_environment_policy",
-        "checked_at": "2026-11-06T11:05:25Z",
+        "status": "reachable",
+        "checked_at": "2026-11-06T17:22:45.359353+00:00",
         "required_discovery_host": "am.jpmorgan.com",
-        "network_evidence_id": "network-2026-11-06",
-        "issuer_request_attempted_this_review": false,
-        "issuer_http_status": null,
-        "verified_download_hosts": []
+        "network_evidence_id": "network-2026-11-06-published-update",
+        "issuer_request_attempted_this_review": true,
+        "issuer_http_status": 200,
+        "verified_download_hosts": [],
+        "verified_us_url": "https://am.jpmorgan.com/us/en/asset-management/per/"
       },
       "terms_review": {
-        "status": "not_reviewed",
-        "document_ids": [],
+        "status": "reviewed_protected_content_use_basis_unresolved",
+        "document_ids": [
+          "jpmorgan-us-retail-terms-2026-11-06",
+          "jpmorgan-us-retail-disclaimer-2026-11-06"
+        ],
         "permissions": {
           "manual_research_download": "unknown",
           "automated_retrieval": "unknown",
-          "raw_file_retention": "unknown",
+          "raw_file_retention": "conditional",
           "commercial_internal_analysis": "unknown",
-          "customer_display_of_holdings": "unknown",
+          "customer_display_of_holdings": "conditional",
           "customer_display_of_derived_analytics": "unknown",
-          "raw_file_redistribution": "unknown",
-          "public_git_fixture_publication": "unknown",
+          "raw_file_redistribution": "conditional",
+          "public_git_fixture_publication": "conditional",
           "identifier_reuse": "unknown",
           "classification_reuse": "unknown"
         },
-        "reviewer": null,
-        "reviewed_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
         "conditions": [],
-        "notes": "No issuer terms have been retrieved or read in this assessment.",
-        "decision_ids": []
+        "notes": "Prior written consent is required by the protected-works copyright clause, subject to its statutory exceptions and conditions. No blanket finding that all factual holdings are copyrightable, or that all automated access is prohibited, is made.",
+        "decision_ids": [
+          "jpmorgan_am-raw_file_retention-2026-11-06",
+          "jpmorgan_am-customer_display_of_holdings-2026-11-06",
+          "jpmorgan_am-raw_file_redistribution-2026-11-06",
+          "jpmorgan_am-public_git_fixture_publication-2026-11-06"
+        ]
       },
       "holdings_review": {
-        "status": "not_measured",
+        "status": "not_measured_permission_basis_unresolved",
         "fund_ids": [],
         "sample_ids": [],
         "verified_download_url_count": 0,
-        "verified_distinct_portfolio_date_count": 0
+        "verified_distinct_portfolio_date_count": 0,
+        "standalone_holdings_file_count": 0,
+        "discovery_leads": [
+          {
+            "ticker": "JGRO",
+            "ticker_status": "unverified_search_lead_with_linked_fact_sheet",
+            "observed_source_product_key": "46654Q609",
+            "product_key_namespace": null,
+            "linked_fact_sheet_url": "https://am.jpmorgan.com/content/dam/jpm-am-aem/americas/us/en/literature/fact-sheet/etfs/FS-JGRO.PDF",
+            "fact_sheet_retrieved": false,
+            "full_holdings_endpoint": null,
+            "note": "ETF directory embeds this Fact Sheet (US EMEA) link. A fact sheet link is not a complete holdings endpoint or verified current fund eligibility.",
+            "link_source_url": "https://am.jpmorgan.com/us/en/asset-management/per/products/fund-explorer/etf",
+            "link_source_sha256": "e7b58cffe6d98e4214d54a00da34766d8b891873cfa26794145c65d603198eea"
+          }
+        ]
       },
       "decision": {
-        "status": "research_candidate",
+        "status": "research_candidate_not_admitted",
         "selected_for_pilot": false,
         "production_import_enabled": false,
-        "reviewer": null,
-        "decided_at": null,
+        "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+        "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "issuer_access_not_enabled",
-          "terms_not_reviewed",
+          "requested_use_permissions_unresolved",
           "fund_eligibility_not_verified",
-          "holdings_endpoint_not_verified",
-          "two_dated_samples_not_obtained",
+          "full_holdings_endpoint_not_verified",
+          "two_distinct_dated_samples_not_obtained",
           "quality_not_measured"
         ]
       },
@@ -460,13 +637,1174 @@
         "Screen each fund for option overlays and other unsupported instruments before admission.",
         "Verify actual portfolio contents rather than inferring eligibility from an equity label.",
         "Confirm US-market fund identity and applicable regional terms for each download."
+      ],
+      "live_summary": "US terms require prior consent for specified reuse/storage of protected works, with statutory exceptions. JGRO fact-sheet link is a discovery lead, not a full-holdings endpoint; no holdings acquired."
+    }
+  ],
+  "terms_documents": [
+    {
+      "document_id": "capital-group-third-party-content-2026-11-06",
+      "issuer_id": "capital_group",
+      "title": "Third-Party Content",
+      "scope": "Third-party content appearing on the website; this is not a blanket first-party holdings licence.",
+      "source_url": "https://www.capitalgroup.com/individual/trademarks.html",
+      "retrieved_at": "2026-11-06T17:12:06.185075+00:00",
+      "content_sha256": "4a209df8ec9f1943b2c2abd9ad978606e23bac647bff9f0fe7b585ababb30270",
+      "byte_length": 111221,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "Third-Party Content",
+          "excerpt": "Third Party Content may not be copied, used or distributed without the permission of the relevant Third Party Content Provider.",
+          "finding": "Identifiers, classifications and other third-party material need separate permission analysis; no transfer of ownership or intellectual-property rights is granted."
+        },
+        {
+          "section": "MSCI data notice",
+          "excerpt": "may only be used for your internal use",
+          "finding": "The page places additional restrictions on MSCI data. Do not transfer an index-data permission to issuer holdings or customer display."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "capital-group-account-agreement-2026-11-06",
+      "issuer_id": "capital_group",
+      "title": "Account Agreement",
+      "scope": "Online account information and transactions; not a holdings-file licence.",
+      "source_url": "https://www.capitalgroup.com/individual/account-agreement.html",
+      "retrieved_at": "2026-11-06T17:10:52.929945+00:00",
+      "content_sha256": "c2c917c1b507e8288f0c8c7c93aec050305615e6a9921b39e73e01c1fbb566e8",
+      "byte_length": 95572,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "Account Agreement",
+          "excerpt": "no assurance can be given that the information obtained will be accurate",
+          "finding": "This account-information disclaimer is not evidence that a particular holdings file is inaccurate; no full-holdings licence or methodology can be inferred."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "avantis-terms-2026-11-06",
+      "issuer_id": "avantis",
+      "title": "Terms & Conditions",
+      "scope": "Main Avantis website terms. Additional linked privacy/security and fund/file-specific conditions are not fully reviewed.",
+      "source_url": "https://www.avantisinvestors.com/avantis-terms-and-conditions/en-us/",
+      "retrieved_at": "2026-11-06T17:10:22.010688+00:00",
+      "content_sha256": "887a89b4f65cfeaf00c5cb1114ef9882b39f9ef1f50477017217c6e20e29c896",
+      "byte_length": 499813,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "limited_download_license",
+          "excerpt": "American Century Investments grants you a limited, nonexclusive, nontransferable license to view, use, bookmark, download and print the information on this website."
+        },
+        {
+          "section": "third_party_rights",
+          "excerpt": "The data is protected by copyright and other intellectual property laws and all ownership rights remain with the information service provider or the third party or us, as the case may be."
+        },
+        {
+          "section": "quality_disclaimer",
+          "excerpt": "ACCURACY, ADEQUACY, COMPLETENESS, RELIABILITY, PERFORMANCE, TIMELINESS, OR CONTINUED AVAILABILITY"
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "dimensional-us-terms-2026-11-06",
+      "issuer_id": "dimensional",
+      "title": "US Terms of Use",
+      "scope": "US website terms linked by the official public US search page.",
+      "source_url": "https://www.dimensional.com/terms-of-use-us",
+      "retrieved_at": "2026-11-06T17:11:10.418724+00:00",
+      "content_sha256": "f8070673892701c4939344536271aa8614bdfb24647c4fda4f1259dcb21585ab",
+      "byte_length": 40085,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "License and Site Access",
+          "excerpt": "solely for general information and educational purposes",
+          "finding": "Limited revocable/nontransferable license to view/bookmark/download/print is conditioned on the terms; other uses require express written authorization."
+        },
+        {
+          "section": "License and Site Access \u2014 prohibited uses",
+          "excerpt": "commercial purpose not expressly approved by Dimensional in writing",
+          "finding": "Commercial use without written approval is prohibited. Copying, redistribution, creating derivative works and exploitation are also restricted except as authorized."
+        },
+        {
+          "section": "License and Site Access \u2014 automated access",
+          "excerpt": "using devices or software that provide repeated automated access",
+          "finding": "Automated repeated access is listed among prohibited overburdening conduct, with an exception for tools made generally available by Dimensional. Whether an official feed or separate agreement permits a particular importer must be established."
+        },
+        {
+          "section": "Downloading Software and Files",
+          "excerpt": "solely for your personal, noncommercial use",
+          "finding": "Downloaded files are licensed for personal noncommercial use; redistribution and sale are prohibited under the stated grant. This is not an approval for the proposed paid platform."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "t_rowe_price-us-terms-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "title": "US Terms of Use",
+      "scope": "These websites and their Site Content; applicable US terms linked from issuer US homepage.",
+      "source_url": "https://www.troweprice.com/en/us/terms-of-use",
+      "retrieved_at": "2026-11-06T17:09:47.825143+00:00",
+      "content_sha256": "8af6a136c3bfcec7832e76f71259e8da5f5f7a67a15da6770c541a831ff62245",
+      "byte_length": 170211,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "5. Intellectual Property Rights / Permitted Use",
+          "excerpt": "solely for your personal and non-commercial use",
+          "finding": "Access/display/download/print permission is conditional on personal non-commercial use and retaining proprietary notices. Other uses require prior written consent."
+        },
+        {
+          "section": "5. Intellectual Property Rights / Scraping / AI Usage Prohibition",
+          "excerpt": "other automatic device, program, algorithm, or methodology",
+          "finding": "Automatic acquisition/scraping prohibited except public search-engine indexing; separate express prohibition on AI uses. Do not implement automated importer without issuer permission."
+        },
+        {
+          "section": "7. Third-Party Content",
+          "excerpt": "Any use by you of such Third-Party Content beyond the scope of the services",
+          "finding": "Third-party content may require separate license and fee; reproduction and redistribution restrictions also apply."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "fidelity-terms-2026-11-06",
+      "issuer_id": "fidelity",
+      "title": "Terms of Use - Fidelity Investments",
+      "scope": "Fidelity websites; fund-specific data terms and third-party permissions remain unreviewed.",
+      "source_url": "https://www.fidelity.com/terms-of-use",
+      "retrieved_at": "2026-11-06T17:10:25.909506+00:00",
+      "content_sha256": "4be8531186378baeeea21a1977bd2d6e7d89337cff4c0bf3d3d5382ac154b151",
+      "byte_length": 253003,
+      "http_status": 200,
+      "effective_date": "2026-07-01",
+      "clauses": [
+        {
+          "section": "Prohibited Uses and Termination of Access",
+          "excerpt": "You may use the Fidelity Websites only for personal, non-commercial purposes.",
+          "finding": "Commercial product sourcing is not authorized by the general website terms."
+        },
+        {
+          "section": "Prohibited Uses and Termination of Access",
+          "excerpt": "No content made available on the Fidelity Websites may be reproduced, duplicated, copied, sold, resold, or otherwise exploited for any commercial purpose without express written consent of Fidelity.",
+          "finding": "Written consent is a prerequisite for intended commercial uses."
+        },
+        {
+          "section": "Prohibited Uses and Termination of Access",
+          "excerpt": "designed to provide high-speed, automated, or repeated access to Fidelity Websites",
+          "finding": "The terms prohibit such third-party access tools unless expressly approved in writing, authorized, or made available by Fidelity."
+        },
+        {
+          "section": "Copyright and DMCA Copyright Agent Information",
+          "finding": "Copying, distributing, modifying, posting or framing website content requires express permission."
+        },
+        {
+          "section": "Third Party Content",
+          "finding": "Third-party content has separate ownership, licensing, and transfer restrictions; do not assume Fidelity website access grants reuse rights."
+        },
+        {
+          "section": "Accuracy of Content",
+          "finding": "Fidelity and third-party providers do not warrant content accuracy, completeness, availability, or timeliness."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "jpmorgan-us-retail-terms-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "title": "J.P. Morgan Asset Management US Individual Investors Terms of use",
+      "scope": "US Individual Investors site; any fund-specific terms and statutory exceptions still require review",
+      "source_url": "https://am.jpmorgan.com/us/en/asset-management/per/terms-of-use/",
+      "retrieved_at": "2026-11-06T17:12:49.654717+00:00",
+      "content_sha256": "ecce4f5010c54ee3123d4d6a17605920dde4f7b06f0217f57238a6fa70ac91d4",
+      "byte_length": 126704,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "Copyright Notices",
+          "quote": "they may not be copied, transmitted, displayed, performed, distributed (for compensation or otherwise)",
+          "interpretation": "The copyright clause restricts reuse of protected website works; it is not a blanket finding that every factual holding is copyrightable."
+        },
+        {
+          "section": "Copyright Notices",
+          "quote": "stored for subsequent use or otherwise used in whole or in part in any manner without J. P. Morgan Chase's prior written consent",
+          "interpretation": "Prior written consent is required by the clause, subject to its express statutory-copyright exceptions and proprietary-notice conditions."
+        },
+        {
+          "section": "Disclaimers",
+          "quote": "we do not warrant its accuracy. Such information may be incomplete or condensed.",
+          "interpretation": "Official provenance does not itself establish completeness or measured accuracy; no holdings sample has been assessed."
+        },
+        {
+          "section": "Limitation of Liability",
+          "quote": "NO LICENSE TO THE USER IS IMPLIED IN THESE DISCLAIMERS.",
+          "interpretation": "No commercial data license can be inferred from the disclaimer."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    },
+    {
+      "document_id": "jpmorgan-us-retail-disclaimer-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "title": "US Individual Investors Site disclaimer",
+      "scope": "US Individual Investors site disclaimer; not a measured holdings-quality finding.",
+      "source_url": "https://am.jpmorgan.com/us/en/asset-management/per/site-disclaimer/",
+      "retrieved_at": "2026-11-06T17:12:46.887782+00:00",
+      "content_sha256": "5c68ec1a94566767a357d622f4e39064b26336a67028bbb9e41a4f7b0d1b6e2d",
+      "byte_length": 123681,
+      "http_status": 200,
+      "effective_date": null,
+      "clauses": [
+        {
+          "section": "Site disclaimer",
+          "finding": "The site says information is believed reliable but should not be assumed accurate or complete. This is not a measured sample-quality result."
+        }
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "raw_content_in_repository": false,
+      "retention_note": "Only minimal findings and provenance metadata are committed. Temporary review-cache bodies are not distributable fixtures or a promise of ongoing retention."
+    }
+  ],
+  "funds": [
+    {
+      "fund_id": "fund-avantis-75",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "issuer_fund_id": "75",
+      "ticker": "AVTM",
+      "name": "Avantis Total Equity Markets ETF",
+      "cusip": "02507A606",
+      "isin": "US02507A6064",
+      "exchange": "NYSE Arca",
+      "reporting_currency": null,
+      "identity_status": "issuer_identity_and_product_route_observed",
+      "fund_page_url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-total-equity-markets-etf/",
+      "standalone_holdings_endpoint": null,
+      "verified_retrieval_hosts": [
+        "www.avantisinvestors.com"
+      ],
+      "rights_decision_ids": [
+        "avantis-manual_research_download-2026-11-06"
+      ],
+      "field_mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "sample_ids": [
+        "avantis-avtm-2026-11-05-html-3732fe37f15b"
+      ],
+      "calendar_version": null,
+      "publication_timezone": null,
+      "publication_deadline": null,
+      "source_contract_complete": false,
+      "admission_status": "negative_scope_case_not_admitted",
+      "production_import_enabled": false,
+      "admission_reason": "Observed asset types include unsupported or unresolved positions. Complete-portfolio scope, denominator, reference identities, and required permission are not established."
+    },
+    {
+      "fund_id": "fund-avantis-114",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "issuer_fund_id": "114",
+      "ticker": "AVUS",
+      "name": "Avantis U.S. Equity ETF",
+      "cusip": "025072885",
+      "isin": "US0250728856",
+      "exchange": null,
+      "reporting_currency": null,
+      "identity_status": "issuer_identity_and_product_route_observed",
+      "fund_page_url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-equity-etf/",
+      "standalone_holdings_endpoint": null,
+      "verified_retrieval_hosts": [
+        "www.avantisinvestors.com"
+      ],
+      "rights_decision_ids": [
+        "avantis-manual_research_download-2026-11-06"
+      ],
+      "field_mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "sample_ids": [
+        "avantis-avus-2026-11-05-html-0e7f452d1841"
+      ],
+      "calendar_version": null,
+      "publication_timezone": null,
+      "publication_deadline": null,
+      "source_contract_complete": false,
+      "admission_status": "not_admitted_pending_scope_basis_and_permission_review",
+      "production_import_enabled": false,
+      "admission_reason": "Observed asset types include unsupported or unresolved positions. Complete-portfolio scope, denominator, reference identities, and required permission are not established."
+    },
+    {
+      "fund_id": "fund-avantis-119",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "issuer_fund_id": "119",
+      "ticker": "AVUV",
+      "name": "Avantis U.S. Small Cap Value ETF",
+      "cusip": "025072877",
+      "isin": "US0250728773",
+      "exchange": null,
+      "reporting_currency": null,
+      "identity_status": "issuer_identity_and_product_route_observed",
+      "fund_page_url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-small-cap-value-etf/",
+      "standalone_holdings_endpoint": null,
+      "verified_retrieval_hosts": [
+        "www.avantisinvestors.com"
+      ],
+      "rights_decision_ids": [
+        "avantis-manual_research_download-2026-11-06"
+      ],
+      "field_mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "sample_ids": [
+        "avantis-avuv-2026-11-05-html-f0ae343a6988"
+      ],
+      "calendar_version": null,
+      "publication_timezone": null,
+      "publication_deadline": null,
+      "source_contract_complete": false,
+      "admission_status": "not_admitted_pending_scope_basis_and_permission_review",
+      "production_import_enabled": false,
+      "admission_reason": "Observed asset types include unsupported or unresolved positions. Complete-portfolio scope, denominator, reference identities, and required permission are not established."
+    }
+  ],
+  "samples": [
+    {
+      "sample_id": "avantis-avtm-2026-11-05-html-3732fe37f15b",
+      "fund_id": "fund-avantis-75",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "ticker": "AVTM",
+      "artifact_kind": "issuer_HTML_with_embedded_holdings_array",
+      "standalone_holdings_file": false,
+      "source_url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-total-equity-markets-etf/",
+      "request_url": "https://www.avantisinvestors.com/avantis-investments/avantis-total-equity-markets-etf/",
+      "redirect_chain": [
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/avantis-total-equity-markets-etf/",
+          "http_status": 307
+        },
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-total-equity-markets-etf",
+          "http_status": 308
+        },
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-total-equity-markets-etf/",
+          "http_status": 200
+        }
+      ],
+      "fetched_at": "2026-11-06T17:11:50.307399+00:00",
+      "source_published_at": null,
+      "portfolio_date": "2026-11-05",
+      "portfolio_date_evidence": "Issuer portfolio.etfHoldingsAsOfDate = 11/05/2026",
+      "content_sha256": "3732fe37f15bf36c1f9d567e833d1d110c75db0789e584a3a289a8aa071da479",
+      "byte_length": 1054385,
+      "content_type": "text/html",
+      "raw_content_in_repository": false,
+      "public_fixture_publication_approved": false,
+      "retained_fixture_path": null,
+      "field_mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "quality": {
+        "row_count": 1709,
+        "reported_weight_unit": "percent_with_percent_sign",
+        "reported_precision_percent_decimal_places": [
+          2
+        ],
+        "all_rows_reported_weight_sum_fraction": "0.9895",
+        "all_rows_signed_residual_fraction": "0.0105",
+        "missing_weight_rows": 0,
+        "negative_weight_rows": 0,
+        "zero_rounded_weight_rows": 815,
+        "security_types": {
+          "MANAGED INVESTMENT COMPANIES": 5,
+          "COMMON STOCK": 1697,
+          "SWEEP INVESTMENT VEHICLE": 1,
+          "null": 2,
+          "WARRANTS": 1,
+          "PREFERRED STOCK": 1,
+          "RIGHTS": 2
+        },
+        "blank_cusip_rows": 0,
+        "blank_isin_rows": 4,
+        "blank_sedol_rows": 6,
+        "admitted_weight_sum_fraction": null,
+        "admitted_residual_fraction": null,
+        "weight_denominator": null,
+        "source_completeness": "unverified",
+        "identity_resolution_status": "not_performed",
+        "classification_mapping_status": "not_performed",
+        "full_overlap_eligible": false,
+        "quality_reasons": [
+          "unsupported_or_unresolved_position_types",
+          "unit_total_not_established",
+          "weight_denominator_unverified",
+          "source_completeness_unverified",
+          "identity_resolution_not_performed"
+        ],
+        "measurement_note": "The raw displayed-weight sum includes all displayed rows and is not admitted analytical W. Its arithmetic 1-sum is not a final unexplained-residual/quarantine finding. Rounded 0.00% does not establish a true-zero position or a missing value."
+      },
+      "limitations": [
+        "HTML-embedded data is not a verified standalone full-holdings download.",
+        "Only one portfolio date has been observed for this fund.",
+        "No canonical holdings record or published snapshot was created."
+      ]
+    },
+    {
+      "sample_id": "avantis-avus-2026-11-05-html-0e7f452d1841",
+      "fund_id": "fund-avantis-114",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "ticker": "AVUS",
+      "artifact_kind": "issuer_HTML_with_embedded_holdings_array",
+      "standalone_holdings_file": false,
+      "source_url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-equity-etf/",
+      "request_url": "https://www.avantisinvestors.com/avantis-investments/avantis-us-equity-etf/",
+      "redirect_chain": [
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/avantis-us-equity-etf/",
+          "http_status": 307
+        },
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-equity-etf",
+          "http_status": 308
+        },
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-equity-etf/",
+          "http_status": 200
+        }
+      ],
+      "fetched_at": "2026-11-06T17:17:03.419363+00:00",
+      "source_published_at": null,
+      "portfolio_date": "2026-11-05",
+      "portfolio_date_evidence": "Issuer portfolio.etfHoldingsAsOfDate = 11/05/2026",
+      "content_sha256": "0e7f452d184195d402b811dbe72fe6c875ba3a8b6c244f73b1c4905555188415",
+      "byte_length": 1146447,
+      "content_type": "text/html",
+      "raw_content_in_repository": false,
+      "public_fixture_publication_approved": false,
+      "retained_fixture_path": null,
+      "field_mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "quality": {
+        "row_count": 1943,
+        "reported_weight_unit": "percent_with_percent_sign",
+        "reported_precision_percent_decimal_places": [
+          2
+        ],
+        "all_rows_reported_weight_sum_fraction": "0.9919",
+        "all_rows_signed_residual_fraction": "0.0081",
+        "missing_weight_rows": 0,
+        "negative_weight_rows": 0,
+        "zero_rounded_weight_rows": 819,
+        "security_types": {
+          "COMMON STOCK": 1931,
+          "SWEEP INVESTMENT VEHICLE": 1,
+          "null": 1,
+          "WARRANTS": 1,
+          "RIGHTS": 8,
+          "PREFERRED STOCK": 1
+        },
+        "blank_cusip_rows": 0,
+        "blank_isin_rows": 8,
+        "blank_sedol_rows": 14,
+        "admitted_weight_sum_fraction": null,
+        "admitted_residual_fraction": null,
+        "weight_denominator": null,
+        "source_completeness": "unverified",
+        "identity_resolution_status": "not_performed",
+        "classification_mapping_status": "not_performed",
+        "full_overlap_eligible": false,
+        "quality_reasons": [
+          "unsupported_or_unresolved_position_types",
+          "unit_total_not_established",
+          "weight_denominator_unverified",
+          "source_completeness_unverified",
+          "identity_resolution_not_performed"
+        ],
+        "measurement_note": "The raw displayed-weight sum includes all displayed rows and is not admitted analytical W. Its arithmetic 1-sum is not a final unexplained-residual/quarantine finding. Rounded 0.00% does not establish a true-zero position or a missing value."
+      },
+      "limitations": [
+        "HTML-embedded data is not a verified standalone full-holdings download.",
+        "Only one portfolio date has been observed for this fund.",
+        "No canonical holdings record or published snapshot was created."
+      ]
+    },
+    {
+      "sample_id": "avantis-avuv-2026-11-05-html-f0ae343a6988",
+      "fund_id": "fund-avantis-119",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "ticker": "AVUV",
+      "artifact_kind": "issuer_HTML_with_embedded_holdings_array",
+      "standalone_holdings_file": false,
+      "source_url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-small-cap-value-etf/",
+      "request_url": "https://www.avantisinvestors.com/avantis-investments/avantis-us-small-cap-value-etf/",
+      "redirect_chain": [
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/avantis-us-small-cap-value-etf/",
+          "http_status": 307
+        },
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-small-cap-value-etf",
+          "http_status": 308
+        },
+        {
+          "url": "https://www.avantisinvestors.com/avantis-investments/en-us/avantis-us-small-cap-value-etf/",
+          "http_status": 200
+        }
+      ],
+      "fetched_at": "2026-11-06T17:17:51.540219+00:00",
+      "source_published_at": null,
+      "portfolio_date": "2026-11-05",
+      "portfolio_date_evidence": "Issuer portfolio.etfHoldingsAsOfDate = 11/05/2026",
+      "content_sha256": "f0ae343a6988bc61c9f47acd14f3412b4e9f9260cc7f0c85fdd885730465ff4b",
+      "byte_length": 807221,
+      "content_type": "text/html",
+      "raw_content_in_repository": false,
+      "public_fixture_publication_approved": false,
+      "retained_fixture_path": null,
+      "field_mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "quality": {
+        "row_count": 793,
+        "reported_weight_unit": "percent_with_percent_sign",
+        "reported_precision_percent_decimal_places": [
+          2
+        ],
+        "all_rows_reported_weight_sum_fraction": "0.9983",
+        "all_rows_signed_residual_fraction": "0.0017",
+        "missing_weight_rows": 0,
+        "negative_weight_rows": 0,
+        "zero_rounded_weight_rows": 91,
+        "security_types": {
+          "COMMON STOCK": 790,
+          "SWEEP INVESTMENT VEHICLE": 1,
+          "null": 1,
+          "RIGHTS": 1
+        },
+        "blank_cusip_rows": 0,
+        "blank_isin_rows": 2,
+        "blank_sedol_rows": 3,
+        "admitted_weight_sum_fraction": null,
+        "admitted_residual_fraction": null,
+        "weight_denominator": null,
+        "source_completeness": "unverified",
+        "identity_resolution_status": "not_performed",
+        "classification_mapping_status": "not_performed",
+        "full_overlap_eligible": false,
+        "quality_reasons": [
+          "unsupported_or_unresolved_position_types",
+          "unit_total_not_established",
+          "weight_denominator_unverified",
+          "source_completeness_unverified",
+          "identity_resolution_not_performed"
+        ],
+        "measurement_note": "The raw displayed-weight sum includes all displayed rows and is not admitted analytical W. Its arithmetic 1-sum is not a final unexplained-residual/quarantine finding. Rounded 0.00% does not establish a true-zero position or a missing value."
+      },
+      "limitations": [
+        "HTML-embedded data is not a verified standalone full-holdings download.",
+        "Only one portfolio date has been observed for this fund.",
+        "No canonical holdings record or published snapshot was created."
       ]
     }
   ],
-  "terms_documents": [],
-  "funds": [],
-  "samples": [],
-  "field_mappings": [],
-  "evidence_note": "Empty evidence arrays mean no live documents or samples have been obtained. Null means unknown, never zero or approved. Record shapes and review procedure are in docs/source-register.md.",
-  "rights_decisions": []
+  "field_mappings": [
+    {
+      "mapping_id": "avantis-embedded-etfHoldings-observed-v1",
+      "source_id": "avantis-public-product-pages",
+      "issuer_id": "avantis",
+      "version": "observed-v1",
+      "status": "observed_layout_not_production_parser_contract",
+      "supporting_sample_ids": [
+        "avantis-avtm-2026-11-05-html-3732fe37f15b",
+        "avantis-avus-2026-11-05-html-0e7f452d1841",
+        "avantis-avuv-2026-11-05-html-f0ae343a6988"
+      ],
+      "artifact_kind": "issuer_HTML_with_serialized_etfHoldings_array",
+      "encoding": "UTF-8",
+      "array_location": "portfolio.etfHoldings",
+      "portfolio_date_location": "portfolio.etfHoldingsAsOfDate",
+      "portfolio_date_format": "MM/DD/YYYY",
+      "raw_columns": [
+        "name",
+        "ticker",
+        "securityType",
+        "cusip",
+        "isin",
+        "sedol",
+        "shareQuantity",
+        "contractCount",
+        "baseMarketValue",
+        "weight",
+        "coupon",
+        "maturityDate",
+        "sector",
+        "country"
+      ],
+      "field_targets": {
+        "name": "original_security_name",
+        "ticker": "source_ticker",
+        "securityType": "source_asset_type",
+        "cusip": "external_identifier_CUSIP",
+        "isin": "external_identifier_ISIN",
+        "sedol": "external_identifier_SEDOL",
+        "shareQuantity": "reported_quantity_text",
+        "contractCount": "reported_contract_count_text",
+        "baseMarketValue": "reported_market_value_text_currency_basis_unverified",
+        "weight": "reported_weight_percent_text",
+        "coupon": "source_coupon_text",
+        "maturityDate": "source_maturity_date_text",
+        "sector": "issuer_sector_label_rights_and_taxonomy_unverified",
+        "country": "issuer_country_label_meaning_unverified"
+      },
+      "reported_weight_unit": "percent_with_percent_sign",
+      "weight_conversion": "Preserve the raw decimal string; strip the percent sign and divide Decimal by 100. Never normalize to a unit total.",
+      "weight_denominator": null,
+      "source_currency_basis": null,
+      "sector_mapping_status": "issuer_label_only_rights_and_taxonomy_unverified",
+      "country_mapping_status": "issuer_label_meaning_unverified_not_asserted_issuer_domicile",
+      "extraction_observation": "Locate the literal etfHoldings array with bracket/string-aware scanning, quote unquoted object keys, then JSON-decode. No source JavaScript executed.",
+      "source_javascript_executed": false,
+      "completeness_check_status": "not_established",
+      "missing_value_rules": "Preserve empty/null identifiers and fields as missing; do not treat rounded 0.00% as missing or infer a true-zero economic position."
+    }
+  ],
+  "evidence_note": "Live provenance and preliminary scoped terms findings are recorded. Three Avantis product-page holdings arrays were inspected for one portfolio date; none is a standalone holdings file or an approved pilot snapshot. No raw issuer pages or constituent rows are published here. Unknown facts remain unknown; production use stays disabled.",
+  "rights_decisions": [
+    {
+      "decision_id": "capital_group-identifier_reuse-2026-11-06",
+      "issuer_id": "capital_group",
+      "fund_ids": [],
+      "scope": "Third-party content only, including any applicable identifier/classification material; applicability to individual future fields remains to be established.",
+      "use": "identifier_reuse",
+      "status": "conditional",
+      "document_ids": [
+        "capital-group-third-party-content-2026-11-06"
+      ],
+      "clause_references": [
+        "Third-Party Content / MSCI data notice"
+      ],
+      "conditions": [
+        "Identify which third-party material is actually supplied and establish the relevant provider permission before reuse.",
+        "No first-party holdings licence is inferred from this notice."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "capital_group-classification_reuse-2026-11-06",
+      "issuer_id": "capital_group",
+      "fund_ids": [],
+      "scope": "Third-party content only, including any applicable identifier/classification material; applicability to individual future fields remains to be established.",
+      "use": "classification_reuse",
+      "status": "conditional",
+      "document_ids": [
+        "capital-group-third-party-content-2026-11-06"
+      ],
+      "clause_references": [
+        "Third-Party Content / MSCI data notice"
+      ],
+      "conditions": [
+        "Identify which third-party material is actually supplied and establish the relevant provider permission before reuse.",
+        "No first-party holdings licence is inferred from this notice."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "avantis-manual_research_download-2026-11-06",
+      "issuer_id": "avantis",
+      "fund_ids": [],
+      "scope": "Limited website view/use/download/print licence; this evidence review does not approve recurring production retrieval or customer-facing use.",
+      "use": "manual_research_download",
+      "status": "conditional",
+      "document_ids": [
+        "avantis-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "limited_download_license / third_party_rights"
+      ],
+      "conditions": [
+        "Limited, nonexclusive, nontransferable website license; comply with the terms and applicable third-party rights.",
+        "Do not infer ongoing commercial distribution rights or indefinite retention from download permission."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "dimensional-automated_retrieval-2026-11-06",
+      "issuer_id": "dimensional",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "automated_retrieval",
+      "status": "conditional",
+      "document_ids": [
+        "dimensional-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "License and Site Access"
+      ],
+      "conditions": [
+        "Establish written authorization or verify a specifically authorized Dimensional tool/feed; repeated automated access is restricted under the reviewed clause."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "dimensional-commercial_internal_analysis-2026-11-06",
+      "issuer_id": "dimensional",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "commercial_internal_analysis",
+      "status": "conditional",
+      "document_ids": [
+        "dimensional-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "License and Site Access"
+      ],
+      "conditions": [
+        "Obtain express written approval covering the intended commercial use and any redistribution; no such permission has been obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "dimensional-customer_display_of_holdings-2026-11-06",
+      "issuer_id": "dimensional",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "customer_display_of_holdings",
+      "status": "conditional",
+      "document_ids": [
+        "dimensional-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "License and Site Access"
+      ],
+      "conditions": [
+        "Obtain express written approval covering the intended commercial use and any redistribution; no such permission has been obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "dimensional-customer_display_of_derived_analytics-2026-11-06",
+      "issuer_id": "dimensional",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "customer_display_of_derived_analytics",
+      "status": "conditional",
+      "document_ids": [
+        "dimensional-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "License and Site Access"
+      ],
+      "conditions": [
+        "Obtain express written approval covering the intended commercial use and any redistribution; no such permission has been obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "dimensional-raw_file_redistribution-2026-11-06",
+      "issuer_id": "dimensional",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "raw_file_redistribution",
+      "status": "conditional",
+      "document_ids": [
+        "dimensional-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Downloading Software and Files"
+      ],
+      "conditions": [
+        "Obtain express written approval covering the intended commercial use and any redistribution; no such permission has been obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "dimensional-public_git_fixture_publication-2026-11-06",
+      "issuer_id": "dimensional",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "public_git_fixture_publication",
+      "status": "conditional",
+      "document_ids": [
+        "dimensional-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Downloading Software and Files"
+      ],
+      "conditions": [
+        "Obtain express written approval covering the intended commercial use and any redistribution; no such permission has been obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "t_rowe_price-automated_retrieval-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "automated_retrieval",
+      "status": "conditional",
+      "document_ids": [
+        "t_rowe_price-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "5. Intellectual Property Rights / Scraping / AI Usage Prohibition"
+      ],
+      "conditions": [
+        "The reviewed terms explicitly prohibit automated acquisition and AI use; obtain a separate express permission basis before proceeding."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "t_rowe_price-commercial_internal_analysis-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "commercial_internal_analysis",
+      "status": "conditional",
+      "document_ids": [
+        "t_rowe_price-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "5. Intellectual Property Rights / Permitted Use"
+      ],
+      "conditions": [
+        "Obtain prior written consent covering the specific proposed use; the personal/non-commercial grant does not approve this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "t_rowe_price-customer_display_of_holdings-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "customer_display_of_holdings",
+      "status": "conditional",
+      "document_ids": [
+        "t_rowe_price-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "5. Intellectual Property Rights / Permitted Use"
+      ],
+      "conditions": [
+        "Obtain prior written consent covering the specific proposed use; the personal/non-commercial grant does not approve this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "t_rowe_price-customer_display_of_derived_analytics-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "customer_display_of_derived_analytics",
+      "status": "conditional",
+      "document_ids": [
+        "t_rowe_price-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "5. Intellectual Property Rights / Permitted Use"
+      ],
+      "conditions": [
+        "Obtain prior written consent covering the specific proposed use; the personal/non-commercial grant does not approve this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "t_rowe_price-raw_file_redistribution-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "raw_file_redistribution",
+      "status": "conditional",
+      "document_ids": [
+        "t_rowe_price-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "5. Intellectual Property Rights / Permitted Use"
+      ],
+      "conditions": [
+        "Obtain prior written consent covering the specific proposed use; the personal/non-commercial grant does not approve this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "t_rowe_price-public_git_fixture_publication-2026-11-06",
+      "issuer_id": "t_rowe_price",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "public_git_fixture_publication",
+      "status": "conditional",
+      "document_ids": [
+        "t_rowe_price-us-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "5. Intellectual Property Rights / Permitted Use"
+      ],
+      "conditions": [
+        "Obtain prior written consent covering the specific proposed use; the personal/non-commercial grant does not approve this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "fidelity-automated_retrieval-2026-11-06",
+      "issuer_id": "fidelity",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "automated_retrieval",
+      "status": "conditional",
+      "document_ids": [
+        "fidelity-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Prohibited Uses and Termination of Access / Copyright and DMCA Copyright Agent Information"
+      ],
+      "conditions": [
+        "Express written approval or another expressly authorized Fidelity access mechanism is required; none obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "fidelity-commercial_internal_analysis-2026-11-06",
+      "issuer_id": "fidelity",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "commercial_internal_analysis",
+      "status": "conditional",
+      "document_ids": [
+        "fidelity-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Prohibited Uses and Termination of Access / Copyright and DMCA Copyright Agent Information"
+      ],
+      "conditions": [
+        "Express written consent for commercial exploitation; none obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "fidelity-customer_display_of_holdings-2026-11-06",
+      "issuer_id": "fidelity",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "customer_display_of_holdings",
+      "status": "conditional",
+      "document_ids": [
+        "fidelity-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Prohibited Uses and Termination of Access / Copyright and DMCA Copyright Agent Information"
+      ],
+      "conditions": [
+        "Express written permission for copying/distribution and commercial use; none obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "fidelity-raw_file_redistribution-2026-11-06",
+      "issuer_id": "fidelity",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "raw_file_redistribution",
+      "status": "conditional",
+      "document_ids": [
+        "fidelity-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Prohibited Uses and Termination of Access / Copyright and DMCA Copyright Agent Information"
+      ],
+      "conditions": [
+        "Express permission and any separate third-party licenses; none obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "fidelity-public_git_fixture_publication-2026-11-06",
+      "issuer_id": "fidelity",
+      "fund_ids": [],
+      "scope": "Applicable reviewed website content; no product-specific licence or owner approval established.",
+      "use": "public_git_fixture_publication",
+      "status": "conditional",
+      "document_ids": [
+        "fidelity-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Prohibited Uses and Termination of Access / Copyright and DMCA Copyright Agent Information"
+      ],
+      "conditions": [
+        "Express copying/distribution permission; none obtained."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "jpmorgan_am-raw_file_retention-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "fund_ids": [],
+      "scope": "Protected website works under the reviewed US terms; applicability and statutory exceptions need an owner decision for the specific intended use.",
+      "use": "raw_file_retention",
+      "status": "conditional",
+      "document_ids": [
+        "jpmorgan-us-retail-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Copyright Notices"
+      ],
+      "conditions": [
+        "For protected website works, obtain prior written consent or establish an applicable statutory exception with required notices. Neither basis has been established for this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "jpmorgan_am-customer_display_of_holdings-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "fund_ids": [],
+      "scope": "Protected website works under the reviewed US terms; applicability and statutory exceptions need an owner decision for the specific intended use.",
+      "use": "customer_display_of_holdings",
+      "status": "conditional",
+      "document_ids": [
+        "jpmorgan-us-retail-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Copyright Notices"
+      ],
+      "conditions": [
+        "For protected website works, obtain prior written consent or establish an applicable statutory exception with required notices. Neither basis has been established for this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "jpmorgan_am-raw_file_redistribution-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "fund_ids": [],
+      "scope": "Protected website works under the reviewed US terms; applicability and statutory exceptions need an owner decision for the specific intended use.",
+      "use": "raw_file_redistribution",
+      "status": "conditional",
+      "document_ids": [
+        "jpmorgan-us-retail-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Copyright Notices"
+      ],
+      "conditions": [
+        "For protected website works, obtain prior written consent or establish an applicable statutory exception with required notices. Neither basis has been established for this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    },
+    {
+      "decision_id": "jpmorgan_am-public_git_fixture_publication-2026-11-06",
+      "issuer_id": "jpmorgan_am",
+      "fund_ids": [],
+      "scope": "Protected website works under the reviewed US terms; applicability and statutory exceptions need an owner decision for the specific intended use.",
+      "use": "public_git_fixture_publication",
+      "status": "conditional",
+      "document_ids": [
+        "jpmorgan-us-retail-terms-2026-11-06"
+      ],
+      "clause_references": [
+        "Copyright Notices"
+      ],
+      "conditions": [
+        "For protected website works, obtain prior written consent or establish an applicable statutory exception with required notices. Neither basis has been established for this product."
+      ],
+      "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
+      "reviewed_at": "2026-11-06T17:22:45.359353+00:00",
+      "owner_approved": false,
+      "supersedes_decision_id": null
+    }
+  ]
 }

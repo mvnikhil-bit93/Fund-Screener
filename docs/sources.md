@@ -1,140 +1,97 @@
 # Source feasibility register — M00
 
-Latest assessment: 6 November 2026 (UTC). Initial access investigation: 1 November 2026.
+Latest assessment: 6 November 2026 (UTC).
 
-Status: **incomplete — issuer access is blocked by the current environment network policy.**
+Status: **partial live review completed; no source admitted for production.**
+Official issuer downloads remain the preferred acquisition route. The replacement
+environment now permits the six issuer discovery sites, and live responses have
+been verified. The earlier environment-network block is resolved for those hosts.
 
-This register implements the evidence-recording part of M00 in
-[the MVP specification](spec.md). It does not approve an issuer, a fund roster,
-commercial use, or a source adapter. No issuer holdings files have been downloaded
-or added to fixtures.
+## Current evidence and mapping
 
-## 6 November 2026 — expandable issuer review
-
-The preferred acquisition route is now official issuer downloads. The research
-sample includes Capital Group, Avantis, Dimensional, T. Rowe Price, Fidelity, and
-JPMorgan Asset Management; this expands investigation, not the approved universe.
-
+- [Six-issuer assessment](issuer-assessment.md): source-linked rights/access
+  findings and actual sample measurements.
 - [Canonical issuer mapping](../config/issuer_sources.json): separate access,
-  terms, holdings, evidence, and admission states for each candidate.
-- [Spreadsheet summary](issuer-sources.csv): generated from the mapping.
-- [Review guide and candidate comparison](source-register.md): evidence fields,
-  per-use terms review, sample measurements, and how to extend the mapping.
-- [Importer implementation plan](importer-plan.md): source-validation gates,
-  bounded retrieval, original-file storage, parsing, and acceptance tests.
+  terms, scoped permissions, funds, samples, field mappings, and admission states.
+- [Spreadsheet summary](issuer-sources.csv): generated from the JSON mapping.
+- [Register guide](source-register.md): how to add evidence and extend the mapping.
+- [Importer plan](importer-plan.md): M00 gates followed by bounded M04 acquisition
+  and M05 parsing; no importer is implemented by this research change.
 
-The current runtime policy was rechecked on 6 November and still permits none of
-the six discovery hosts. No blocked issuer request was retried, and no terms or
-holdings files were obtained. All six have terms=not_reviewed and holdings=
-not_measured; discovery URLs/tickers are leads rather than verified endpoints or
-eligible funds. The mapping contains no invented file schemas or quality scores.
-
-The environment draft now preserves the original issuer and GitHub API entries
-and adds www.dimensional.com, www.troweprice.com, www.fidelity.com, and
-am.jpmorgan.com. The save was confirmed; runtime activation remains outstanding.
-These additions do not authorize commercial use or approve an issuer.
-
-## Candidate investigation order
-
-The initial two candidates below remain first in the expanded research order.
-
-| Candidate | Initial discovery URL | Verified holdings endpoint | Launch roster |
-| --- | --- | --- | --- |
-| Capital Group | https://www.capitalgroup.com/ | Not established | Not selected |
-| Avantis Investors | https://www.avantisinvestors.com/ | Not established | Not selected |
-
-These are candidate issuer homepages for discovery, not validated daily holdings
-endpoints. Availability, redirects, terms, fund coverage, and publication schedules
-remain unverified.
-
-## Observed access evidence
-
-At the time of the access checks, the running managed environment reported a
-restricted, enforced HTTP policy with no custom allowed hosts. The package-manager
-preset does not include either candidate hostname.
-
-| Check | Observed result | What it establishes |
+| Issuer | Findings so far | Main outstanding requirement |
 | --- | --- | --- |
-| Ordinary sandbox HEAD requests to the two candidate HTTPS homepages | curl exit 7: could not connect to the configured proxy | No issuer response was obtained |
-| Narrowly scoped escalation for those same read-only requests | Automatic approval review rejected execution because both destinations are outside the enforced allowlist; escalation would bypass network policy | Further access requires the supported network-configuration workflow |
+| Capital Group | Public US policy pages reviewed; linked advisor composites route led to authentication | Establish public complete holdings or authorized access and applicable first-party rights; observed third-party restrictions do not describe every issuer-owned holding |
+| Avantis | Limited download licence; three dated HTML-embedded holdings arrays inspected, including AVUS and AVUV | Resolve commercial/automation scope, obtain full files and a second portfolio date, and review unsupported positions/denominator/completeness |
+| Dimensional | US terms restrict commercial use without written approval and repeated automated access | Establish an authorized delivery and use basis before holdings acquisition |
+| T. Rowe Price | US terms restrict commercial use and explicitly address automated scraping/AI use | Obtain an appropriate permission path; no further acquisition after that finding |
+| Fidelity | Personal/noncommercial and automated-access restrictions; international-use agreement at homepage | Resolve permissions and authorized access; no agreement accepted or holdings fetched |
+| JPMorgan Asset Management | US terms restrict reuse/storage of protected works without consent, subject to stated statutory exceptions | Establish applicable permission basis; a verified directory/factsheet link is not a full-holdings endpoint |
 
-The issuer servers did not return these failures. They do not establish that a
-website is unavailable, that an account is required, or that a source prohibits
-retrieval. No direct connection, alternate mirror, or other policy bypass was
-attempted.
+These are evidence-based research findings, not legal approval or a declaration
+that every underlying fact is protected by the same rights. Applicable fund/file
+terms, third-party material, intended use, and exceptions need scoped review.
 
-The supported configuration tool subsequently confirmed a saved draft containing
-these initial network additions, while preserving the selected presets:
+## Measured holdings evidence
 
-- www.capitalgroup.com
-- www.avantisinvestors.com
+Three official Avantis product pages contain holdings arrays dated **5 November
+2026**. They are HTML-embedded source data, not standalone CSV/XLSX downloads.
 
-The save returned status=saved and requires_publish=true. This persists the
-desired configuration; it does not change the currently enforced runtime policy.
-The user needs to review and save the changes in environment settings, then
-publish the environment through the supported workflow. The agent has not
-published anything.
+| Fund | Rows | Raw displayed-weight total | Rows displaying 0.00% |
+| --- | ---: | ---: | ---: |
+| AVUS | 1,943 | 99.19% | 819 |
+| AVUV | 793 | 99.83% | 91 |
+| AVTM | 1,709 | 98.95% | 815 |
 
-No network retry was made after the draft save. Recheck the enforced policy and
-then the affected requests after the configuration is activated. Discover and
-review any actual redirected or download host before requesting an additional
-exact hostname; do not add wildcard domains speculatively.
+Totals use the issuer's displayed percentage strings with Decimal arithmetic.
+They are not admitted analytical W: completeness, denominator, and eligibility
+are unresolved, and the samples include unsupported or unresolved position types.
+A rounded zero is not evidence of a genuinely zero holding. No weights were
+normalized, no balancing cash was added, and no financial methodology changed.
+See the assessment and mapping for scope distinctions and evidence hashes.
 
-## Unresolved source contracts
+All three observations share one portfolio date. No two-date history, clean
+10-fund roster, daily standalone delivery, or complete first-source contract is
+established. The original pages and extracted constituent rows remain in private
+ignored review cache; only limited findings and metadata are committed.
 
-Neither candidate has passed the following checks:
+## Network and remaining access
 
-| Required evidence | Current status | Acceptance before source integration |
-| --- | --- | --- |
-| Authoritative full-holdings endpoint | Unknown | Obtain endpoint from issuer material and confirm it represents the complete disclosed portfolio |
-| Exact eligible fund identifiers | Unknown | Name at least ten eligible funds for the pilot; record issuer identifiers and verified tickers |
-| Investment and instrument scope | Unknown | Confirm actual sampled positions fit the long-only equity/ADR/USD-cash contract |
-| Portfolio date and publication metadata | Unknown | Identify portfolio date, any evidenced publication time, and first observation time independently |
-| Publication calendar and deadline | Unknown | Record fund-level timezone, expected market dates, holidays and observed/contractual publication window |
-| Schema and source identifiers | Unknown | Record columns, units, stable identifier fields, missing-value behavior and source row references |
-| Weight denominator and precision | Unknown | Establish the reported denominator and decimal precision without assuming weights are independently reconciled |
-| Total weights and metric eligibility | Not measured | Measure each sample's total and residual; report whether full overlap/active share meet the unit-total requirement |
-| Completeness and schema-drift checks | Not designed against live files | Verify missing sections/columns and truncated files cannot become eligible snapshots |
-| Access terms and rate limits | Not reviewed | Record authoritative terms and applicable download limits with URL and review date |
-| Retention, display and commercial-use rights | Not reviewed | Document evidence and owner review before customer-facing use |
-| Redistribution rights | Not reviewed | Do not enable bulk redistribution; MVP access does not grant feed rights |
-| Two dated first-issuer samples | Not obtained | Capture two permitted, distinct portfolio dates with exact bytes and metadata |
+The six discovery hosts plus api.github.com are active in the replacement
+runtime. Earlier blocked-policy observations remain historical evidence in the
+mapping and decisions log; they do not describe current issuer-site access.
 
-No source is labeled approved merely because it can be fetched without
-authentication. Identifier and classification data require their own rights and
-provenance review.
+The official Avantis catalog links quarterly holdings documents on
+avantisinvestors.prospectus-express.com. That exact host is now proposed in the
+saved draft, preserving published settings and restored setup/start instructions;
+it has not been requested while absent from the active policy. Review/save and
+publish the draft to enable investigation of those documents. Quarterly reports
+must not be relabeled as daily history. Their applicable terms and any further
+redirect destinations still require inspection.
 
-## Evidence to capture when access becomes available
+The linked res.avantisinvestors.com host serves factsheet leads. It was not
+requested or added to the network draft; a factsheet does not establish complete
+holdings. No wildcard, alternate proxy, account, consent acceptance, or access-gate
+bypass was used. Discovery URLs and permission requirements are kept separate.
 
-For each selected fund, record:
+## Completion criteria
 
-1. Issuer, fund name, stable issuer fund identifier, ticker and eligibility reason.
-2. The issuer page linking to the download; exact document URL; actual redirect
-   chain and allowed destination hosts.
-3. Portfolio date, source timezone, retrieval timestamp in UTC, and any
-   independently evidenced publication timestamp.
-4. File type, content hash, byte length, schema fields, source identifiers and
-   full-portfolio scope.
-5. Reported weight basis, precision, row count, supported instrument categories,
-   total weight, residual and identity/classification coverage.
-6. Whether both source samples support full overlap/active share. If not, record
-   the proposed known-matched-weight presentation or a separately reviewed
-   methodology decision; do not normalize weights silently.
-7. Applicable terms, rights evidence, review date, owner and permitted uses.
-8. Expected publication calendar/deadline and the evidence distinguishing a
-   source delay from a fetch or parsing failure.
+M00 remains open until the first-source contract includes a verified launch
+roster, authoritative complete-holdings endpoints, applicable rights evidence,
+calendar/deadline, units/denominator, measured metric eligibility, and two
+permitted files from distinct portfolio dates. Unresolved commercial rights
+remain explicit pilot blockers even when limited research is permitted.
 
-Only permitted samples belong under tests/recorded. Preserve retrieval metadata
-beside them, redact credentials if present, and keep test runs offline. A
-synthetic example is not a substitute for the two required dated source samples.
+The current plan is to resolve these source-specific issues before selecting an
+adapter. Changing the supported treatment of sweep funds, rights, warrants, or
+other incidental positions requires a reviewed scope/methodology decision;
+rounded 0.00% does not justify silently deleting them.
 
-## M00 completion and independent work
+## Earlier investigation
 
-M00 remains open until the exact launch roster, first-source contract, rights
-status, measured metric eligibility and two permitted dated samples are recorded.
-Unresolved commercial permissions remain explicit pilot blockers even if
-technical access succeeds.
-
-M01–M03 may proceed with synthetic fixtures under the specification's dependency
-rules. Source integration must not claim that this register establishes live
-coverage or approval.
+On 1 November, ordinary sandbox requests could not connect to the proxy and
+narrow escalation was rejected because the issuer destinations were outside the
+then-enforced policy. This was an environment limitation, not an issuer response.
+The original Capital Group/Avantis draft entries were later expanded to the six
+research candidates. On 6 November, the replacement published environment applied
+those entries and enabled the live assessment above. No earlier failed request
+is treated as evidence that a source is unavailable or licensed.
