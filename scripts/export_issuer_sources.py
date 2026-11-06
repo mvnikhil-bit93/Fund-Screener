@@ -29,6 +29,10 @@ def render(register: dict[str, Any]) -> str:
         "automated_retrieval_rights",
         "commercial_analysis_rights",
         "customer_holdings_display_rights",
+        "paid_licence_requirement",
+        "official_disclosure_routes",
+        "delivery_mechanisms",
+        "disclosure_coverage_evidence",
         "holdings_status",
         "sample_count",
         "sample_artifact_kinds",
@@ -48,8 +52,14 @@ def render(register: dict[str, Any]) -> str:
     terms = {item["document_id"]: item for item in register["terms_documents"]}
     funds = {item["fund_id"]: item for item in register["funds"]}
     samples = {item["sample_id"]: item for item in register["samples"]}
+    unknown_basis = "displayed weights; denominator unverified"
     for issuer in sorted(register["issuers"], key=lambda item: item["research_priority"]):
         reviewed_samples = [samples[key] for key in issuer["holdings_review"]["sample_ids"]]
+        routes = [
+            item
+            for item in register["disclosure_routes"]
+            if item["issuer_id"] == issuer["issuer_id"]
+        ]
         row = {
             "issuer_id": issuer["issuer_id"],
             "issuer": issuer["name"],
@@ -74,6 +84,10 @@ def render(register: dict[str, Any]) -> str:
             "customer_holdings_display_rights": issuer["terms_review"]["permissions"][
                 "customer_display_of_holdings"
             ],
+            "paid_licence_requirement": issuer["terms_review"]["paid_licence_requirement"],
+            "official_disclosure_routes": "; ".join(item["official_url"] for item in routes),
+            "delivery_mechanisms": "; ".join(item["delivery_mechanism"] for item in routes),
+            "disclosure_coverage_evidence": "; ".join(item["coverage_evidence"] for item in routes),
             "holdings_status": issuer["holdings_review"]["status"],
             "sample_count": str(len(reviewed_samples)),
             "sample_artifact_kinds": "; ".join(
@@ -86,9 +100,11 @@ def render(register: dict[str, Any]) -> str:
                 sorted({item["portfolio_date"] for item in reviewed_samples})
             ),
             "raw_displayed_weight_measurements": "; ".join(
-                f"{item['ticker']}: {item['quality']['row_count']} rows, "
+                f"{item['ticker']}: "
+                f"{item['quality'].get('summary_weight_column', unknown_basis)}, "
+                f"{item['quality']['row_count']} rows, "
                 f"fraction sum {item['quality']['all_rows_reported_weight_sum_fraction']}, "
-                f"{item['quality']['zero_rounded_weight_rows']} rounded 0.00% rows; "
+                f"{item['quality']['zero_rounded_weight_rows']} reported-zero rows; "
                 "admitted W unknown"
                 for item in reviewed_samples
             ),

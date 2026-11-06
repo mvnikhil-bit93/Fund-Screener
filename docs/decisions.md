@@ -249,3 +249,60 @@ IDs and references, document/sample hashes and byte lengths, measurement
 arithmetic, disabled admission, and local documentation links. Independent
 review matched the quoted clauses to cached source bodies. The archived spec
 and golden expectations remain unchanged; hosted CI has not been observed.
+
+## 6 November 2026 — refine daily disclosures and factual-use assessment
+
+The user asked to distinguish official daily disclosures and factual holdings
+from proprietary additions, and to assess the actual access/reuse route rather
+than infer a paid-licence requirement from general website terms. The research
+mapping is now schema 1.2.0. It preserves the original 24 rights decisions and
+adds 12 scoped superseding reviews, with explicit material scope, applicability,
+use basis and separate production admission. No paid-licence requirement is
+established by the reviewed evidence. Explicit website-access restrictions remain
+recorded; factual-use reasoning does not authorize a restricted retrieval method.
+
+Avantis's product-specific Definitions describe disclosure of each position every
+business day before trading. The official AVUS All Holdings route was retrieved;
+all 1,943 rows and fields match the earlier product capture. Static inspection of
+the issuer's download control verifies a client-side CSV export from the same
+array, with no extra weight precision; no browser-generated CSV was captured.
+The separate Daily Pricing Basket uses different data and cannot substitute for
+portfolio holdings. Issuer-declared coverage is now recorded separately from
+independent reconciliation and numerical eligibility.
+
+JPMorgan's public directory and product data verify JGRO and its fund-specific
+Download All Holdings control. The endpoint returned a real 27,245-byte XLSX
+with 140 positions and an internal 5 November 2026 date. Raw market-value weights
+total 100.00%; raw net-assets weights total 100.06%. Negative USD cash value and
+quantity round to zero in both weight columns. Money-market and ADR positions,
+identity resolution and the denominator contract remain unresolved. Both bases
+are preserved; neither is approved as analytical W. Workbook sector/industry/
+country fields and protected presentation are separate from core factual data.
+
+Five holdings observations now cover four funds, all on one portfolio date;
+the additional AVUS capture does not count as a second date. There is one actual
+standalone holdings file. No source admission, ten-fund roster, production
+importer, scheduled job or financial-methodology change is included. Source
+bodies, scripts, workbook bytes and constituent datasets remain in ignored private
+review storage; Git contains limited findings, metadata and aggregate measures.
+
+The importer plan now compares the verified JPMorgan XLSX and Avantis HTML/client
+export routes, with field-specific use review and exact financial constraints.
+Capital Group's public listing has an observed off-host search dependency but no
+verified daily route. Existing restrictions/gates for other issuers remain scoped
+to the reviewed routes; no authentication or consent was accepted or bypassed.
+
+The environment draft adds www.ecfr.gov for current Rule 6c-11 verification,
+preserving the previously proposed quarterly-documents host and all setup/start,
+repository, preset and credential settings. Readback confirmed revision 4. The
+host is not active, no regulatory request was made, and fund-specific reliance
+on the rule is not asserted. No environment publication was performed.
+
+Validation: make check passed (112 offline tests, lint/format, strict typing,
+import boundaries, dependency allowlist and lock consistency). The CSV matches
+the register. All 32 document/sample/discovery-evidence hash and byte records
+match private captures. References, unique IDs, sample/date counts, disabled
+admission, historical numeric measurements, local documentation links and
+archived-spec checksum passed. Independent review reproduced the JGRO workbook
+counts, two weight totals and negative-cash finding, and checked exact source
+quotes. No database changes required an integration rerun; hosted CI is unobserved.

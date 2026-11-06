@@ -11,17 +11,21 @@ ledger-record schema or a financial methodology version.
 **Live assessment is now underway.** The replacement environment permits all six
 issuer discovery hosts. The [live assessment](issuer-assessment.md) records terms
 or policy evidence for all six issuers, including the limited scope of Capital
-Group's policy review. Three Avantis HTML-embedded holdings snapshots were
-measured for one portfolio date. No standalone CSV/XLSX holdings file, second
-portfolio date, commercial-use approval, or approved launch roster is established.
+Group's policy review. Avantis product pages and its All Holdings route were
+inspected, along with one directly downloaded JPMorgan JGRO workbook. All sampled
+portfolios are dated 5 November 2026. Avantis's accompanying notice describes
+publication of each position's identity and quantity every business day before
+trading. This supports an issuer-declared daily disclosure; it does not establish
+independently reconciled completeness, delivery reliability, a second portfolio
+date, production-use approval, or an approved launch roster.
 
 ## Investigation sample
 
 Priority is an investigation order, not a measured quality or licensing score.
 Capital Group and Avantis remain the original first two candidates; the other
 four extend the research sample at the user's request. Initial seed tickers were
-discovery leads from prior knowledge. AVUS and AVUV product identities have now
-been verified through the official catalog and product pages; their portfolio
+discovery leads from prior knowledge. AVUS, AVUV and JGRO product identities have
+been verified through official catalogs/product pages; their portfolio
 eligibility remains unresolved. Other seeds retain their recorded evidence state.
 
 | Priority | Issuer and discovery homepage | Discovery tickers | Main question to resolve |
@@ -53,6 +57,10 @@ official Avantis catalog linked quarterly holdings documents there. That new
 host remains inactive until the user reviews/saves and publishes the draft.
 The observed res.avantisinvestors.com factsheet host has not been requested or
 added; a factsheet is not assumed to be complete holdings.
+
+The draft now also includes www.ecfr.gov to verify the current Rule 6c-11 text.
+This addition remains inactive; the issuer's daily-disclosure statements are
+recorded independently of unverified fund-specific reliance on that rule.
 
 Verify the active policy before requesting a newly approved host. Record actual
 redirects and investigate the applicable document terms; discovery of a URL is
@@ -89,7 +97,10 @@ provenance URL is not a fetchable endpoint or a substitute for a refresh mechani
 | --- | --- | --- |
 | issuers | A candidate organization and current assessment summary | Stable issuer_id, discovery lead, review status, linked records, questions and decision |
 | terms_documents | A particular version of a terms document | document_id, issuer_id, exact source_url, applicable fund_ids or explicit issuer-wide scope, retrieved_at UTC, effective date if stated, content_sha256, relevant clauses/excerpts, storage permission/path, reviewer and reviewed_at |
-| rights_decisions | One reviewed use for a specific scope | decision_id, issuer_id, fund_ids or explicit issuer-wide scope, use, status, document_ids with exact clause references, conditions, reviewer, reviewed_at, expiry/review date if applicable, supersedes_decision_id when updated |
+| disclosure_evidence | One source page, download-control script, or public catalog supporting discovery | evidence_id, issuer_id, source_url, fetched_at, SHA-256, byte length, artifact kind and exact limited finding; no executable script or constituent data in Git |
+| disclosure_routes | One fund's observed delivery route | route_id, fund_id, official_url, delivery mechanism, coverage claim versus measured completeness, supporting evidence/sample IDs, specific terms applicability and unresolved use basis |
+| field_usage_profiles | One proposed material category | Factual observations, identifier strings/services, classifications/enrichment, or protected original artifacts; intended treatment and unresolved basis |
+| rights_decisions | One reviewed use for a specific scope | decision_id, issuer_id, fund_ids or explicit issuer-wide scope, use, status, evidence and exact clause references, conditions, reviewer, reviewed_at, expiry/review date if applicable, supersedes_decision_id when updated; distinguish a licence grant from another documented lawful-use basis and unresolved applicability |
 | funds | One fund identity and source-contract assessment | fund_id, source_id, issuer_id, issuer_fund_id, verified ticker/exchange/name/currency, strategy and transparency evidence, fund page, holdings endpoint, verified hosts, rights review references, file/schema/calendar versions, admission decision |
 | samples | One exact file received for a fund | sample_id, fund_id, source_id, exact URL and redirect chain, fetched_at UTC, evidenced publication time, portfolio date, SHA-256, bytes, MIME/format, permitted storage path, field_mapping_id and quality measurements |
 | field_mappings | One versioned, observed file layout | mapping_id, source_id, version, supporting sample_ids, encoding, delimiter or sheet, header/footer rules, raw columns/locations, target fields, units, date rules, denominator and completeness checks |
@@ -101,29 +112,55 @@ references and conditions; retain restricted/uncertain outcomes explicitly.
 The permission strings in each issuer's terms_review are summaries only. Before
 changing one from unknown, add a rights_decisions record for that exact use and
 scope and link its ID in terms_review.decision_ids. Each permission needs its own
-supporting clauses, conditions, reviewer, and date; a general document list is
-not evidence that every use is permitted. Future importer validation must inspect
-these scoped decisions, not trust a summary string or production-enabled flag.
+supporting evidence, conditions, reviewer, and date; a general document list is
+not evidence that every use is permitted. A decision can rely on applicable
+permission or another documented legal basis; an affirmative issuer licence is
+not automatically necessary for every use of factual data. Future importer
+validation must inspect these scoped decisions, not trust a summary string or
+production-enabled flag.
 
 ## Terms review procedure
 
-1. Start at the issuer's official fund page. Read the applicable regional website
-   terms, download/file notices, and referenced data conditions. Record exact URLs
-   and clauses with retrieval dates and hashes where retention is permitted.
-2. Assess each intended use separately: manual research download, automated
-   retrieval, raw-file retention, commercial internal analysis, customer display
-   of holdings, customer display of derived analytics, raw redistribution,
-   publication of fixtures in Git, identifier reuse, and classification reuse.
-3. Record a status of unknown, permitted, conditional, or prohibited for each use,
-   supported by document IDs, scope, conditions, and reviewer. Silence in a terms
-   page remains unknown. robots.txt concerns retrieval behavior, not a grant of
-   commercial rights. A public download button alone is insufficient evidence.
-4. Track restrictions such as audience, attribution, retention period, automated
-   request limits, and third-party data separately. Flag unclear terms for Nikhil's
-   review or permission inquiry; no external messages are sent by this task.
-5. Separate permitted research capture from approval for customer-facing use.
-   Do not put downloaded files in public Git unless that specific use is cleared.
-   When required permission is unresolved, record the blocker and avoid that use.
+1. Locate the official fund's daily portfolio disclosure and its delivery route.
+   Record the issuer's actual claims about positions covered, valuation date and
+   publication frequency. Distinguish these claims from independent sample
+   measurements. A marketing label, creation basket, proxy portfolio, or quarterly
+   report does not establish complete daily disclosure. Record any applicable
+   regulatory basis separately; do not assume every ETF uses the same regime.
+2. Read the regional website terms, disclosure/file notices, provided-tool terms,
+   and referenced data conditions. Record exact URLs, clause scope, and evidence
+   versions. Check whether specific terms supersede general terms. Identify the
+   actual access method and any authentication, consent, automation, audience,
+   or rate restrictions. Public visibility does not override those conditions.
+3. Separate factual portfolio observations from other material. Reported dates,
+   quantities, values, weights, names and tickers are candidates for factual use;
+   commentary, presentation, ratings, branded classifications and other additions
+   require their own assessment. Identifiers and mappings need field-specific
+   review. Under US copyright principles, facts generally are not protected as
+   such; the surrounding expression or compilation may be. Contractual access
+   conditions, third-party rights and other applicable law remain separate.
+4. Assess each intended use separately: manual research download, automated
+   retrieval, original-document retention, commercial internal analysis, customer
+   display of factual holdings, derived analytics, raw redistribution, public
+   Git fixtures, identifier reuse, and classification reuse. Record the relevant
+   fields, endpoint, audience, and evidence for the decision. A protected-content
+   clause is not automatically a finding that each underlying fact is protected.
+5. Record unknown, permitted, conditional, or prohibited for the scoped use, with
+   the reviewed basis and conditions. Distinguish an affirmative licence, a
+   documented factual-use or statutory basis, and unresolved applicability.
+   Silence establishes neither permission nor prohibition and does not prove a
+   paid licence is required. A public download button supports route discovery;
+   robots.txt concerns retrieval behavior. Neither alone decides all reuse rights.
+6. Resolve only the uncertainty that affects the proposed operation. Check a
+   provided tool or disclosure-specific route before concluding written permission
+   is necessary. Respect explicit access restrictions while that investigation
+   continues; do not bypass a gate. Escalate ambiguous material uses for Nikhil's
+   review or a targeted permission inquiry. No external messages are sent here.
+7. Keep research capture, recurring retrieval, document retention, factual-data
+   use, and customer publication decisions separate. Do not publish original
+   documents or constituent fixtures in Git without a reviewed basis for that
+   operation. Unresolved material rights remain pilot blockers under the spec;
+   permitted investigation can continue without asserting legal clearance.
 
 This register records a practical evidence review; it does not replace a required
 owner or legal decision on ambiguous commercial terms.
@@ -148,8 +185,10 @@ For each sample, record:
   names, date formats, decimal precision, identifier namespaces and missing-value
   markers. Map what is actually present; do not invent standard issuer columns.
 - Whether this is the complete actual portfolio, a top-holdings excerpt, proxy
-  portfolio, creation basket, or another document. File type and a weight sum
-  close to one do not establish completeness.
+  portfolio, creation basket, or another document. Preserve an issuer's statement
+  that every position is disclosed as positive coverage evidence, separately
+  from reconciliation, omitted sections, and numerical completeness. File type
+  and a weight sum close to one do not establish completeness.
 - Reported denominator and units. Preserve raw decimal weights and convert
   percentages to fractions explicitly. Record row count, sum of admitted weights
   W, signed residual 1-W, negative/missing weights, duplicates, identifier gaps,
@@ -185,7 +224,9 @@ Suggested sample quality object (shape only; this is not a measured sample):
 
 Prefer the first candidate with permitted research access, complete dated files,
 an understood schema/denominator, sufficient eligible funds, and a workable use
-path for the product. Record unresolved commercial permissions as pilot blockers.
+path for the product. Record unresolved commercial rights as pilot blockers;
+record a documented factual-use basis where supported rather than demanding an
+issuer licence by default.
 If rounding prevents full overlap, document the usable known-matched-weight
 presentation without relaxing the methodology. No candidate currently passes
 this evidence gate. M00 remains open; the importer plan is conditional on filling

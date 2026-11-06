@@ -2,96 +2,103 @@
 
 Latest assessment: 6 November 2026 (UTC).
 
-Status: **partial live review completed; no source admitted for production.**
-Official issuer downloads remain the preferred acquisition route. The replacement
-environment now permits the six issuer discovery sites, and live responses have
-been verified. The earlier environment-network block is resolved for those hosts.
+Status: **official daily-disclosure routes verified for Avantis and JPMorgan;
+no source admitted for production.** Direct issuer sourcing remains viable. The
+reviewed evidence does not establish that underlying factual holdings require a
+paid data licence. Website access conditions, factual reuse, proprietary additions,
+original-document retention and financial suitability are separate questions.
 
 ## Current evidence and mapping
 
-- [Six-issuer assessment](issuer-assessment.md): source-linked rights/access
-  findings and actual sample measurements.
-- [Canonical issuer mapping](../config/issuer_sources.json): separate access,
-  terms, scoped permissions, funds, samples, field mappings, and admission states.
+- [Six-issuer assessment](issuer-assessment.md): source-linked findings and measurements.
+- [Canonical issuer mapping](../config/issuer_sources.json): routes, evidence,
+  terms applicability, field categories, scoped decisions, samples and admission.
 - [Spreadsheet summary](issuer-sources.csv): generated from the JSON mapping.
 - [Register guide](source-register.md): how to add evidence and extend the mapping.
-- [Importer plan](importer-plan.md): M00 gates followed by bounded M04 acquisition
-  and M05 parsing; no importer is implemented by this research change.
+- [Importer plan](importer-plan.md): source contract, then M04 acquisition and
+  M05 parsing; no production importer is implemented by this research change.
 
-| Issuer | Findings so far | Main outstanding requirement |
+| Issuer | Verified finding | Next evidence needed |
 | --- | --- | --- |
-| Capital Group | Public US policy pages reviewed; linked advisor composites route led to authentication | Establish public complete holdings or authorized access and applicable first-party rights; observed third-party restrictions do not describe every issuer-owned holding |
-| Avantis | Limited download licence; three dated HTML-embedded holdings arrays inspected, including AVUS and AVUV | Resolve commercial/automation scope, obtain full files and a second portfolio date, and review unsupported positions/denominator/completeness |
-| Dimensional | US terms restrict commercial use without written approval and repeated automated access | Establish an authorized delivery and use basis before holdings acquisition |
-| T. Rowe Price | US terms restrict commercial use and explicitly address automated scraping/AI use | Obtain an appropriate permission path; no further acquisition after that finding |
-| Fidelity | Personal/noncommercial and automated-access restrictions; international-use agreement at homepage | Resolve permissions and authorized access; no agreement accepted or holdings fetched |
-| JPMorgan Asset Management | US terms restrict reuse/storage of protected works without consent, subject to stated statutory exceptions | Establish applicable permission basis; a verified directory/factsheet link is not a full-holdings endpoint |
+| Capital Group | Public listing uses dynamic product discovery; the previously tested advisor composites route requires authentication. Third-party notices do not establish rights in all first-party holdings facts. | Official daily disclosure route, actual fields and specific conditions |
+| Avantis | Product-specific notice describes each position's disclosure before trading each business day. AVUS All Holdings page and client-side CSV export mechanism verified. | Second date, denominator, supported positions and specific access/use basis |
+| Dimensional | General website commercial restrictions and an automation clause concerning damaging/overburdening conduct, with an issuer-tool exception | Official disclosure/tool and applicable conditions; no holdings sample acquired |
+| T. Rowe Price | Explicit scraping restriction, section-specific terms precedence and a separate approved/issuer-tool clause must be read together | A supported disclosure mechanism; no exception assumed or holdings acquired |
+| Fidelity | Website commercial/automated-access clauses recognize authorized tools and page-specific terms; homepage international-use gate unaccepted | Legitimate official disclosure route and conditions; no holdings sample acquired |
+| JPMorgan | Official JGRO Download All Holdings control returned an XLSX with 140 positions, dated inside the workbook | Second date, two weight bases, negative cash, money-market/ADR treatment, identifiers and factual-use basis |
 
-These are evidence-based research findings, not legal approval or a declaration
-that every underlying fact is protected by the same rights. Applicable fund/file
-terms, third-party material, intended use, and exceptions need scoped review.
+The mapping preserves earlier general-site decisions as history and links scoped
+superseding reviews. Missing permission text does not prove permission is needed
+or paid licensing is mandatory. Actual applicable restrictions and unresolved
+material rights still govern production admission under the specification.
 
 ## Measured holdings evidence
 
-Three official Avantis product pages contain holdings arrays dated **5 November
-2026**. They are HTML-embedded source data, not standalone CSV/XLSX downloads.
+Five exact observations cover four funds on **5 November 2026**: three Avantis
+product-page captures, an additional AVUS All Holdings page, and one JGRO XLSX.
+The two AVUS captures contain identical holdings; they are not two portfolio dates.
 
-| Fund | Rows | Raw displayed-weight total | Rows displaying 0.00% |
-| --- | ---: | ---: | ---: |
-| AVUS | 1,943 | 99.19% | 819 |
-| AVUV | 793 | 99.83% | 91 |
-| AVTM | 1,709 | 98.95% | 815 |
+| Fund | Positions | Reported weight totals | Reported zero-weight rows |
+| --- | ---: | --- | ---: |
+| AVUS | 1,943 | 99.19%; exact denominator unverified | 819 |
+| AVUV | 793 | 99.83%; exact denominator unverified | 91 |
+| AVTM | 1,709 | 98.95%; exact denominator unverified | 815 |
+| JGRO | 140 | Market Value 100.00%; Net Assets 100.06% | 2 in each column |
 
-Totals use the issuer's displayed percentage strings with Decimal arithmetic.
-They are not admitted analytical W: completeness, denominator, and eligibility
-are unresolved, and the samples include unsupported or unresolved position types.
-A rounded zero is not evidence of a genuinely zero holding. No weights were
-normalized, no balancing cash was added, and no financial methodology changed.
-See the assessment and mapping for scope distinctions and evidence hashes.
+These Decimal totals include all source rows and are not admitted analytical W.
+Avantis's client CSV exporter passes through the same rounded weights. Its separate
+Daily Pricing Basket is different data and cannot be used to repair the portfolio.
+The CSV mechanism was verified by static code inspection; no browser-generated
+CSV file was captured. JPMorgan provides a real standalone XLSX download.
 
-All three observations share one portfolio date. No two-date history, clean
-10-fund roster, daily standalone delivery, or complete first-source contract is
-established. The original pages and extracted constituent rows remain in private
-ignored review cache; only limited findings and metadata are committed.
+All samples need instrument and numerical review. In JGRO, negative USD cash
+value/quantity displays as zero after weight rounding; a money-market holding
+also requires treatment. The market-value column summing to 100% does not prove
+eligibility or justify silently preferring it over net assets. Avantis samples
+include sweep vehicles, rights and other unsupported or unresolved types.
 
-## Network and remaining access
+Every source row remains represented in the assessment. No weights were normalized,
+no balancing cash was added, and no financial methodology changed. Sector/industry
+labels and country meanings remain separate from factual quantities/weights and
+are not adopted automatically as the product's taxonomy. Original source files,
+scripts and constituent rows remain outside Git.
 
-The six discovery hosts plus api.github.com are active in the replacement
-runtime. Earlier blocked-policy observations remain historical evidence in the
-mapping and decisions log; they do not describe current issuer-site access.
+## Network and remaining discovery
 
-The official Avantis catalog links quarterly holdings documents on
-avantisinvestors.prospectus-express.com. That exact host is now proposed in the
-saved draft, preserving published settings and restored setup/start instructions;
-it has not been requested while absent from the active policy. Review/save and
-publish the draft to enable investigation of those documents. Quarterly reports
-must not be relabeled as daily history. Their applicable terms and any further
-redirect destinations still require inspection.
+The six issuer discovery hosts plus api.github.com are active. Avantis and JPMorgan
+route investigation used those approved hosts, with normal proxy/TLS and no gate
+bypass. Capital Group's public product discovery depends on an observed Coveo host
+outside the active policy; its details are recorded, but no request or token use
+was attempted. A failed advisor route does not imply all holdings are gated.
 
-The linked res.avantisinvestors.com host serves factsheet leads. It was not
-requested or added to the network draft; a factsheet does not establish complete
-holdings. No wildcard, alternate proxy, account, consent acceptance, or access-gate
-bypass was used. Discovery URLs and permission requirements are kept separate.
+The saved environment draft preserves current settings and setup/start instructions.
+It includes the previously proposed avantisinvestors.prospectus-express.com for
+observed quarterly-report links, plus www.ecfr.gov to verify current Rule 6c-11 text.
+Both remain outside active policy. Saving the draft does not enable them or publish
+the environment. No regulatory text, quarterly-report content or fund-specific
+reliance on the rule is claimed live verified. Quarterly reports would not by
+themselves demonstrate daily delivery history.
 
-## Completion criteria
+## Completion criteria and next adapter decision
 
-M00 remains open until the first-source contract includes a verified launch
-roster, authoritative complete-holdings endpoints, applicable rights evidence,
-calendar/deadline, units/denominator, measured metric eligibility, and two
-permitted files from distinct portfolio dates. Unresolved commercial rights
-remain explicit pilot blockers even when limited research is permitted.
+M00 still needs a suitable launch roster, a complete first-source contract,
+scoped access/use findings, calendar/deadline, denominator and identity evidence,
+and two accepted portfolio dates for the same suitable fund. A paid feed is not
+assumed to be the solution to these gaps.
 
-The current plan is to resolve these source-specific issues before selecting an
-adapter. Changing the supported treatment of sweep funds, rights, warrants, or
-other incidental positions requires a reviewed scope/methodology decision;
-rounded 0.00% does not justify silently deleting them.
+Compare JPMorgan's workbook route with Avantis's All Holdings route. JPMorgan now
+provides a concrete file-format candidate, while both samples expose material
+position/precision questions. Do not choose an analytical denominator to force
+unit totals or silently treat money-market/sweep investments as explicit cash.
+Any change to supported positions or numerical rules is a separate reviewed
+methodology decision. No ten-fund roster, scheduled importer or customer coverage
+is claimed complete.
 
 ## Earlier investigation
 
-On 1 November, ordinary sandbox requests could not connect to the proxy and
-narrow escalation was rejected because the issuer destinations were outside the
-then-enforced policy. This was an environment limitation, not an issuer response.
-The original Capital Group/Avantis draft entries were later expanded to the six
-research candidates. On 6 November, the replacement published environment applied
-those entries and enabled the live assessment above. No earlier failed request
-is treated as evidence that a source is unavailable or licensed.
+The initial environment blocked issuer requests before any website response.
+The replacement published environment enabled all six discovery hosts on
+6 November. The first live review recorded general terms and three Avantis
+product-page samples. This refinement corrects overbroad licensing inferences
+and adds actual disclosure/delivery evidence. Historical observations remain in
+the mapping and decisions log; they do not describe current access or approvals.

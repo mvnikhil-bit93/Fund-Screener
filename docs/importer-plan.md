@@ -1,10 +1,12 @@
 # Direct issuer importer plan
 
-Updated 6 November 2026 after the first live issuer review. This is a proposed
-implementation plan, not an implemented importer or source-use approval.
+Updated 6 November 2026 after review of daily disclosure and terms applicability.
+This is a proposed implementation plan, not an implemented importer or source-use
+approval.
 Issuer discovery sites are now reachable. The [live assessment](issuer-assessment.md)
-records terms restrictions, access gates, and measured Avantis data embedded in
-issuer HTML; a complete first-source contract and two-date sample set remain open.
+records terms applicability, access gates, Avantis's official All Holdings/export
+route, and JPMorgan's actual JGRO Excel download. A complete first-source contract
+and two-date sample set remain open.
 
 The expandable research inventory is [issuer_sources.json](../config/issuer_sources.json),
 with a [CSV view](issuer-sources.csv) and [register guide](source-register.md).
@@ -12,13 +14,17 @@ The financial and dependency contracts remain [specification v1.1](spec.md).
 
 ## 1. Complete the first-source evidence gate — M00
 
-Capital Group and Avantis remain the initial discovery priorities. Capital Group
-needs a verified public or authorized complete-holdings route and a first-party
-licensing review; Avantis needs intended-use permission decisions and a suitable
-verified fund/delivery contract. The other four reviewed issuers have permission
-or consent issues to resolve before automated commercial acquisition. Select
-US-listed, USD-reporting, active, long-only equity ETFs with complete disclosed
-portfolios. Exclude unsupported derivatives, short/inverse/leverage strategies,
+Capital Group and Avantis were the initial discovery priorities. Current evidence
+supports comparing Avantis's All Holdings HTML/client CSV route with JPMorgan's
+direct XLSX route. Capital Group still needs a public or authorized daily route.
+Avantis's notice describes each position's disclosure before trading each business
+day, and its AVUS export mechanism is verified. JGRO has a real standalone file;
+its two weight bases and negative cash need explicit treatment. Both candidates
+need field-use decisions and an eligible fund contract. The other reviewed issuers
+need route-specific investigation of terms and any observed access gates. General
+website restrictions do not by themselves prove that factual holdings require a
+paid licence. Select US-listed, USD-reporting, active, long-only equity ETFs with
+complete disclosed portfolios. Exclude unsupported derivatives, short/inverse/leverage strategies,
 and funds whose published baskets or proxy portfolios are not their actual full
 holdings. An issuer's product label alone does not establish fund eligibility.
 
@@ -31,18 +37,23 @@ For each candidate source, complete the following evidence before selecting it:
 | Evidence | Decision it supports |
 | --- | --- |
 | Official fund page, issuer fund ID, ticker, full-holdings link, and actual redirect chain | Establish the authoritative endpoint and fund identity |
-| Terms URL, relevant clauses, review date, reviewer, and restrictions | Assess automated retrieval, retention, internal research, commercial display, derived analytics, and redistribution separately |
+| Applicable website, disclosure/file and tool terms; scope, evidence versions, reviewed basis and reviewer | Assess access method, original-document retention, factual-data analysis/display, derived analytics, third-party additions and redistribution separately |
 | Two permitted files from distinct portfolio dates, with retrieval metadata and hashes | Test real format variation and avoid mistaking two downloads of one date for historical coverage |
 | Portfolio date field, timezone, evidenced publication metadata, calendar, and deadline | Distinguish source valuation date, retrieval time, and lateness |
 | File type, sheets/sections, column names, units, identifiers, row count, and full-portfolio evidence | Define the parser and completeness checks |
 | Reported denominator, decimal precision, total weight, residual, and unsupported rows | Establish which calculations the source can support without normalization |
 
-Public access and robots directives do not establish commercial-use rights.
-Record unresolved rights as unresolved: permitted investigation may continue,
-but customer-facing use must remain disabled. Retain or commit sample files only
-within the permission established for that operation; review third-party
-identifier/classification restrictions separately. Do not infer rights from
-another issuer's terms, or assume derived analytics are unrestricted.
+Assess the specific access method and use of specific material. Facts generally
+are not protected as such by US copyright, while website expression, compilation,
+contractual access conditions, and proprietary additions raise separate questions.
+A reviewed use basis may be an applicable licence or a documented legal basis
+for factual use; lack of an express grant alone proves neither a prohibition nor
+a need to buy data. Public access and robots directives also do not settle reuse.
+Record unresolved material rights as unresolved: permitted investigation may
+continue, while customer-facing use remains disabled under the specification.
+Retaining an original document or publishing a fixture is a separate operation
+from using its factual observations. Do not infer rights from another issuer's
+terms, or assume all derived analytics are unrestricted.
 
 Discover download hosts from issuer links and actual responses. Review exact
 new hosts through environment settings; do not guess CDN patterns, add wildcard
@@ -50,10 +61,44 @@ access, route around blocked hosts, or bypass consent/authentication challenges.
 If only today's file is available, capture a second date later when permitted;
 do not invent an archive or relabel a synthetic file as issuer evidence.
 
-The source decision records technical suitability and permission for each use
-separately. Unknown evidence cannot become an approval through a default value.
+The source decision records technical suitability and the reviewed basis for
+each use separately. Unknown evidence cannot become an approval through a
+default value.
 Choose the first adapter only after these findings support a concrete source
 contract; unresolved commercial rights remain an explicit pilot blocker.
+
+### Verified delivery choices to compare
+
+| Candidate | Acquisition evidence | Implication for the first adapter |
+| --- | --- | --- |
+| Avantis AVUS | Official All Holdings HTML contains the same 1,943 rows as its product page. The issuer's client-side export builds a CSV from those rows; no browser-generated CSV was captured. | A bounded HTML-data extractor is a concrete option. Document the artifact honestly; do not invent a server CSV URL. Export does not increase weight precision and replaces empty/falsy values with a marker. |
+| JPMorgan JGRO | Official Download All Holdings control returned a 140-position XLSX; fund/date are inside the workbook and match issuer dailyHoldingsAll metadata. | A direct-file acquisition/parser candidate. Version the Holdings sheet layout, preserve both weight columns, signed values/quantities and missing IDs. |
+
+The Avantis Daily Pricing Basket is a separate dataset and must not replace the
+actual portfolio. JGRO's % of Market Value and % of Net Assets are distinct bases;
+do not prefer the former merely because its displayed total is 100%. Net-assets
+weights total 100.06%, and negative cash rounds to zero in both columns. No basis
+is approved as analytical W by this comparison. A second portfolio date and a
+suitable fund roster remain necessary whichever delivery format is selected.
+
+### Proposed field profile for the first source
+
+Start with the facts needed to compare disclosed portfolios. Record the selected
+fields and their use basis explicitly in the source contract:
+
+| Material | Proposed treatment |
+| --- | --- |
+| Fund identity, portfolio date, reported security name/ticker, quantity, value, weight and units | Candidate factual observations; preserve reported precision, provenance and unresolved semantics; assess the actual route and intended use |
+| CUSIP, ISIN, SEDOL and cross-source mappings | Review namespaces, applicable provider conditions and identity evidence separately; presence in a public file is not blanket mapping approval |
+| Source security type, sector and country labels | Preserve necessary source evidence where permitted; do not automatically adopt a proprietary taxonomy or equate country with issuer domicile |
+| Commentary, ratings, marketing graphics and third-party research | Exclude from the analytical field profile unless separately needed and reviewed |
+| Original HTML, CSV, workbook or other artifact | Keep exact bytes in restricted immutable evidence storage only under the reviewed retention basis; customer document delivery and public Git publication require separate decisions |
+
+This profile limits copied additions, not the portfolio's positions. Every
+position remains represented in candidate assessment, including unsupported
+instruments; selecting fields must not hide exposure or remove rounded-zero
+rows. The internally defined, manually reviewed taxonomy and identity workflow
+remain M06. Private storage controls do not themselves establish retention rights.
 
 ## 2. Build one bounded acquisition path — M04, after M00 and M02
 
@@ -70,9 +115,12 @@ contract version, rights scope, and operational limits before any request.
 Research seed URLs and unreviewed register rows are never executable defaults.
 
 Distinguish an issuer's research/discovery configuration from an enabled runtime
-contract. Carry exact scoped rights-decision IDs, evidence versions, expiry or
-review dates, and conditions into the runtime validation. A reachable page or
-limited download licence is not an approval for recurring retrieval or display.
+contract. Carry exact scoped rights-decision IDs, evidence versions, reviewed
+basis, material/field scope, expiry or review dates, and conditions into runtime
+validation. Treat explicit access restrictions separately from a factual-use
+basis: the latter does not authorize an otherwise restricted retrieval method.
+A reachable page or limited download licence is not approval for all recurring
+retrieval, retention, and display operations.
 
 1. Fetch one selected fund/date, recording the requested URL and each redirect.
    Check every destination before following it; retain normal TLS verification,
@@ -141,6 +189,14 @@ weight or proof of an economically zero position. Record a raw all-row weight
 sum separately from admitted analytical W; do not apply the analytical residual
 gate to an unverified denominator or silently discard unsupported rows. Version
 field mappings against the exact artifact schema and supporting sample hashes.
+For JPMorgan, the observed workbook has header row 8 and an internal portfolio
+date in H6. Preserve % of Market Value and % of Net Assets separately; their
+header labels establish distinct reported bases, while operational semantics and
+cross-fund comparability still need the source contract. Retain negative quantities
+and market values even when displayed weights round to zero. A money-market
+position is not automatically explicit cash. Ticker-only rows need identity
+resolution; a populated securityId in parallel product JSON is only a lead until
+its namespace and join are verified. Do not infer CUSIP from its character shape.
 AVUS and AVUV contain sweep vehicles and rights; AVUS also contains warrants and
 preferred stock. Do not silently treat pooled sweep vehicles as explicit USD
 cash or remove rounded-zero unsupported positions. The source-admission decision

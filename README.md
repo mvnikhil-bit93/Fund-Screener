@@ -21,9 +21,11 @@ against the original specification; they do not validate implemented financial e
 Source feasibility and access status are recorded in [docs/sources.md](docs/sources.md).
 The expandable [issuer register](docs/source-register.md) includes a spreadsheet
 summary, a [live six-issuer assessment](docs/issuer-assessment.md), and an
-[importer plan](docs/importer-plan.md). Terms and Avantis embedded holdings have
-been inspected; source permissions, full files, and historical samples remain
-open admission requirements.
+[importer plan](docs/importer-plan.md). Avantis's official All Holdings/export
+route and a directly downloaded JPMorgan JGRO workbook have been inspected.
+The mapping separates factual holdings from access conditions and proprietary
+additions; a paid data licence is not assumed necessary. Specific use basis,
+fund eligibility and a second portfolio date remain open admission requirements.
 Local verification and remaining review gates are recorded in
 [docs/decisions.md](docs/decisions.md).
 
