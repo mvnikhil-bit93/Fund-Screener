@@ -1,0 +1,472 @@
+{
+  "schema_version": "1.0.0",
+  "updated_on": "2026-11-06",
+  "assessment_status": "blocked_live_review",
+  "purpose": "Expandable research register; not executable importer configuration or source-use authorization.",
+  "preferred_acquisition_route": "official_issuer_downloads",
+  "scope": {
+    "market": "US-listed",
+    "reporting_currency": "USD",
+    "strategy": "active_long_only_equity",
+    "supported_assets": [
+      "ordinary_equity",
+      "documented_ADR",
+      "explicit_USD_cash"
+    ],
+    "excluded_strategies": [
+      "short",
+      "leveraged",
+      "inverse",
+      "option_overlay",
+      "other_derivatives"
+    ],
+    "pilot_target_funds": {
+      "minimum": 10,
+      "maximum": 25
+    },
+    "pilot_target_issuers": {
+      "minimum": 1,
+      "maximum": 2
+    },
+    "note": "Six research candidates are not a selected launch roster. Eligibility is fund-specific."
+  },
+  "network_evidence": [
+    {
+      "evidence_id": "network-2026-11-06",
+      "recorded_at": "2026-11-06T11:05:25Z",
+      "source": "cloud_environment.environment_status and /etc/codex/network-policy.json",
+      "observations_current": true,
+      "policy_mode": "restricted",
+      "policy_state": "enforced",
+      "runtime_custom_allowed_hosts": [],
+      "candidate_hosts_permitted_by_runtime": [],
+      "conclusion": "All six discovery hosts are outside the enforced policy. No issuer response was obtained; this does not assess issuer availability or terms.",
+      "draft_update": "Discovery hosts saved for user review; draft persistence does not establish runtime access."
+    }
+  ],
+  "issuers": [
+    {
+      "issuer_id": "capital_group",
+      "name": "Capital Group",
+      "research_priority": 1,
+      "discovery_url": "https://www.capitalgroup.com/",
+      "discovery_url_status": "unverified_seed",
+      "seed_tickers": [
+        "CGUS",
+        "CGDV"
+      ],
+      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "research_rationale": "First candidate in the MVP research order; investigate its active US equity ETF range.",
+      "access": {
+        "status": "blocked_by_environment_policy",
+        "checked_at": "2026-11-06T11:05:25Z",
+        "required_discovery_host": "www.capitalgroup.com",
+        "network_evidence_id": "network-2026-11-06",
+        "issuer_request_attempted_this_review": false,
+        "issuer_http_status": null,
+        "verified_download_hosts": []
+      },
+      "terms_review": {
+        "status": "not_reviewed",
+        "document_ids": [],
+        "permissions": {
+          "manual_research_download": "unknown",
+          "automated_retrieval": "unknown",
+          "raw_file_retention": "unknown",
+          "commercial_internal_analysis": "unknown",
+          "customer_display_of_holdings": "unknown",
+          "customer_display_of_derived_analytics": "unknown",
+          "raw_file_redistribution": "unknown",
+          "public_git_fixture_publication": "unknown",
+          "identifier_reuse": "unknown",
+          "classification_reuse": "unknown"
+        },
+        "reviewer": null,
+        "reviewed_at": null,
+        "conditions": [],
+        "notes": "No issuer terms have been retrieved or read in this assessment.",
+        "decision_ids": []
+      },
+      "holdings_review": {
+        "status": "not_measured",
+        "fund_ids": [],
+        "sample_ids": [],
+        "verified_download_url_count": 0,
+        "verified_distinct_portfolio_date_count": 0
+      },
+      "decision": {
+        "status": "research_candidate",
+        "selected_for_pilot": false,
+        "production_import_enabled": false,
+        "reviewer": null,
+        "decided_at": null,
+        "blocking_reasons": [
+          "issuer_access_not_enabled",
+          "terms_not_reviewed",
+          "fund_eligibility_not_verified",
+          "holdings_endpoint_not_verified",
+          "two_dated_samples_not_obtained",
+          "quality_not_measured"
+        ]
+      },
+      "review_questions": [
+        "Establish an authoritative full-holdings download and portfolio date for each fund.",
+        "Count eligible US equity funds; do not assume this issuer alone meets the ten-fund pilot target.",
+        "Review website terms and any file-specific conditions separately."
+      ]
+    },
+    {
+      "issuer_id": "avantis",
+      "name": "Avantis Investors",
+      "research_priority": 2,
+      "discovery_url": "https://www.avantisinvestors.com/",
+      "discovery_url_status": "unverified_seed",
+      "seed_tickers": [
+        "AVUS",
+        "AVUV"
+      ],
+      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "research_rationale": "Second candidate in the MVP research order; investigate systematic active equity comparisons.",
+      "access": {
+        "status": "blocked_by_environment_policy",
+        "checked_at": "2026-11-06T11:05:25Z",
+        "required_discovery_host": "www.avantisinvestors.com",
+        "network_evidence_id": "network-2026-11-06",
+        "issuer_request_attempted_this_review": false,
+        "issuer_http_status": null,
+        "verified_download_hosts": []
+      },
+      "terms_review": {
+        "status": "not_reviewed",
+        "document_ids": [],
+        "permissions": {
+          "manual_research_download": "unknown",
+          "automated_retrieval": "unknown",
+          "raw_file_retention": "unknown",
+          "commercial_internal_analysis": "unknown",
+          "customer_display_of_holdings": "unknown",
+          "customer_display_of_derived_analytics": "unknown",
+          "raw_file_redistribution": "unknown",
+          "public_git_fixture_publication": "unknown",
+          "identifier_reuse": "unknown",
+          "classification_reuse": "unknown"
+        },
+        "reviewer": null,
+        "reviewed_at": null,
+        "conditions": [],
+        "notes": "No issuer terms have been retrieved or read in this assessment.",
+        "decision_ids": []
+      },
+      "holdings_review": {
+        "status": "not_measured",
+        "fund_ids": [],
+        "sample_ids": [],
+        "verified_download_url_count": 0,
+        "verified_distinct_portfolio_date_count": 0
+      },
+      "decision": {
+        "status": "research_candidate",
+        "selected_for_pilot": false,
+        "production_import_enabled": false,
+        "reviewer": null,
+        "decided_at": null,
+        "blocking_reasons": [
+          "issuer_access_not_enabled",
+          "terms_not_reviewed",
+          "fund_eligibility_not_verified",
+          "holdings_endpoint_not_verified",
+          "two_dated_samples_not_obtained",
+          "quality_not_measured"
+        ]
+      },
+      "review_questions": [
+        "Select US equity funds rather than assuming the whole product range fits the pilot.",
+        "Measure reported weight precision and denominator before promising full overlap.",
+        "Check identifier coverage, cash treatment, and actual supported instrument types."
+      ]
+    },
+    {
+      "issuer_id": "dimensional",
+      "name": "Dimensional",
+      "research_priority": 3,
+      "discovery_url": "https://www.dimensional.com/",
+      "discovery_url_status": "unverified_seed",
+      "seed_tickers": [
+        "DFAU",
+        "DFAC"
+      ],
+      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "research_rationale": "Additional candidate for systematic active US equity comparisons; current suitability is unverified.",
+      "access": {
+        "status": "blocked_by_environment_policy",
+        "checked_at": "2026-11-06T11:05:25Z",
+        "required_discovery_host": "www.dimensional.com",
+        "network_evidence_id": "network-2026-11-06",
+        "issuer_request_attempted_this_review": false,
+        "issuer_http_status": null,
+        "verified_download_hosts": []
+      },
+      "terms_review": {
+        "status": "not_reviewed",
+        "document_ids": [],
+        "permissions": {
+          "manual_research_download": "unknown",
+          "automated_retrieval": "unknown",
+          "raw_file_retention": "unknown",
+          "commercial_internal_analysis": "unknown",
+          "customer_display_of_holdings": "unknown",
+          "customer_display_of_derived_analytics": "unknown",
+          "raw_file_redistribution": "unknown",
+          "public_git_fixture_publication": "unknown",
+          "identifier_reuse": "unknown",
+          "classification_reuse": "unknown"
+        },
+        "reviewer": null,
+        "reviewed_at": null,
+        "conditions": [],
+        "notes": "No issuer terms have been retrieved or read in this assessment.",
+        "decision_ids": []
+      },
+      "holdings_review": {
+        "status": "not_measured",
+        "fund_ids": [],
+        "sample_ids": [],
+        "verified_download_url_count": 0,
+        "verified_distinct_portfolio_date_count": 0
+      },
+      "decision": {
+        "status": "research_candidate",
+        "selected_for_pilot": false,
+        "production_import_enabled": false,
+        "reviewer": null,
+        "decided_at": null,
+        "blocking_reasons": [
+          "issuer_access_not_enabled",
+          "terms_not_reviewed",
+          "fund_eligibility_not_verified",
+          "holdings_endpoint_not_verified",
+          "two_dated_samples_not_obtained",
+          "quality_not_measured"
+        ]
+      },
+      "review_questions": [
+        "Verify official fund identifiers, holdings delivery, and daily disclosure for each selected fund.",
+        "Check cash, currency, and any unsupported positions in complete files.",
+        "Establish stable fund identifiers independently of tickers or product-name changes."
+      ]
+    },
+    {
+      "issuer_id": "t_rowe_price",
+      "name": "T. Rowe Price",
+      "research_priority": 4,
+      "discovery_url": "https://www.troweprice.com/",
+      "discovery_url_status": "unverified_seed",
+      "seed_tickers": [
+        "TCAF"
+      ],
+      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "research_rationale": "Additional candidate for discretionary active US equity comparisons; current suitability is unverified.",
+      "access": {
+        "status": "blocked_by_environment_policy",
+        "checked_at": "2026-11-06T11:05:25Z",
+        "required_discovery_host": "www.troweprice.com",
+        "network_evidence_id": "network-2026-11-06",
+        "issuer_request_attempted_this_review": false,
+        "issuer_http_status": null,
+        "verified_download_hosts": []
+      },
+      "terms_review": {
+        "status": "not_reviewed",
+        "document_ids": [],
+        "permissions": {
+          "manual_research_download": "unknown",
+          "automated_retrieval": "unknown",
+          "raw_file_retention": "unknown",
+          "commercial_internal_analysis": "unknown",
+          "customer_display_of_holdings": "unknown",
+          "customer_display_of_derived_analytics": "unknown",
+          "raw_file_redistribution": "unknown",
+          "public_git_fixture_publication": "unknown",
+          "identifier_reuse": "unknown",
+          "classification_reuse": "unknown"
+        },
+        "reviewer": null,
+        "reviewed_at": null,
+        "conditions": [],
+        "notes": "No issuer terms have been retrieved or read in this assessment.",
+        "decision_ids": []
+      },
+      "holdings_review": {
+        "status": "not_measured",
+        "fund_ids": [],
+        "sample_ids": [],
+        "verified_download_url_count": 0,
+        "verified_distinct_portfolio_date_count": 0
+      },
+      "decision": {
+        "status": "research_candidate",
+        "selected_for_pilot": false,
+        "production_import_enabled": false,
+        "reviewer": null,
+        "decided_at": null,
+        "blocking_reasons": [
+          "issuer_access_not_enabled",
+          "terms_not_reviewed",
+          "fund_eligibility_not_verified",
+          "holdings_endpoint_not_verified",
+          "two_dated_samples_not_obtained",
+          "quality_not_measured"
+        ]
+      },
+      "review_questions": [
+        "Verify each fund discloses the actual complete portfolio, not a proxy portfolio.",
+        "Distinguish complete downloadable holdings from top-holdings marketing tables.",
+        "Review the exact product and regional website terms applying to the file."
+      ]
+    },
+    {
+      "issuer_id": "fidelity",
+      "name": "Fidelity",
+      "research_priority": 5,
+      "discovery_url": "https://www.fidelity.com/",
+      "discovery_url_status": "unverified_seed",
+      "seed_tickers": [
+        "FELC"
+      ],
+      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "research_rationale": "Additional candidate for active US equity comparisons; current suitability is unverified.",
+      "access": {
+        "status": "blocked_by_environment_policy",
+        "checked_at": "2026-11-06T11:05:25Z",
+        "required_discovery_host": "www.fidelity.com",
+        "network_evidence_id": "network-2026-11-06",
+        "issuer_request_attempted_this_review": false,
+        "issuer_http_status": null,
+        "verified_download_hosts": []
+      },
+      "terms_review": {
+        "status": "not_reviewed",
+        "document_ids": [],
+        "permissions": {
+          "manual_research_download": "unknown",
+          "automated_retrieval": "unknown",
+          "raw_file_retention": "unknown",
+          "commercial_internal_analysis": "unknown",
+          "customer_display_of_holdings": "unknown",
+          "customer_display_of_derived_analytics": "unknown",
+          "raw_file_redistribution": "unknown",
+          "public_git_fixture_publication": "unknown",
+          "identifier_reuse": "unknown",
+          "classification_reuse": "unknown"
+        },
+        "reviewer": null,
+        "reviewed_at": null,
+        "conditions": [],
+        "notes": "No issuer terms have been retrieved or read in this assessment.",
+        "decision_ids": []
+      },
+      "holdings_review": {
+        "status": "not_measured",
+        "fund_ids": [],
+        "sample_ids": [],
+        "verified_download_url_count": 0,
+        "verified_distinct_portfolio_date_count": 0
+      },
+      "decision": {
+        "status": "research_candidate",
+        "selected_for_pilot": false,
+        "production_import_enabled": false,
+        "reviewer": null,
+        "decided_at": null,
+        "blocking_reasons": [
+          "issuer_access_not_enabled",
+          "terms_not_reviewed",
+          "fund_eligibility_not_verified",
+          "holdings_endpoint_not_verified",
+          "two_dated_samples_not_obtained",
+          "quality_not_measured"
+        ]
+      },
+      "review_questions": [
+        "Establish each selected fund's transparency, portfolio date, and download format independently.",
+        "Confirm the file is for the ETF share class and correct market, not a related mutual fund.",
+        "Identify any third-party identifier or classification restrictions in supplied data."
+      ]
+    },
+    {
+      "issuer_id": "jpmorgan_am",
+      "name": "JPMorgan Asset Management",
+      "research_priority": 6,
+      "discovery_url": "https://am.jpmorgan.com/",
+      "discovery_url_status": "unverified_seed",
+      "seed_tickers": [
+        "JGRO"
+      ],
+      "seed_ticker_status": "unverified_search_leads_not_roster",
+      "research_rationale": "Additional candidate for active US equity comparisons; current suitability is unverified.",
+      "access": {
+        "status": "blocked_by_environment_policy",
+        "checked_at": "2026-11-06T11:05:25Z",
+        "required_discovery_host": "am.jpmorgan.com",
+        "network_evidence_id": "network-2026-11-06",
+        "issuer_request_attempted_this_review": false,
+        "issuer_http_status": null,
+        "verified_download_hosts": []
+      },
+      "terms_review": {
+        "status": "not_reviewed",
+        "document_ids": [],
+        "permissions": {
+          "manual_research_download": "unknown",
+          "automated_retrieval": "unknown",
+          "raw_file_retention": "unknown",
+          "commercial_internal_analysis": "unknown",
+          "customer_display_of_holdings": "unknown",
+          "customer_display_of_derived_analytics": "unknown",
+          "raw_file_redistribution": "unknown",
+          "public_git_fixture_publication": "unknown",
+          "identifier_reuse": "unknown",
+          "classification_reuse": "unknown"
+        },
+        "reviewer": null,
+        "reviewed_at": null,
+        "conditions": [],
+        "notes": "No issuer terms have been retrieved or read in this assessment.",
+        "decision_ids": []
+      },
+      "holdings_review": {
+        "status": "not_measured",
+        "fund_ids": [],
+        "sample_ids": [],
+        "verified_download_url_count": 0,
+        "verified_distinct_portfolio_date_count": 0
+      },
+      "decision": {
+        "status": "research_candidate",
+        "selected_for_pilot": false,
+        "production_import_enabled": false,
+        "reviewer": null,
+        "decided_at": null,
+        "blocking_reasons": [
+          "issuer_access_not_enabled",
+          "terms_not_reviewed",
+          "fund_eligibility_not_verified",
+          "holdings_endpoint_not_verified",
+          "two_dated_samples_not_obtained",
+          "quality_not_measured"
+        ]
+      },
+      "review_questions": [
+        "Screen each fund for option overlays and other unsupported instruments before admission.",
+        "Verify actual portfolio contents rather than inferring eligibility from an equity label.",
+        "Confirm US-market fund identity and applicable regional terms for each download."
+      ]
+    }
+  ],
+  "terms_documents": [],
+  "funds": [],
+  "samples": [],
+  "field_mappings": [],
+  "evidence_note": "Empty evidence arrays mean no live documents or samples have been obtained. Null means unknown, never zero or approved. Record shapes and review procedure are in docs/source-register.md.",
+  "rights_decisions": []
+}

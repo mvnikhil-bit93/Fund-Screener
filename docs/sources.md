@@ -1,6 +1,6 @@
 # Source feasibility register — M00
 
-Assessment date: 1 November 2026 (UTC).
+Latest assessment: 6 November 2026 (UTC). Initial access investigation: 1 November 2026.
 
 Status: **incomplete — issuer access is blocked by the current environment network policy.**
 
@@ -9,7 +9,34 @@ This register implements the evidence-recording part of M00 in
 commercial use, or a source adapter. No issuer holdings files have been downloaded
 or added to fixtures.
 
+## 6 November 2026 — expandable issuer review
+
+The preferred acquisition route is now official issuer downloads. The research
+sample includes Capital Group, Avantis, Dimensional, T. Rowe Price, Fidelity, and
+JPMorgan Asset Management; this expands investigation, not the approved universe.
+
+- [Canonical issuer mapping](../config/issuer_sources.json): separate access,
+  terms, holdings, evidence, and admission states for each candidate.
+- [Spreadsheet summary](issuer-sources.csv): generated from the mapping.
+- [Review guide and candidate comparison](source-register.md): evidence fields,
+  per-use terms review, sample measurements, and how to extend the mapping.
+- [Importer implementation plan](importer-plan.md): source-validation gates,
+  bounded retrieval, original-file storage, parsing, and acceptance tests.
+
+The current runtime policy was rechecked on 6 November and still permits none of
+the six discovery hosts. No blocked issuer request was retried, and no terms or
+holdings files were obtained. All six have terms=not_reviewed and holdings=
+not_measured; discovery URLs/tickers are leads rather than verified endpoints or
+eligible funds. The mapping contains no invented file schemas or quality scores.
+
+The environment draft now preserves the original issuer and GitHub API entries
+and adds www.dimensional.com, www.troweprice.com, www.fidelity.com, and
+am.jpmorgan.com. The save was confirmed; runtime activation remains outstanding.
+These additions do not authorize commercial use or approve an issuer.
+
 ## Candidate investigation order
+
+The initial two candidates below remain first in the expanded research order.
 
 | Candidate | Initial discovery URL | Verified holdings endpoint | Launch roster |
 | --- | --- | --- | --- |

@@ -100,8 +100,8 @@ runtime API access; the issuer access limitations remain recorded in sources.md.
 
 ## 1 November 2026 — M03 PostgreSQL foundation
 
-Implemented on feat/m03-postgres-foundation after the M02 merge. Review and merge
-remain the gate for this ticket. The [database guide](database.md) records the
+Merged through PR #2 into main at d655c3c after implementation on
+feat/m03-postgres-foundation. The [database guide](database.md) records the
 local commands, schema, role grants, and integration setup.
 
 ### Approach and scope
@@ -159,3 +159,42 @@ the existing installation instructions were retained.
 This ticket does not deploy a database service, publish the cloud environment,
 implement authentication, or establish source-data coverage. No production
 credentials, Terraform, application server, or financial engine is introduced.
+
+## 6 November 2026 — M00 issuer register and importer plan
+
+At Nikhil's request, official issuer downloads are the preferred source route.
+The investigation sample now includes Capital Group, Avantis, Dimensional,
+T. Rowe Price, Fidelity, and JPMorgan Asset Management. This extends research,
+not the approved fund universe. Capital Group and Avantis remain first in the
+investigation order; seed tickers are unverified discovery leads.
+
+Added config/issuer_sources.json as the canonical research mapping and
+docs/issuer-sources.csv as its spreadsheet export. The register separates
+network access, usage permissions, sample evidence, field mappings, quality,
+and source admission. Its guide defines scoped permission decisions linked to
+specific terms clauses. No issuer is approved and no production import is
+enabled. The small exporter regenerates/checks the CSV without network access.
+
+The current runtime policy was rechecked and blocks all six discovery hosts.
+No issuer HTTP request was retried against that policy; no terms document or
+holdings file was obtained. Terms and quality assessment remain unperformed,
+and M00 remains incomplete. The source mapping records these gaps explicitly.
+
+The existing environment draft was preserved and four exact discovery domains
+were added: www.dimensional.com, www.troweprice.com, www.fidelity.com, and
+am.jpmorgan.com. Draft persistence was confirmed; runtime activation and
+publication are user-controlled and have not been established by the save.
+
+docs/importer-plan.md defines the next sequence: obtain source evidence and two
+distinct dated samples; implement bounded M04 acquisition and immutable original
+files; implement M05 parsing and candidate quality checks. Publication and
+historical-as-known readers remain M07. No importer implementation or recurring
+job is included in this change.
+
+Local validation: make check passed, including 112 offline tests, strict typing,
+format/lint, package boundaries, lock consistency, and dependency policy. The
+CSV matches the JSON; six unique candidates, empty evidence collections,
+disabled admission, documentation links, and spreadsheet formula escaping were
+checked. git diff --check passed. The archived specification checksum and
+golden expectations are unchanged. No database test rerun was needed for these
+research/export changes; hosted CI and all live issuer checks remain unverified.
