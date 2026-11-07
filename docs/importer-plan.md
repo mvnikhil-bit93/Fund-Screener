@@ -1,12 +1,20 @@
-# Direct issuer importer plan
+# Holdings importer plan
 
-Updated 7 November 2026 after approval of identified money-market fund-unit support.
+Updated 7 November 2026 after approval of identified money-market fund-unit support
+and daily historical holdings for at least three years, or since inception.
 This is a proposed implementation plan, not an implemented importer or source-use
 approval.
 Issuer discovery sites are now reachable. The [live assessment](issuer-assessment.md)
 records terms applicability, access gates, Avantis's official All Holdings/export
 route, and JPMorgan's actual JGRO Excel downloads. Files for 5 and 6 November
 are now captured; a complete first-source contract and accepted fund roster remain open.
+
+**Historical source feasibility is the next prerequisite.** The
+[historical-source assessment](historical-sources.md) compares issuer archives and
+commercial candidates. No inspected source yet establishes the required daily
+backfill. Select the acquisition source before committing to an issuer-specific
+HTML/XLSX adapter; the eventual contract may use historical and ongoing delivery
+from different providers if their compatibility is demonstrated.
 
 The subsequent [JPMorgan validation](jpmorgan-source-validation.md) screens all
 31 active equity funds and records a repeat acquisition with unchanged financial
@@ -45,6 +53,8 @@ For each candidate source, complete the following evidence before selecting it:
 | Official fund page, issuer fund ID, ticker, full-holdings link, and actual redirect chain | Establish the authoritative endpoint and fund identity |
 | Applicable website, disclosure/file and tool terms; scope, evidence versions, reviewed basis and reviewer | Assess access method, original-document retention, factual-data analysis/display, derived analytics, third-party additions and redistribution separately |
 | Two permitted files from distinct portfolio dates, with retrieval metadata and hashes | Test real format variation and avoid mistaking two downloads of one date for historical coverage |
+| Per-fund date inventory across three years or since inception, plus actual historical samples spanning the period and consecutive dates | Establish historical feasibility before adapter selection; two recent files alone are insufficient |
+| Historical provenance, revisions, identifier continuity, delivery/use basis and backfill/recurring costs | Evaluate the proposed archive and ongoing source together, including any source transition |
 | Portfolio date field, timezone, evidenced publication metadata, calendar, and deadline | Distinguish source valuation date, retrieval time, and lateness |
 | File type, sheets/sections, column names, units, identifiers, row count, and full-portfolio evidence | Define the parser and completeness checks |
 | Reported denominator, decimal precision, total weight, residual, and unsupported rows | Establish which calculations the source can support without normalization |
@@ -64,8 +74,11 @@ terms, or assume all derived analytics are unrestricted.
 Discover download hosts from issuer links and actual responses. Review exact
 new hosts through environment settings; do not guess CDN patterns, add wildcard
 access, route around blocked hosts, or bypass consent/authentication challenges.
-If only today's file is available, capture a second date later when permitted;
-do not invent an archive or relabel a synthetic file as issuer evidence.
+If only today's file is available, prospective capture can add format evidence,
+but cannot establish the required backfill. Investigate an evidenced archive or
+alternative provider; do not invent an archive or relabel synthetic files as
+issuer evidence. Complete acquisition/reconciliation of the approved historical
+inventory follows implementation and is required before pilot sign-off.
 
 The source decision records technical suitability and the reviewed basis for
 each use separately. Unknown evidence cannot become an approval through a
@@ -73,7 +86,7 @@ default value.
 Choose the first adapter only after these findings support a concrete source
 contract; unresolved commercial rights remain an explicit pilot blocker.
 
-### Verified delivery choices to compare
+### Verified current delivery choices to compare after historical sourcing
 
 | Candidate | Acquisition evidence | Implication for the first adapter |
 | --- | --- | --- |

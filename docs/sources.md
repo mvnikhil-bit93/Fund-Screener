@@ -8,6 +8,13 @@ reviewed evidence does not establish that underlying factual holdings require a
 paid data licence. Website access conditions, factual reuse, proprietary additions,
 original-document retention and financial suitability are separate questions.
 
+**Priority: establish credible daily historical holdings before choosing the
+importer.** The approved minimum is three years, or since inception for newer
+funds. No source currently satisfies that gate. The [historical-source assessment](historical-sources.md)
+and [candidate mapping](../config/historical_sources.json) compare issuer archives,
+ETF Global, FactSet, Morningstar and Intrinio, with SEC filings as potential
+periodic cross-checks. Commercial coverage and pricing remain unverified.
+
 ## Current evidence and mapping
 
 - [Six-issuer assessment](issuer-assessment.md): source-linked findings and measurements.
@@ -94,10 +101,14 @@ themselves demonstrate daily delivery history.
 
 M00 still needs a suitable launch roster, a complete first-source contract,
 scoped access/use findings, calendar/deadline, denominator and identity evidence,
-and two accepted portfolio dates for the same suitable fund. A paid feed is not
-assumed to be the solution to these gaps.
+and two accepted portfolio dates for the same suitable fund. It now also requires
+per-fund historical coverage inventories and representative actual files proving
+feasibility of the daily three-year/since-inception requirement. Full acquisition
+and reconciliation follow implementation, before pilot sign-off. A paid feed is
+not assumed to be the solution to these gaps.
 
-Compare JPMorgan's workbook route with Avantis's All Holdings route. JPMorgan now
+Resolve historical sourcing first, then compare JPMorgan's workbook route with
+Avantis's All Holdings route and any validated alternative provider. JPMorgan now
 provides a concrete file-format candidate, while both samples expose material
 position/precision questions. Do not choose an analytical denominator to force
 unit totals or silently treat money-market/sweep investments as explicit cash.

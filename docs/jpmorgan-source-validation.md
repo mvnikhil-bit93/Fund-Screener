@@ -188,6 +188,7 @@ unchanged. Overlap, concentration and source-admission engines are later work.
 | M00-JPM-03 | Money-market scope extension | Approved 7 November; specification and candidate representation implemented and tested. Actual instrument verification remains open. |
 | M00-JPM-04 | Exact eligible roster and identities | Fund/date-specific position checks and reviewed ADR/REIT/reference IDs; ten-fund target remains unchanged |
 | M00-JPM-05 | Operation-specific use basis | Document retrieval, factual use and original-file retention separately; clarify only material unresolved conditions |
+| M00-JPM-06 | Daily historical archive — open, prerequisite to adapter selection | Evidence a three-year/since-inception route, per-fund date inventory and historical samples; compare an issuer archive or alternative provider under the [historical-source gate](historical-sources.md). Two recent JGRO files do not meet this requirement. |
 | M04/M05/M07 | Raw versus financial revisions | Metadata-only XLSX change archives a new observation without inventing a new portfolio date or financial correction |
 
 This update advances M00 research and the approved candidate-model extension.

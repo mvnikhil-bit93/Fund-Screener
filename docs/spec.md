@@ -5,7 +5,7 @@ Owner: Nikhil
 Status: active MVP build contract; progress and verification are in docs/decisions.md  
 Repository: Fund-Screener; use the existing checkout
 
-Scope amendment: 7 November 2026 — approved identified money-market fund units.
+Scope amendments: 7 November 2026 — approved identified money-market fund units and daily historical holdings for at least three years, or since inception for newer funds.
 
 ## 1. Purpose and relationship to v1.0
 
@@ -38,8 +38,9 @@ The product says “reported holdings changes.” A weight change alone does not
 - Money-market fund units retain their own instrument identity and reported weight. They are not Cash, are not looked through, and are not assumed interchangeable or valued at par. A source label alone does not establish a verified fund/share-class identity.
 - Exclude short, leveraged, inverse, option-overlay, futures, swap, and other derivative strategies from the initial roster.
 - A fund advertised as an equity fund is not automatically supported. Its actual positions and disclosure format must satisfy the adapter contract.
-- Source investigation starts with Capital Group and Avantis Investors as candidates. This is a research order, not a claim of current access, daily completeness, or permitted commercial use.
+- Initial issuer discovery started with Capital Group and Avantis Investors. The current historical-source investigation order is in [historical-sources.md](historical-sources.md); research priority does not establish access, daily completeness, or permitted commercial use.
 - M00 produces the exact fund identifiers, source URLs, selected issuers, and coverage decisions. Do not invent a production roster or substitute another universe silently.
+- Every launch fund requires complete daily historical holdings for at least the three calendar years ending on its latest expected portfolio date, or since documented inception if newer. Use the fund's publication calendar; stale availability cannot move the required window backward. Establish credible historical sourcing before choosing the first adapter.
 - A first issuer is sufficient for the pilot if it supports at least ten eligible funds. Add a second only after the first adapter works end to end.
 
 ### Included in the pilot
@@ -59,12 +60,15 @@ N-PORT ingestion; UCITS coverage; fixed-income and derivative analytics; holding
 
 These are separate product expansions, not hidden MVP acceptance criteria.
 
+The deferral of a licensed bulk data feed does not preclude M00 research into commercial historical holdings sources. Source evaluation does not authorize purchasing, implementing or enabling a feed, contacting providers, or redistributing bulk data. Record any selected commercial delivery proposal and its implementation implications before proceeding.
+
 ## 3. Success criteria and budget
 
 Technical correctness is necessary, but the pilot must also answer a recurring customer question.
 
 - One prospective user can create a competitor basket, explain a reported change from its source, and use the brief on at least five market days. Nikhil records feedback and decides whether the workflow is useful enough to expand.
 - At least ten eligible funds have valid coverage for five consecutive expected publication days before pilot sign-off.
+- Before pilot sign-off, reconcile the full acquired historical backfill for every launch fund to its approved coverage inventory and publication calendar. Unresolved missing expected dates block a claim that the historical minimum is met. Report source availability and analytical eligibility separately; historical unsupported positions or incomplete weights cannot be hidden to manufacture coverage.
 - Every scheduled run reports coverage gaps; missing data never appears as zero exposure or “no changes.”
 - Supported, executed calculations match deterministic expected results within their declared tolerances. There is no allowance for a percentage of incorrect financial answers.
 - p95 response time for a 25-fund, two-date query is below two seconds on a documented 2-vCPU, 4-GiB benchmark machine with local snapshot files, excluding login and source retrieval.
@@ -157,6 +161,12 @@ M00 records each proposed source in docs/sources.md with:
 - separate redistribution permission status; no bulk feed is enabled by this pilot;
 - freshness semantics and completeness checks;
 - a recent permitted fixture with URL, retrieval time, content hash, and source portfolio date.
+
+Historical sourcing is an M00 prerequisite to adapter selection. The [historical-source assessment](historical-sources.md) records candidate evidence and remaining gaps. For each proposed launch fund, obtain a dated inventory of available portfolio dates across the required three-year/since-inception window, supported by source evidence and checked against the expected calendar. Inspect actual historical samples spanning the window and a consecutive-date interval, including at least two distinct permitted portfolio dates from the first source. Document original provenance, identifier continuity, corrections/restatements, delivery limits, retention/use conditions, and quoted or measured costs, including one-time backfill and recurring charges. Provider reputation or an advertised dataset start date is not fund-specific coverage evidence.
+
+M00 establishes feasibility through the coverage inventory and representative samples; it does not require an unbuilt production importer to acquire the entire archive. Full acquisition and reconciliation follow implementation and remain a data-pilot gate. Daily price/NAV history, periodic filings, top holdings, creation baskets, proxy portfolios, or reconstructed estimates do not satisfy the daily full-portfolio requirement. Missing dates must remain explicit, without silent carry-forward or interpolation. Historical fund and instrument changes require evidence; do not splice separate funds across mergers or imply that a current-fund roster removes survivorship bias.
+
+Backfill preserves the knowledge-time rules in section 6: first_observed_at is the actual acquisition time, and source_published_at requires separate evidence. Retrospective portfolio-date coverage does not establish what this system knew on those historical dates. Evaluate revision and publication metadata without silently introducing a historical source-publication-time research mode.
 
 Measure total weights, reported precision, and full-overlap eligibility on the source samples. The pilot must demonstrate useful comparison output on actual files. If rounding means most files are ineligible for full overlap/active share under section 8, record that limitation before committing to the source: the pilot may use clearly labeled known matched weights, or adopt a separately reviewed methodology. Do not silently normalize source weights or relax a numerical gate.
 
@@ -496,7 +506,7 @@ Each ticket has a narrow outcome, dependencies, and acceptance evidence. “Comp
 
 | ID | Outcome | Depends on | Acceptance |
 | --- | --- | --- | --- |
-| M00 | Source feasibility and exact launch roster | none | Document authoritative endpoints, rights status, weight bases, fund calendars, required source fields, and at least two permitted dated samples from the first issuer. Mark unresolved commercial permissions as pilot blockers. |
+| M00 | Source feasibility and exact launch roster | none | Document authoritative endpoints, rights status, weight bases, fund calendars, required source fields, and at least two permitted dated samples from the first source. Establish daily three-year/since-inception historical feasibility for every proposed launch fund through coverage inventories, representative historical samples, revision semantics, delivery/use conditions and costs before adapter selection. Mark unresolved history and commercial-use requirements as blockers to the affected milestone. |
 | M01 | Python scaffold, offline checks, original fixture | this spec | Packages and boundary rules exist; original six-row fixture and all expected values are preserved in one bootstrap PR; fixture loader/checks execute. No financial engine is claimed complete. |
 | M02 | Core typed schemas, canonical hashes, quality contracts | M01 | Round trips preserve types; missing identities/dates/weights fail; canonical order is stable; source-completeness and metric-eligibility states are distinct. |
 | M03 | PostgreSQL catalog, application schema, migration and role foundation | M02 | Migrations work from empty DB; rollback/failure paths tested; tenant RLS proven with runtime roles; local DB instructions verified. |
@@ -513,7 +523,7 @@ Each ticket has a narrow outcome, dependencies, and acceptance evidence. “Comp
 | M14 | Minimal basket and analysis UI | M11, M13 | A user can inspect coverage, exposures, overlap, and changes with provenance; partial/stale results are clear; keyboard/escaping checks pass. |
 | M15 | Deterministic daily brief; optional email adapter/outbox | M11, M13 | Brief includes all basket members and gaps; fixed templates reflect table values; persisted-brief rerun tests pass. Outbox/crash checks apply if email is enabled; external sending stays off until configured and authorized. |
 | M16 | Optional second issuer | M00, M08, M11 | New adapter meets the same source, rights, schema, completeness and calendar contracts; existing issuer results do not regress. |
-| M17 | Pilot hardening, costed deployment plan and recovery rehearsal | M08, M12–M15; M16 if included | Representative benchmark; backup/restore in isolated target; rights/coverage review; security tests; pinned artifact and manual deployment instructions; budget reviewed. |
+| M17 | Pilot hardening, costed deployment plan and recovery rehearsal | M08, M12–M15; M16 if included | Representative benchmark; backup/restore in isolated target; rights/coverage review including full historical backfill reconciliation; security tests; pinned artifact and manual deployment instructions; budget reviewed. |
 | M18 | Explicitly authorized pilot deployment and customer validation | M17 plus external prerequisites | Actual login/revocation and source checks pass; ten funds covered for five expected days; user workflow reviewed; costs observed; deployment/rollback evidence recorded. |
 
 M01–M03 can progress while source permissions are investigated, using synthetic fixtures. M09 can start after its own dependencies while publication work continues. M12 can proceed after M03. Other parallel work must respect the listed prerequisites.
@@ -529,6 +539,8 @@ Pinned installation, offline checks, golden calculations, temporary-Postgres int
 ### Data pilot ready
 
 Source usage has been reviewed; ten named funds meet the scope; relevant per-fund publications pass for five expected days; manual inspection of representative snapshots and changes agrees with source evidence. Missing/unresolved weights are reported by weight as well as row count.
+
+Every launch fund's full daily historical backfill meets the three-year/since-inception minimum and has been reconciled against its approved fund/date inventory and calendar. Missing expected dates, rejected snapshots, unsupported positions, revision limitations and metric eligibility are visible separately; no synthetic dates or normalized weights repair coverage. Retained artifacts and provenance support replay under the agreed use and retention conditions.
 
 ### External pilot ready
 

@@ -28,6 +28,13 @@ The identified money-market fund-unit scope extension is approved and represente
 in the candidate model; each actual instrument still requires evidence. JGRO's
 two prospectively captured files do not establish an earlier daily holdings archive.
 
+The [historical-source assessment](historical-sources.md) and its separate
+[candidate mapping](../config/historical_sources.json) now track the approved
+daily three-year/since-inception requirement. They compare archive delivery and
+commercial research leads without changing the evidence or approvals in this
+issuer register. Earlier samples remain format evidence; historical feasibility
+must be established before selecting the importer.
+
 ## Investigation sample
 
 Priority is an investigation order, not a measured quality or licensing score.

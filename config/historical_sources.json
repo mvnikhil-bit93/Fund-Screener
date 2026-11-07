@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0.0",
+  "updated_on": "2026-11-07",
+  "purpose": "Expandable research mapping; not executable acquisition configuration, a vendor recommendation based on verified coverage, or source-use approval.",
+  "assessment_status": "no_source_verified_for_required_daily_history",
+  "requirements": {
+    "approved_on": "2026-11-07",
+    "approval_basis": "User selected Daily, 3+ years or since inception in this conversation.",
+    "dataset": "complete_actual_portfolio_holdings",
+    "frequency": "each_expected_daily_portfolio_date",
+    "minimum_calendar_years": 3,
+    "newer_fund_rule": "since_documented_inception",
+    "window_end": "latest_expected_portfolio_date_under_verified_calendar_and_deadline",
+    "target_fund_count_minimum": 10,
+    "target_fund_count_maximum": 25,
+    "target_issuer_count_minimum": 1,
+    "target_issuer_count_maximum": 2,
+    "silent_forward_fill_allowed": false,
+    "reconstructed_holdings_allowed": false,
+    "price_history_substitution_allowed": false,
+    "whole_platform_recurring_target_usd_per_month_below": 1500
+  },
+  "evidence_states": {
+    "research_lead_not_live_verified": "Starting URL/name only; no current documentation or sample-backed claims.",
+    "current_daily_samples_only": "Existing current-disclosure evidence; historical archive remains unverified.",
+    "provider_claim_documented": "A dated official claim has been recorded; actual fund coverage still requires samples and inventory.",
+    "historical_samples_validated": "Historical payloads inspected; does not alone prove continuous coverage.",
+    "feasibility_verified": "Full horizon date inventory, representative files, use basis, semantics and costs support source choice; full acquisition reconciliation remains a later gate."
+  },
+  "verification_plan": {
+    "probe_tickers": [
+      "JGRO",
+      "AVUS",
+      "AVUV"
+    ],
+    "probe_funds_are_launch_roster": false,
+    "initial_consecutive_expected_dates": 20,
+    "initial_separated_samples": [
+      "near_required_start",
+      "near_two_years_before_window_end_if_in_scope",
+      "near_one_year_before_window_end_if_in_scope",
+      "latest_same_date_issuer_comparison"
+    ],
+    "selection_requires_inventory_for_every_proposed_launch_fund": true,
+    "pilot_requires_full_acquisition_reconciliation": true,
+    "first_observed_at_rule": "actual_system_acquisition_time_never_backdated",
+    "source_publication_time_requires_evidence": true,
+    "historical_universe_survivorship_status": "not_established",
+    "comparison_checklist": "docs/historical-sources.md"
+  },
+  "network_review": {
+    "recorded_on": "2026-11-07",
+    "evidence": "Observed enforced restricted runtime policy; saved environment draft response. No excluded-host request was attempted.",
+    "new_research_hosts": [
+      "www.sec.gov",
+      "www.etfg.com",
+      "www.factset.com",
+      "developer.factset.com",
+      "www.morningstar.com",
+      "intrinio.com",
+      "docs.intrinio.com"
+    ],
+    "proposal_saved": true,
+    "requires_publish_returned": true,
+    "runtime_activation_verified": false,
+    "prior_domains_preserved": true
+  },
+  "candidates": [
+    {
+      "source_id": "jpmorgan-issuer-history",
+      "name": "JPMorgan issuer archive or historical delivery",
+      "source_kind": "issuer_archive",
+      "investigation_priority": 1,
+      "research_urls": [
+        "https://am.jpmorgan.com/"
+      ],
+      "evidence_state": "current_daily_samples_only",
+      "observed_sample_dates": [
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "existing_evidence_refs": [
+        {
+          "path": "config/issuer_sources.json",
+          "record_ids": [
+            "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+            "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176"
+          ]
+        },
+        {
+          "path": "config/jpmorgan_source_validation.json",
+          "record_ids": []
+        }
+      ],
+      "next_proof": "Find an evidenced archive route and daily date inventory; empty holdings fields on the inspected history endpoint do not establish absence elsewhere.",
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    },
+    {
+      "source_id": "avantis-issuer-history",
+      "name": "Avantis issuer archive or historical delivery",
+      "source_kind": "issuer_archive",
+      "investigation_priority": 1,
+      "research_urls": [
+        "https://www.avantisinvestors.com/"
+      ],
+      "evidence_state": "current_daily_samples_only",
+      "observed_sample_dates": [
+        "2026-11-05"
+      ],
+      "existing_evidence_refs": [
+        {
+          "path": "config/issuer_sources.json",
+          "record_ids": [
+            "avantis-avus-2026-11-05-all-holdings-html-8dca50ccb654",
+            "avantis-avuv-2026-11-05-html-f0ae343a6988"
+          ]
+        }
+      ],
+      "next_proof": "Find older actual daily portfolios and date inventory; the inspected current export does not provide a historical archive.",
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    },
+    {
+      "source_id": "etf-global-history",
+      "name": "ETF Global",
+      "source_kind": "commercial_candidate",
+      "investigation_priority": 1,
+      "research_urls": [
+        "https://www.etfg.com/"
+      ],
+      "next_proof": "Identify exact product, issuer provenance, full portfolios versus baskets, per-fund daily history, revisions, terms and quote.",
+      "evidence_state": "research_lead_not_live_verified",
+      "observed_sample_dates": [],
+      "existing_evidence_refs": [],
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    },
+    {
+      "source_id": "factset-history",
+      "name": "FactSet",
+      "source_kind": "commercial_candidate",
+      "investigation_priority": 2,
+      "research_urls": [
+        "https://www.factset.com/",
+        "https://developer.factset.com/"
+      ],
+      "next_proof": "Identify daily historical ETF portfolio product; distinguish periodic fund holdings and ownership data; verify exact fund/date coverage and quote.",
+      "evidence_state": "research_lead_not_live_verified",
+      "observed_sample_dates": [],
+      "existing_evidence_refs": [],
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    },
+    {
+      "source_id": "morningstar-history",
+      "name": "Morningstar",
+      "source_kind": "commercial_candidate",
+      "investigation_priority": 2,
+      "research_urls": [
+        "https://www.morningstar.com/business"
+      ],
+      "next_proof": "Verify underlying portfolio frequency per ETF, history, revisions and delivery; daily database updates alone are insufficient.",
+      "evidence_state": "research_lead_not_live_verified",
+      "observed_sample_dates": [],
+      "existing_evidence_refs": [],
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    },
+    {
+      "source_id": "intrinio-history",
+      "name": "Intrinio",
+      "source_kind": "commercial_candidate",
+      "investigation_priority": 3,
+      "research_urls": [
+        "https://intrinio.com/",
+        "https://docs.intrinio.com/"
+      ],
+      "next_proof": "Find an actual historical holdings endpoint and supplier lineage; distinguish latest holdings and price history; verify backfill, ongoing delivery, terms and quote.",
+      "evidence_state": "research_lead_not_live_verified",
+      "observed_sample_dates": [],
+      "existing_evidence_refs": [],
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    },
+    {
+      "source_id": "sec-nport-comparison",
+      "name": "SEC EDGAR / Form N-PORT",
+      "source_kind": "periodic_comparison",
+      "investigation_priority": 3,
+      "research_urls": [
+        "https://www.sec.gov/edgar"
+      ],
+      "next_proof": "Verify current filing/publication rules and exact fund filings for periodic cross-checks; cannot substitute for daily holdings.",
+      "evidence_state": "research_lead_not_live_verified",
+      "observed_sample_dates": [],
+      "existing_evidence_refs": [],
+      "historical_holdings_endpoint": null,
+      "verified_daily_history_start": null,
+      "verified_daily_history_end": null,
+      "fund_date_inventory": null,
+      "historical_samples": [],
+      "live_documentation_evidence": [],
+      "quote": null,
+      "use_basis_status": "not_established_for_historical_delivery",
+      "historical_minimum_satisfied": false,
+      "production_enabled": false
+    }
+  ],
+  "source_selection": {
+    "selected_source_ids": [],
+    "status": "open_pending_live_documentation_inventory_samples_and_cost",
+    "candidate_design": "Historical backfill plus ongoing issuer acquisition, or one provider for both; verify same-date compatibility before selection.",
+    "approved_purchase": false,
+    "provider_contact_sent": false
+  }
+}

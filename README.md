@@ -28,6 +28,10 @@ additions; a paid data licence is not assumed necessary. Specific use basis,
 fund eligibility and a complete source contract remain open admission requirements.
 JGRO workbooks for 5 and 6 November are captured; earlier daily portfolio history
 remains unverified, separately from the issuer's available NAV/price history.
+The approved historical minimum is daily holdings for three years, or since
+inception for newer funds. The [historical-source assessment](docs/historical-sources.md)
+and [expandable candidate mapping](config/historical_sources.json) make archive
+coverage a prerequisite to selecting the importer; no source yet meets that gate.
 The [JPMorgan validation](docs/jpmorgan-source-validation.md) records the complete
 31-fund active equity screen. The approved money-market fund-unit extension adds
 a distinct candidate-model category; instrument verification and source admission

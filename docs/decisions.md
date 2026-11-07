@@ -421,3 +421,49 @@ samples, original archive/goldens and old canonical hash behavior. No database
 integration rerun was needed for the additive record category. Hosted CI remains
 unobserved. No source files/constituent datasets were committed and no environment
 configuration was changed or published in this turn.
+
+## 7 November 2026 — historical sourcing before importer selection
+
+The user prioritized credible historical sources and explicitly selected daily
+holdings for at least three years, or since inception for newer ETFs. The active
+specification now requires that history for each launch fund, anchored to its
+latest expected portfolio date and verified calendar. M00 must establish
+feasibility through a complete fund/date inventory and representative historical
+files before selecting an adapter. Full acquisition and reconciliation follow
+implementation and are required before pilot sign-off. Two recent JGRO files
+remain valid format evidence but do not establish a historical archive.
+
+The historical-source assessment and version 1.0.0 candidate mapping record seven
+research candidates: JPMorgan and Avantis archive delivery, ETF Global, FactSet,
+Morningstar, Intrinio, and SEC filings as periodic comparisons. Commercial names
+and public starting URLs are research leads from general knowledge; no current
+product claims, daily coverage, prices or use conditions were live verified.
+All historical coverage/quote fields remain unknown and production is disabled.
+The earlier issuer evidence is referenced, not replaced. The proposed investigation
+requests a full date inventory, separated older files and a 20-date consecutive
+window; this sampling plan is not proof of continuous coverage by itself.
+
+Historical acquisition preserves actual observation time, original reported
+weights, portfolio and revision identity, and unsupported rows. Neither periodic
+filings nor price/NAV history may substitute for daily holdings. Vendor backfill
+plus direct issuer acquisition is a candidate design requiring same-date
+compatibility evidence. Today's fund roster is not a survivorship-free historical
+universe. The whole-platform recurring cost target remains below US$1,500/month;
+no provider contact, purchase, agreement or feed implementation was authorized.
+
+The enforced runtime policy still excludes the commercial/SEC research hosts.
+Environment draft revision 7 adds www.sec.gov, www.etfg.com, www.factset.com,
+developer.factset.com, www.morningstar.com, intrinio.com and docs.intrinio.com.
+Readback confirmed all prior hosts, presets, setup/start instructions and
+repository settings were preserved. The save response requires publication;
+user review/save/publication remains pending. No excluded host was requested,
+no network restriction was bypassed and the environment was not published.
+Live product verification and actual historical samples remain outstanding.
+
+Validation passed: make check with 116 offline tests and all required static
+checks; candidate IDs, existing sample references, null coverage/quote fields,
+disabled admission, local links, unchanged issuer CSV and archived-spec checksum.
+Independent review found no unsupported vendor claims or archive/admission
+conflation; an obsolete initial-investigation instruction was clarified.
+No application code or original golden data changed; database integration was
+not rerun for this documentation/mapping update. Hosted CI remains unobserved.
