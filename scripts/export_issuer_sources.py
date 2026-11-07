@@ -100,7 +100,7 @@ def render(register: dict[str, Any]) -> str:
                 sorted({item["portfolio_date"] for item in reviewed_samples})
             ),
             "raw_displayed_weight_measurements": "; ".join(
-                f"{item['ticker']}: "
+                f"{item['ticker']} ({item['portfolio_date']}): "
                 f"{item['quality'].get('summary_weight_column', unknown_basis)}, "
                 f"{item['quality']['row_count']} rows, "
                 f"fraction sum {item['quality']['all_rows_reported_weight_sum_fraction']}, "

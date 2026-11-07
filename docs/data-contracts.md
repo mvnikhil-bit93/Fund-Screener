@@ -64,6 +64,22 @@ publish that row for analytics. M05 must reconcile positions against their
 snapshot and set the appropriate blocking reasons; M07 must enforce publication
 eligibility. M02 does not claim those cross-row checks are complete.
 
+AssetCategory includes money_market_fund separately from cash. A money-market
+fund position retains its actual fund/share-class instrument ID, source evidence,
+reported weight, quantity and market value. It is not converted to cash, assumed
+to trade at par, combined with another fund/share class, or expanded into its
+underlying holdings. A provisional source identity remains provisional; the
+category does not verify that an issuer's abbreviated money-market label denotes
+a particular eligible fund/share class. Negative candidate values are preserved
+for review without authorizing negative-cash or other signed-position analytics.
+
+This additive category uses the existing validated string representation. The
+canonical envelope, physical Arrow schema and schema/hash versions remain
+unchanged, so previously representable records retain their exact hashes. Older
+readers that lack the new enum value reject those new records explicitly; they
+must be upgraded before consuming money_market_fund records. No old category is
+reinterpreted, and no existing financial eligibility gate is relaxed.
+
 ## Arrow physical representation
 
 ledger.arrow exposes schema_for, to_arrow and from_arrow for the four record
@@ -122,3 +138,9 @@ numeric fields, required provenance, source quality state consistency, immutable
 nesting/revalidation, duplicate identities, a fixed interoperability hash vector,
 row permutations, randomized decimal values/scales, and Decimal-context changes.
 Existing v1.0 golden fixture expectations are unchanged.
+
+Money-market cases verify distinct share-class and cash identities through JSON,
+Arrow and canonical serialization; relabeling as cash changes the record hash.
+They also preserve signed source values and precision and require the existing
+identity evidence/provisional-key contract. These checks cover representation,
+not unimplemented overlap, concentration, classification or publication engines.

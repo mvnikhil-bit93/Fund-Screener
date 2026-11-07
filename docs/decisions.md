@@ -367,3 +367,57 @@ and metadata-only comparison, and checked source strategy quotes and roster
 measurements. No raw constituent data or source files were committed. Database
 integration was not rerun for this documentation/research update; hosted CI is
 not claimed observed.
+
+## 7 November 2026 — approved money-market category and second daily portfolio date
+
+The user approved the narrow extension for identified money-market fund share
+classes. The active specification now includes those direct positions separately
+from Cash, preserving share-class identities, original values/weights and source
+evidence. No look-through, cash equivalence, par assumption, broader pooled-fund
+scope, negative-cash analytics, foreign-currency cash or derivative support was
+added. Numeric/residual/full-overlap gates and the ten-fund target are unchanged.
+
+AssetCategory.MONEY_MARKET_FUND is an additive candidate-record value. Four new
+behavior tests failed first because that value was absent, then passed after
+implementation. They cover distinct share classes/cash through JSON, Arrow and
+canonical serialization, hash distinction when relabeled as cash, signed source
+precision and required identity evidence/provisional keys. Existing physical
+schema and canonical encoding/version remain unchanged, preserving old records'
+hashes. Older readers explicitly reject the new enum value and must be upgraded
+before consuming such records. No current database enum/column needs migration.
+This is representation support, not an implemented financial engine or automatic
+classification/source admission.
+
+The user also asked why older daily history had not supplied a second date.
+Both earlier checks occurred on 6 November and returned the current 5 November
+portfolio; the checked holdings-history response exposed no prior dates. A fresh
+7 November retrieval at 13:30:41 UTC now returns an internally dated 6 November
+XLSX. Fresh product JSON independently matches its date, 140 positions and both
+weight totals. The 17-column layout is unchanged. Market-value weights total
+100.03%, net-assets weights 100.05%; no negative quantities or values occur on
+this date. The 5 November negative-cash finding remains intact and date-specific.
+
+We therefore have two actual prospectively captured daily source files, for
+5 and 6 November, without claiming two accepted analytical snapshots. The fresh
+history response contains 1,067 daily NAV/market-price observations from 9 August
+2022 and 1,068 closing-price observations from 8 August 2022 through 6 November
+2026. Historical holdings and available holdings dates remain null. Daily price
+history is not constituent history; the bounded check does not prove earlier
+daily portfolios are unavailable elsewhere. No archive date parameter, pricing
+basket substitution, backdated observation or recurring job was introduced.
+
+Register schema 1.4.0 and source-validation schema 1.1.0 record the scope approval,
+new sample, date-specific findings and remaining identity/use/denominator gates.
+All source/fund production flags remain disabled. The 31-fund screen remains a
+5 November cohort; its five structural candidates have not been reclassified or
+admitted merely because the new asset category exists. Spreadsheet measurements
+now include portfolio dates to distinguish the two JGRO observations.
+
+Validation passed: make check with 116 offline tests and required static checks;
+77 provenance records matched private captures; IDs, counts, CSV drift, local
+links and disabled admission were verified. Independent review reparsed the new
+workbook, checked price-history ranges and confirmed unchanged prior numeric
+samples, original archive/goldens and old canonical hash behavior. No database
+integration rerun was needed for the additive record category. Hosted CI remains
+unobserved. No source files/constituent datasets were committed and no environment
+configuration was changed or published in this turn.

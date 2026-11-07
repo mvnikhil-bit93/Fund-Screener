@@ -18,6 +18,9 @@ The subsequent [JPMorgan validation](jpmorgan-source-validation.md) screens all
 31 active equity funds in its US directory and records the current roster/scope
 decision, repeat-download result and denominator diagnostics. The initial sample
 measurements below remain valid; they do not establish an approved launch roster.
+Its 7 November update records the approved money-market extension and a second
+JGRO daily file dated 6 November. The original measurements below describe the
+initial 5 November samples.
 
 The [source register](../config/issuer_sources.json) holds structured findings
 and provenance; its [spreadsheet view](issuer-sources.csv) summarizes status.
@@ -170,9 +173,10 @@ the factual rows is necessary. The file, surrounding website conditions and
 proposed access/use still need their scoped assessment. No constituent rows,
 workbook bytes or logos are published in Git.
 
-This is one actual standalone holdings file, for one date. Daily delivery
-reliability, corrections, two-date coverage and independent asset reconciliation
-remain untested. The mapping records the exact endpoint, source/code evidence,
+The initial review obtained one actual standalone holdings file, for one date.
+The 7 November follow-up has since captured the next daily file. Sustained delivery
+reliability, correction behavior and independent asset reconciliation remain
+untested. The mapping records the exact endpoint, source/code evidence,
 file hash, layout, both denominators and the measured limits.
 
 ## Consequences for the first importer

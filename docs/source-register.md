@@ -1,6 +1,6 @@
 # Issuer source register
 
-Assessment date: 6 November 2026. Preferred route: official issuer downloads.
+Assessment updated: 7 November 2026. Preferred route: official issuer downloads.
 
 The [JSON register](../config/issuer_sources.json) is the canonical, expandable
 research mapping. The [CSV summary](issuer-sources.csv) opens in a spreadsheet.
@@ -12,18 +12,21 @@ ledger-record schema or a financial methodology version.
 issuer discovery hosts. The [live assessment](issuer-assessment.md) records terms
 or policy evidence for all six issuers, including the limited scope of Capital
 Group's policy review. Avantis product pages and its All Holdings route were
-inspected, along with one directly downloaded JPMorgan JGRO workbook. All sampled
-portfolios are dated 5 November 2026. Avantis's accompanying notice describes
+inspected, along with JPMorgan JGRO workbooks for 5 and 6 November. Avantis's
+sampled portfolios remain dated 5 November 2026. Its accompanying notice describes
 publication of each position's identity and quantity every business day before
 trading. This supports an issuer-declared daily disclosure; it does not establish
-independently reconciled completeness, delivery reliability, a second portfolio
-date, production-use approval, or an approved launch roster.
+independently reconciled completeness, delivery reliability, a second Avantis
+portfolio date, production-use approval, or an approved launch roster.
 
 The [JPMorgan validation report](jpmorgan-source-validation.md) and its
 [structured mapping](../config/jpmorgan_source_validation.json) extend this
 register with a 31-fund active-equity screen and a proposed source contract.
 Research-cohort records are separate from the register's directly sampled funds;
 screening public product JSON does not establish workbook capture or admission.
+The identified money-market fund-unit scope extension is approved and represented
+in the candidate model; each actual instrument still requires evidence. JGRO's
+two prospectively captured files do not establish an earlier daily holdings archive.
 
 ## Investigation sample
 

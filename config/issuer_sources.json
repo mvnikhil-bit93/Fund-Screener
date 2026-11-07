@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.3.0",
-  "updated_on": "2026-11-06",
+  "schema_version": "1.4.0",
+  "updated_on": "2026-11-07",
   "assessment_status": "refined_daily_disclosure_review_no_source_admitted",
   "purpose": "Expandable research register; not executable importer configuration or source-use authorization.",
   "preferred_acquisition_route": "official_issuer_downloads",
@@ -11,7 +11,8 @@
     "supported_assets": [
       "ordinary_equity",
       "documented_ADR",
-      "explicit_USD_cash"
+      "explicit_USD_cash",
+      "identified_money_market_fund_share_class"
     ],
     "excluded_strategies": [
       "short",
@@ -28,7 +29,17 @@
       "minimum": 1,
       "maximum": 2
     },
-    "note": "Six research candidates are not a selected launch roster. Eligibility is fund-specific."
+    "note": "Six research candidates are not a selected launch roster. Eligibility is fund-specific.",
+    "money_market_amendment": {
+      "approved_on": "2026-11-07",
+      "approval_basis": "User accepted the narrow money-market fund-unit extension in this conversation.",
+      "asset_category": "money_market_fund",
+      "identity_requirement": "Evidence-backed fund/share-class identity; source label alone is insufficient.",
+      "cash_equivalence": false,
+      "look_through": false,
+      "changes_to_numeric_gates": false,
+      "source_admission_granted": false
+    }
   },
   "network_evidence": [
     {
@@ -676,11 +687,12 @@
           "fund-jpmorgan-3844539800"
         ],
         "sample_ids": [
-          "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4"
+          "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+          "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176"
         ],
         "verified_download_url_count": 1,
-        "verified_distinct_portfolio_date_count": 1,
-        "standalone_holdings_file_count": 1,
+        "verified_distinct_portfolio_date_count": 2,
+        "standalone_holdings_file_count": 2,
         "discovery_leads": [
           {
             "ticker": "JGRO",
@@ -697,7 +709,8 @@
           }
         ],
         "portfolio_dates": [
-          "2026-11-05"
+          "2026-11-05",
+          "2026-11-06"
         ],
         "repeat_observation_ids": [
           "jpmorgan-jgro-recheck-2026-11-06-213947"
@@ -710,14 +723,14 @@
         "reviewer": "Codex preliminary evidence review; owner/legal decision pending",
         "decided_at": "2026-11-06T17:22:45.359353+00:00",
         "blocking_reasons": [
-          "money_market_investments_outside_current_scope",
+          "money_market_fund_identity_and_eligibility_unverified",
           "ten_fund_eligible_roster_not_established",
           "negative_cash_non_USD_cash_or_other_instruments_block_specific_funds",
           "source_reported_denominator_reconciliation_unresolved",
           "position_identity_namespace_and_ADR_REIT_mapping_unverified",
-          "second_portfolio_date_not_obtained",
           "publication_calendar_and_deadline_unverified",
-          "specific_operation_use_and_retention_basis_unresolved"
+          "specific_operation_use_and_retention_basis_unresolved",
+          "two_accepted_dates_for_an_eligible_launch_fund_not_yet_established"
         ]
       },
       "review_questions": [
@@ -726,7 +739,7 @@
         "Confirm US-market fund identity and applicable regional terms for each download.",
         "Separate factual holdings, protected artifacts and third-party enrichment; document the specific route and applicable conditions without presuming a paid licence is required."
       ],
-      "live_summary": "All 31 active equity funds in the official 78-ETF US directory screened: eight options/ELN strategies, one short strategy and four additional futures cases excluded; 18 scope-review candidates remain. All 31 hold money-market investments outside current scope. Five candidates have no observed derivative/short exclusion, negative cash or non-USD cash, but require a separately approved money-market extension and other checks. JGRO re-download still reports 5 November; raw metadata changed, financial payload identical; public history has no dates. No source admitted or paid-licence requirement established.",
+      "live_summary": "All 31 active equity funds in the official 78-ETF US directory screened: eight options/ELN strategies, one short strategy and four additional futures cases excluded; 18 scope-review candidates remain. All 31 have source-labelled money-market investments; the identified fund-unit category was approved on 7 November, but actual share-class identities remain unverified. Five candidates have no observed derivative/short exclusion, negative cash or non-USD cash, but still require identity and other admission checks. JGRO now has actual daily workbooks for 5 and 6 November; the latter has no negative value/quantity rows and net-assets weights total 100.05%. Public daily NAV/price history goes back to August 2022, but the checked holdings-history fields remain null. No earlier daily portfolio archive or source admission established.",
       "disclosure_route_ids": [
         "jpmorgan-jgro-daily-disclosure"
       ],
@@ -737,7 +750,7 @@
         "status": "bounded_research_complete_source_contract_not_admitted",
         "screened_active_equity_funds": 31,
         "current_contract_admitted_funds": 0,
-        "distinct_daily_portfolio_dates": 1
+        "distinct_daily_portfolio_dates": 2
       }
     }
   ],
@@ -1160,15 +1173,16 @@
       ],
       "field_mapping_id": "jpmorgan-dailyETFHoldings-xlsx-observed-v1",
       "sample_ids": [
-        "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4"
+        "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+        "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176"
       ],
       "calendar_version": null,
       "publication_timezone": null,
       "publication_deadline": null,
       "source_contract_complete": false,
-      "admission_status": "not_admitted_unresolved_cash_money_market_identity_and_denominator",
+      "admission_status": "not_admitted_pending_dated_quality_identity_basis_and_use_contract",
       "production_import_enabled": false,
-      "admission_reason": "Real issuer daily-holdings XLSX observed. Money-market investment and ADR mapping need treatment; reported negative USD cash rounds to 0.0% but cannot be discarded. Position IDs, denominator choice, usage conditions and a second date remain unresolved.",
+      "admission_reason": "Two daily files captured for 5 and 6 November. Negative cash is observed only in the 5 November sample; the 6 November sample has no negative quantities/values. Money-market fund/share-class and ADR/position identities, denominator/calendar and source-use contract remain unresolved. No fund/date automatically admitted.",
       "disclosure_route_ids": [
         "jpmorgan-jgro-daily-disclosure"
       ],
@@ -1628,8 +1642,7 @@
           "money_market_position_not_automatically_USD_cash",
           "ADR_mapping_not_performed",
           "two_distinct_weight_bases_need_contract",
-          "position_identity_resolution_not_performed",
-          "second_date_not_observed"
+          "position_identity_resolution_not_performed"
         ],
         "measurement_note": "Decimal sums include all 140 reported positions. Net-assets weights are used only for the register summary; both bases remain explicit and neither is selected as canonical analytical W. A 100% market-value sum does not establish nonnegative holdings or complete comparable portfolios. Negative cash is evidenced by signed value/quantity despite 0.0% display. Do not normalize, drop rows or infer unit-total eligibility."
       },
@@ -1638,9 +1651,128 @@
         "J.P. Morgan Asset Management is the brand name for the asset management business of JPMorgan Chase & Co., and its affiliates worldwide."
       ],
       "limitations": [
-        "One portfolio date, not two-date history.",
+        "At initial capture only this date had been observed; a subsequent 6 November sample is now linked separately. No earlier public daily archive established.",
         "Issuer all-holdings claim is not independent economic completeness or source admission.",
         "Workbook logo/layout and third-party sector/industry additions are distinct from basic holding facts. No blanket paid-licence requirement or unrestricted reuse approval is inferred.",
+        "No canonical holdings record or published snapshot created."
+      ]
+    },
+    {
+      "sample_id": "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176",
+      "fund_id": "fund-jpmorgan-3844539800",
+      "source_id": "jpmorgan-public-daily-holdings",
+      "issuer_id": "jpmorgan_am",
+      "ticker": "JGRO",
+      "artifact_kind": "issuer_XLSX_daily_holdings_download",
+      "standalone_holdings_file": true,
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "redirect_chain": [
+        {
+          "url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+          "http_status": 200
+        }
+      ],
+      "fetched_at": "2026-11-07T13:30:41.004105+00:00",
+      "source_published_at": null,
+      "portfolio_date": "2026-11-06",
+      "portfolio_date_evidence": "Holdings!H6 = As of Date: 11/06/2026; independently matches public product JSON dailyHoldingsAll.effectiveDate fetched on 7 November. Not inferred solely from filename.",
+      "content_sha256": "6442df9d4176e1d514efd8f974f22b24fc07f3f4f8056a859b05b443b84d7a9c",
+      "byte_length": 27320,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+      "content_disposition": "attachment; filename*=UTF-8''JPMorgan-Active-Growth-ETF-ETF-Shares-Holdings-11-06-2026.xlsx",
+      "raw_content_in_repository": false,
+      "public_fixture_publication_approved": false,
+      "retained_fixture_path": null,
+      "field_mapping_id": "jpmorgan-dailyETFHoldings-xlsx-observed-v1",
+      "quality": {
+        "row_count": 140,
+        "reported_weight_unit": "percent_with_percent_sign",
+        "reported_precision_percent_decimal_places": [
+          1,
+          2
+        ],
+        "summary_weight_column": "Q: % of Net Assets; reporting choice only, not an analytical denominator approval",
+        "all_rows_reported_weight_sum_fraction": "1.0005",
+        "all_rows_signed_residual_fraction": "-0.0005",
+        "reported_weight_measures": {
+          "percent_of_market_value": {
+            "source_column": "P",
+            "source_header": "% of Market Value",
+            "all_rows_sum_fraction": "1.0003",
+            "all_rows_signed_residual_fraction": "-0.0003",
+            "zero_rounded_weight_rows": 1,
+            "negative_displayed_weight_rows": 0,
+            "missing_weight_rows": 0,
+            "reported_percent_decimal_places": [
+              1,
+              2
+            ]
+          },
+          "percent_of_net_assets": {
+            "source_column": "Q",
+            "source_header": "% of Net Assets",
+            "all_rows_sum_fraction": "1.0005",
+            "all_rows_signed_residual_fraction": "-0.0005",
+            "zero_rounded_weight_rows": 1,
+            "negative_displayed_weight_rows": 0,
+            "missing_weight_rows": 0,
+            "reported_percent_decimal_places": [
+              1,
+              2
+            ]
+          }
+        },
+        "missing_weight_rows": 0,
+        "negative_weight_rows": 0,
+        "zero_rounded_weight_rows": 1,
+        "security_types": {
+          "DOMESTIC COMMON STOCK": 137,
+          "ADR": 1,
+          "MONEY MARKET": 1,
+          "CURRENCIES": 1
+        },
+        "source_methods": {
+          "Physical": 140
+        },
+        "reported_position_currencies": {
+          "USD": 140
+        },
+        "negative_market_value_rows": 0,
+        "negative_reported_quantity_rows": 0,
+        "negative_cash_market_value_USD": "0",
+        "all_rows_market_value_USD_sum": "9039684740.81",
+        "blank_ticker_rows": 1,
+        "position_CUSIP_ISIN_SEDOL_columns_present": false,
+        "blank_sector_rows": 2,
+        "admitted_weight_sum_fraction": null,
+        "admitted_residual_fraction": null,
+        "weight_denominator": null,
+        "observed_weight_denominator_labels": [
+          "% of Market Value",
+          "% of Net Assets"
+        ],
+        "source_completeness": "issuer_download_all_holdings_claim_and_140_rows_match_current_public_dailyHoldingsAll; independent_economic_completeness_not_established",
+        "identity_resolution_status": "not_performed",
+        "classification_mapping_status": "not_performed",
+        "full_overlap_eligible": false,
+        "quality_reasons": [
+          "money_market_fund_identity_not_verified_not_automatically_cash",
+          "ADR_mapping_not_performed",
+          "two_distinct_weight_bases_need_contract",
+          "position_identity_resolution_not_performed",
+          "unit_total_not_established_for_reported_net_assets_basis"
+        ],
+        "measurement_note": "Decimal sums include all 140 reported positions. Net-assets weights are used only for the register summary; both bases remain explicit and neither is selected as canonical analytical W. Signed quantity/value and all zero-displayed rows remain visible. The newly approved money-market category does not establish this position identity or source admission. No normalization or balancing cash."
+      },
+      "file_notices": [
+        "Holdings are subject to change.",
+        "J.P. Morgan Asset Management is the brand name for the asset management business of JPMorgan Chase & Co., and its affiliates worldwide."
+      ],
+      "limitations": [
+        "Second distinct daily portfolio date captured prospectively; not evidence of an earlier public daily holdings archive.",
+        "Issuer all-holdings claim is not independent economic completeness or source admission.",
+        "Money-market instrument identity, ADR/position mappings, denominator and usage conditions remain unresolved; scope approval alone does not admit this sample.",
         "No canonical holdings record or published snapshot created."
       ]
     }
@@ -1713,7 +1845,8 @@
       "version": "observed-v1",
       "status": "observed_layout_not_production_parser_contract",
       "supporting_sample_ids": [
-        "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4"
+        "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+        "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176"
       ],
       "artifact_kind": "issuer_XLSX_daily_holdings_download",
       "sheet_name": "Holdings",
@@ -1797,10 +1930,15 @@
       "proprietary_nondata_material_observed": [
         "JPM logo and workbook presentation"
       ],
-      "third_party_field_caution": "Presence of a field does not by itself establish proprietary ownership or a licence requirement; identify provenance and applicable terms before adopting classifications/reference datasets."
+      "third_party_field_caution": "Presence of a field does not by itself establish proprietary ownership or a licence requirement; identify provenance and applicable terms before adopting classifications/reference datasets.",
+      "observed_schema_dates": [
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "two_date_schema_observation": "Same 17 headers and Holdings sheet/date layout on both dates; this is observed compatibility, not a guaranteed future schema."
     }
   ],
-  "evidence_note": "Limited excerpts, safe URLs, hashes and aggregate measures only. Five initial holdings samples remain four Avantis HTML captures and one JGRO XLSX, covering four funds on one portfolio date. A separate JGRO repeat acquisition has changed file metadata but identical financial payload, not a second date or financial revision. The linked JPMorgan validation report screens31 public productJSON datasets, not31 downloaded workbooks or admitted funds. No raw constituent datasets, source scripts or workbook bytes are committed.",
+  "evidence_note": "Limited source excerpts, hashes, safe URLs and aggregate measurements only. Six analyzed holdings samples cover four funds: four Avantis HTML captures on 5 November and JGRO XLSX files for 5 and 6 November. The separate repeat 5 November JGRO acquisition changed only raw metadata. The 31-fund screen remains as of 5 November, not 31 downloaded workbooks or admissions. No raw constituent datasets, source scripts or workbook bytes are committed.",
   "rights_decisions": [
     {
       "decision_id": "capital_group-identifier_reuse-2026-11-06",
@@ -3147,6 +3285,45 @@
       "observed_iframe_url": "https://connect.rightprospectus.com/JPMorgan/TVT/46654Q609/P?site=JPMorganv3&SPV=",
       "iframe_requested": false,
       "finding": "Official product documents link resolves to a 307-byte wrapper embedding connect.rightprospectus.com. Host is outside active policy; document contents were not read."
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-daily-holdings-xlsx-2026-11-07",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_XLSX_daily_holdings_download",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "fetched_at": "2026-11-07T13:30:41.004105+00:00",
+      "http_status": 200,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+      "content_sha256": "6442df9d4176e1d514efd8f974f22b24fc07f3f4f8056a859b05b443b84d7a9c",
+      "byte_length": 27320,
+      "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-product-data-2026-11-07",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "public_product_JSON",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/product-data?cusip=46654Q609&country=us&role=per&language=en&userLoggedIn=false&version=9.19_1793249641",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/product-data?cusip=46654Q609&country=us&role=per&language=en&userLoggedIn=false&version=9.19_1793249641",
+      "fetched_at": "2026-11-07T13:31:34.585503+00:00",
+      "http_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "content_sha256": "7051fefa70df44276b46622b7bddc300d0848cfaccf8058ba7b2e356de11afe3",
+      "byte_length": 203765,
+      "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-history-data-2026-11-07",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_public_historicalData_JSON",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/historicalData?cusip=46654Q609&country=us&role=per&userLoggedIn=false&language=en&version=9.19_1793249641",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/historicalData?cusip=46654Q609&country=us&role=per&userLoggedIn=false&language=en&version=9.19_1793249641",
+      "fetched_at": "2026-11-07T13:31:53.950638+00:00",
+      "http_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "content_sha256": "010455ca5c54f251c81344e37169db0823ac40c8deb97b319eb86a967b3d50ad",
+      "byte_length": 430696,
+      "raw_content_in_repository": false
     }
   ],
   "disclosure_routes": [
@@ -3291,7 +3468,8 @@
         "jpmorgan-jgro-daily-holdings-xlsx-2026-11-06"
       ],
       "sample_ids": [
-        "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4"
+        "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+        "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176"
       ],
       "fund_specific_rule_reliance": "not_verified",
       "specific_terms_document_ids": [],
@@ -3326,7 +3504,7 @@
         "location": "authored disclosures.pdpCardPortfolioHoldings"
       },
       "additional_identity_lead": "Public product JSON dailyHoldingsAll.securityId is populated140/140, but namespace not verified. securityCusip/securityIsin/securitySedol all null; do not relabel securityId by pattern alone. XLSX has no position identifier column beyond ticker.",
-      "history": "Current download rechecked at21:39UTC stillNov5; official historicalData exposes no holdings or available dates. See linked validation report; this bounded result does not prove no archive exists anywhere.",
+      "history": "Two current daily files captured prospectively for 5 and 6 November. Fresh 7 November history response contains daily NAV/price history back to August 2022 but no holdings history or available holdings dates. Earlier daily portfolio archive remains unverified.",
       "linked_legal_page_result": "Fund-directory HTML schema.org license points to https://am.jpmorgan.com/us/en/asset-management/adv/legal-disclosures/ which returned404; neither a permission grant nor a separate prohibition established.",
       "validation_report_path": "config/jpmorgan_source_validation.json"
     }

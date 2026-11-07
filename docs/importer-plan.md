@@ -1,17 +1,18 @@
 # Direct issuer importer plan
 
-Updated 6 November 2026 after review of daily disclosure and terms applicability.
+Updated 7 November 2026 after approval of identified money-market fund-unit support.
 This is a proposed implementation plan, not an implemented importer or source-use
 approval.
 Issuer discovery sites are now reachable. The [live assessment](issuer-assessment.md)
 records terms applicability, access gates, Avantis's official All Holdings/export
-route, and JPMorgan's actual JGRO Excel download. A complete first-source contract
-and two-date sample set remain open.
+route, and JPMorgan's actual JGRO Excel downloads. Files for 5 and 6 November
+are now captured; a complete first-source contract and accepted fund roster remain open.
 
 The subsequent [JPMorgan validation](jpmorgan-source-validation.md) screens all
 31 active equity funds and records a repeat acquisition with unchanged financial
-data. None is admitted under current scope. Its money-market proposal is a separate
-decision, not authorization to begin M04 against an incomplete source contract.
+data. Identified money-market fund units are now supported as distinct securities;
+actual instrument and source admission remain unresolved. The scope approval does
+not establish a complete first-source contract for M04.
 
 The expandable research inventory is [issuer_sources.json](../config/issuer_sources.json),
 with a [CSV view](issuer-sources.csv) and [register guide](source-register.md).
@@ -82,16 +83,25 @@ contract; unresolved commercial rights remain an explicit pilot blocker.
 The Avantis Daily Pricing Basket is a separate dataset and must not replace the
 actual portfolio. JGRO's % of Market Value and % of Net Assets are distinct bases;
 do not prefer the former merely because its displayed total is 100%. Net-assets
-weights total 100.06%, and negative cash rounds to zero in both columns. No basis
-is approved as analytical W by this comparison. A second portfolio date and a
-suitable fund roster remain necessary whichever delivery format is selected.
+weights total 100.06% on 5 November, and negative cash rounds to zero in both
+columns. The 6 November file totals 100.05% of net assets and has no negative
+quantities/values. No basis is approved as analytical W by this comparison.
+The two-date format evidence is established for JGRO; fund/date acceptance and
+a suitable roster remain necessary whichever delivery format is selected.
 
 The full JPMorgan screen finds money-market investments in every active equity
 fund. Five candidates avoid observed derivative/short, negative-cash and non-USD
-cash issues, but still need instrument identities, a scope decision and the other
+cash issues, but still need instrument identities and the other
 M00 gates. Do not present them as an approved roster or silently reduce the target
 of ten funds. The proposed net-assets denominator remains unadopted while the
 source-reference reconciliation and comparison basis are unresolved.
+
+The approved money-market category preserves each actual share class, reported
+weight, quantity and value. It does not convert those holdings to cash or infer
+identity from an abbreviated source label. Parser mapping must retain unresolved
+rows until the instrument evidence supports the category and identity; M06 owns
+the reviewed mappings. The approved extension leaves other asset and metric gates
+unchanged.
 
 ### Proposed field profile for the first source
 

@@ -25,9 +25,13 @@ summary, a [live six-issuer assessment](docs/issuer-assessment.md), and an
 route and a directly downloaded JPMorgan JGRO workbook have been inspected.
 The mapping separates factual holdings from access conditions and proprietary
 additions; a paid data licence is not assumed necessary. Specific use basis,
-fund eligibility and a second portfolio date remain open admission requirements.
+fund eligibility and a complete source contract remain open admission requirements.
+JGRO workbooks for 5 and 6 November are captured; earlier daily portfolio history
+remains unverified, separately from the issuer's available NAV/price history.
 The [JPMorgan validation](docs/jpmorgan-source-validation.md) records the complete
-31-fund active equity screen and a concrete, unapproved money-market scope proposal.
+31-fund active equity screen. The approved money-market fund-unit extension adds
+a distinct candidate-model category; instrument verification and source admission
+remain separate requirements.
 Local verification and remaining review gates are recorded in
 [docs/decisions.md](docs/decisions.md).
 

@@ -1,9 +1,10 @@
-# JPMorgan source validation — 6 November 2026
+# JPMorgan source validation — updated 7 November 2026
 
-**The download route works; the current MVP scope admits none of the 31 screened
-active equity funds.** Every fund has a money-market investment, which the current
-supported-asset list does not include. This is a scope finding, not evidence that
-the issuer's data is unusable or requires a paid licence.
+**The download route works, and identified money-market fund units are now in
+scope following user approval on 7 November.** The 31-fund screen remains research
+evidence, with no source admitted: actual fund/share-class identities, other
+instrument mappings and source contracts still need verification. Approval of
+an asset category does not approve every issuer row carrying a money-market label.
 
 The [structured validation mapping](../config/jpmorgan_source_validation.json)
 contains all fund identities, measurements, source references and proposals. It
@@ -13,8 +14,23 @@ outside Git. The [importer plan](importer-plan.md) remains conditional on M00.
 
 ## 1. Second portfolio date and revision behavior
 
-JGRO's current official XLSX was retrieved again at **21:39:47 UTC**. Its internal
-portfolio date is still **5 November 2026**. The file hash changed from
+**The second daily date is now obtained.** On 7 November at 13:30:41 UTC, the
+official current download returned a workbook internally dated **6 November
+2026**. Its date, 140 positions and both weight totals match the fresh product
+JSON. The 17-column layout is unchanged from the 5 November file.
+
+| Portfolio date | Positions | Market-value weight total | Net-assets weight total | Negative value/quantity rows |
+| --- | ---: | ---: | ---: | ---: |
+| 5 November | 140 | 100.00% | 100.06% | 1 |
+| 6 November | 140 | 100.03% | 100.05% | 0 |
+
+These are two prospectively captured daily source files, not an established
+archive or two accepted analytical snapshots. The earlier negative-cash finding
+belongs to 5 November; it is not carried forward into the 6 November sample.
+Both dates retain the unresolved identity, denominator and source-use questions.
+
+On 6 November, JGRO's official XLSX was retrieved again at **21:39:47 UTC**. Its
+internal portfolio date remained **5 November 2026**. The file hash changed from
 3c68e5376bb4… to 2914192f48a0…, but every uncompressed ZIP member except document
 properties is byte-identical. Worksheet, shared strings, all 140 positions, dates
 and notices are unchanged; ZIP timestamps also changed.
@@ -24,15 +40,26 @@ or financial correction. M04 must retain the original bytes and observation;
 M05/M07 must distinguish raw-file changes from changes in the financial snapshot.
 A raw-hash change alone must not produce a holdings-change alert.
 
-The official product's historicalData response has null historicalHoldings and
-holdingAvailableDates. Its daily-download control exposes no date parameter.
-No verified historical daily file was found in this bounded review. Generic
-pricing-basket history is not enabled for JGRO and was not substituted. Periodic
-report links are separate evidence leads, not two daily-format fixtures.
+The fresh 7 November historicalData response makes the history distinction
+concrete:
 
-**Next acquisition:** a subsequent permitted daily publication, or an actual
-issuer-linked historical daily file if discovered. No recurring job was installed,
-no date was invented, and no exact next-publication time is promised.
+| History type | Observed response |
+| --- | --- |
+| Daily NAV/market-price history | 1,067 observations from 9 August 2022 through 6 November 2026 |
+| Daily closing-price history | 1,068 observations from 8 August 2022 through 6 November 2026 |
+| Constituent portfolio history | historicalHoldings and holdingAvailableDates remain null |
+
+The inspected daily-download control exposes no date parameter, and generic
+pricing-basket history is not enabled for JGRO. Daily publication does not establish
+a public archive of old constituent portfolios. The issuer or a provider may
+retain earlier daily holdings; their availability has not been established here.
+Quarterly/annual reports are separate historical portfolio sources, not daily
+holdings history. No paid licence is assumed necessary for an unverified archive.
+
+The earlier gap arose because both 6 November checks saw the same latest portfolio
+date and the checked history route offered no earlier holdings dates. The file
+advanced by the 7 November check, supplying the second date. Exact publication
+time remains unknown. No date was invented or recurring job installed.
 
 ## 2. Complete active-equity directory screen
 
@@ -60,13 +87,14 @@ supported ordinary equity; instrument evidence is needed.
 
 The narrowest structural research set is below. These five have no observed
 option/short/futures exclusion, negative value/weight, non-USD cash or unresolved
-cash currency code. They still have unsupported money-market positions and need
-REIT/ADR mapping, source-use review, a denominator contract and a second date.
+cash currency code. They still need money-market fund/share-class identity
+verification, REIT/ADR mapping, source-use review, a denominator contract and
+second-date evidence for the particular candidate fund.
 
 Across these five, the money-market rows appear to describe two fund instruments,
 but truncated descriptions and unverified source IDs do not establish the exact
-fund/share-class identities. Those identities must be verified before the proposed
-fund-unit category could admit them.
+fund/share-class identities. Those identities must be verified before the newly
+supported category could admit them.
 
 | Fund | Positions | Money-market % of net assets | Reported net-assets total | Other identity work |
 | --- | ---: | ---: | ---: | --- |
@@ -124,10 +152,11 @@ connect.rightprospectus.com. That exact host has been added to environment draft
 revision 5, preserving earlier settings; it is not active and the embedded
 prospectus has not been read. No environment was published.
 
-## 5. Concrete scope proposal — not approved or implemented
+## 5. Approved scope extension — 7 November 2026
 
-Recommend a separate, narrow revision to support **explicitly identified
-money-market fund share classes as direct securities**:
+The user approved support for **explicitly identified money-market fund share
+classes as direct securities**. The specification and candidate data contract
+now implement the distinct money_market_fund category:
 
 - Preserve each fund/share-class identity, units, market value and reported weight.
 - Keep these investments distinct from explicit cash; no look-through, assumed
@@ -137,29 +166,30 @@ money-market fund share classes as direct securities**:
 - Leave unreviewed sector/domicile mappings Unclassified. Do not infer a sector
   from the fund sponsor or automatically adopt issuer classifications.
 - Keep signed-negative-cash support, foreign-currency cash, derivatives and relaxed
-  numerical tolerances outside this proposal. Preserve every excluded row as evidence.
+  numerical tolerances outside this extension. Preserve every excluded row as evidence.
 
-This could make the five funds above worth further validation. It does not admit
-them, create a ten-fund roster, or resolve identity, second-date, denominator or
-use-basis gaps. The alternative is to retain the existing scope and investigate
-other sources for funds whose actual positions satisfy it. No evidence currently
-guarantees that another issuer will avoid the same money-market issue.
+The five funds above remain candidates for further validation. The extension does
+not admit them, create a ten-fund roster, or resolve identity, per-fund second-date,
+denominator or use-basis gaps. Their exact money-market instruments still need
+identification rather than automatic conversion from the source label.
 
-The current [specification](spec.md#launch-universe) says: “Support ordinary equity, documented
-ADR mappings, and explicitly reported USD cash.” Adding money-market fund units
-changes that supported-asset list. It therefore needs an explicit scope decision;
-this research update leaves the specification, data models and golden cases unchanged.
+The [specification](spec.md#launch-universe) records the approved amendment.
+Representation tests cover distinct share classes and cash, JSON/Arrow/canonical
+round trips, signed candidate evidence, decimal precision and identity requirements.
+Existing golden values, old-record hashes and financial eligibility gates remain
+unchanged. Overlap, concentration and source-admission engines are later work.
 
 ## 6. Follow-up work and acceptance evidence
 
 | Item | Work | Completion evidence |
 | --- | --- | --- |
-| M00-JPM-01 | Second daily portfolio date | Same fund, another evidenced date, actual file bytes and metadata; repeat downloads do not count |
+| M00-JPM-01 | Second daily portfolio date | Captured JGRO files for 5 and 6 November with internal dates and source confirmation; analytical acceptance remains separate |
 | M00-JPM-02 | Reported weight basis and schedule | Document denominator/timing and publication calendar; retain unresolved diagnostic differences |
-| M00-JPM-03 | Money-market scope proposal | Explicit decision on the rules above; model/methodology changes and tests belong in a separate change |
+| M00-JPM-03 | Money-market scope extension | Approved 7 November; specification and candidate representation implemented and tested. Actual instrument verification remains open. |
 | M00-JPM-04 | Exact eligible roster and identities | Fund/date-specific position checks and reviewed ADR/REIT/reference IDs; ten-fund target remains unchanged |
 | M00-JPM-05 | Operation-specific use basis | Document retrieval, factual use and original-file retention separately; clarify only material unresolved conditions |
 | M04/M05/M07 | Raw versus financial revisions | Metadata-only XLSX change archives a new observation without inventing a new portfolio date or financial correction |
 
-Only M00 research is advanced here. No live production importer, parser, recurring
-job, financial engine or customer-visible dataset is claimed implemented.
+This update advances M00 research and the approved candidate-model extension.
+No live production importer, parser, recurring job, financial engine or
+customer-visible dataset is claimed implemented.

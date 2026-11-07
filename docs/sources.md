@@ -1,6 +1,6 @@
 # Source feasibility register — M00
 
-Latest assessment: 6 November 2026 (UTC).
+Latest assessment: 7 November 2026 (UTC).
 
 Status: **official daily-disclosure routes verified for Avantis and JPMorgan;
 no source admitted for production.** Direct issuer sourcing remains viable. The
@@ -18,7 +18,7 @@ original-document retention and financial suitability are separate questions.
 - [Importer plan](importer-plan.md): source contract, then M04 acquisition and
   M05 parsing; no production importer is implemented by this research change.
 - [JPMorgan validation](jpmorgan-source-validation.md): complete 31-fund active
-  equity screen, second-date check, weight diagnostics and an unapproved scope proposal.
+  equity screen, two dated JGRO files, weight diagnostics and the approved money-market extension.
 
 | Issuer | Verified finding | Next evidence needed |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ original-document retention and financial suitability are separate questions.
 | Dimensional | General website commercial restrictions and an automation clause concerning damaging/overburdening conduct, with an issuer-tool exception | Official disclosure/tool and applicable conditions; no holdings sample acquired |
 | T. Rowe Price | Explicit scraping restriction, section-specific terms precedence and a separate approved/issuer-tool clause must be read together | A supported disclosure mechanism; no exception assumed or holdings acquired |
 | Fidelity | Website commercial/automated-access clauses recognize authorized tools and page-specific terms; homepage international-use gate unaccepted | Legitimate official disclosure route and conditions; no holdings sample acquired |
-| JPMorgan | All 31 active equity funds screened: 13 derivative/short exclusions; all 31 hold money-market investments. JGRO's repeat download still reports 5 November; financial rows unchanged. | Explicit scope decision, second date, denominator/calendar, identities, ten-fund roster and operation-specific use basis; no source admitted |
+| JPMorgan | All 31 active equity funds screened; identified money-market fund units now supported. JGRO files for 5 and 6 November obtained. Daily NAV/price history back to 2022 is distinct from unverified earlier holdings history. | Denominator/calendar, verified instrument identities, ten-fund roster and operation-specific use basis; no source admitted |
 
 The mapping preserves earlier general-site decisions as history and links scoped
 superseding reviews. Missing permission text does not prove permission is needed
@@ -36,10 +36,11 @@ material rights still govern production admission under the specification.
 
 ## Measured holdings evidence
 
-Five initial samples cover four funds on **5 November 2026**: three Avantis
-product-page captures, an additional AVUS All Holdings page, and one JGRO XLSX.
+Six analyzed samples cover four funds: three Avantis product-page captures and
+an AVUS All Holdings page dated **5 November**, plus JGRO XLSX files for **5 and
+6 November 2026**.
 The two AVUS captures contain identical holdings; they are not two portfolio dates.
-The later JGRO repeat acquisition changes document metadata only and is recorded
+The separate repeat acquisition of the 5 November JGRO disclosure changes document metadata only and is recorded
 separately. Screening 31 product JSON datasets does not mean 31 XLSX files or
 31 admitted funds; their aggregate findings are in the linked validation mapping.
 
@@ -49,6 +50,7 @@ separately. Screening 31 product JSON datasets does not mean 31 XLSX files or
 | AVUV | 793 | 99.83%; exact denominator unverified | 91 |
 | AVTM | 1,709 | 98.95%; exact denominator unverified | 815 |
 | JGRO | 140 | Market Value 100.00%; Net Assets 100.06% | 2 in each column |
+| JGRO, 6 November | 140 | Market Value 100.03%; Net Assets 100.05% | 1 in each column |
 
 These Decimal totals include all source rows and are not admitted analytical W.
 Avantis's client CSV exporter passes through the same rounded weights. Its separate
@@ -56,11 +58,14 @@ Daily Pricing Basket is different data and cannot be used to repair the portfoli
 The CSV mechanism was verified by static code inspection; no browser-generated
 CSV file was captured. JPMorgan provides a real standalone XLSX download.
 
-All samples need instrument and numerical review. In JGRO, negative USD cash
+All samples need instrument and numerical review. In JGRO on 5 November, negative USD cash
 value/quantity displays as zero after weight rounding; a money-market holding
 also requires treatment. The market-value column summing to 100% does not prove
 eligibility or justify silently preferring it over net assets. Avantis samples
 include sweep vehicles, rights and other unsupported or unresolved types.
+The 6 November JGRO sample has no negative values/quantities; admission stays
+fund/date-specific. Approved money-market fund-unit support still requires an
+actual verified instrument identity.
 
 Every source row remains represented in the assessment. No weights were normalized,
 no balancing cash was added, and no financial methodology changed. Sector/industry
@@ -100,12 +105,14 @@ Any change to supported positions or numerical rules is a separate reviewed
 methodology decision. No ten-fund roster, scheduled importer or customer coverage
 is claimed complete.
 
-The latest JPMorgan screen establishes zero admissions under current scope.
-The narrow proposal to support identified money-market fund units separately
-from cash would leave five structural research candidates: JAVA, JPEF, LGDS,
-LVDS and JPSV. It remains unapproved and would not by itself establish ten funds
-or remove numerical/identity/source-use gaps. The full proposal and alternatives
-are in the JPMorgan validation report; the active specification is unchanged.
+The JPMorgan screen establishes zero source admissions. The user approved the
+narrow money-market fund-unit extension on 7 November; it is implemented in the
+specification and candidate model, with each fund/share class distinct from cash.
+The five structural candidates identified on 5 November remain JAVA, JPEF, LGDS,
+LVDS and JPSV. Approval does not establish their actual instrument identities,
+ten eligible funds, numerical completeness or source-use basis. The validation
+report distinguishes these remaining gates from the completed scope decision
+and JGRO second-date capture.
 
 ## Earlier investigation
 

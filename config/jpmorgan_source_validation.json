@@ -1,13 +1,13 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "validation_id": "jpmorgan-source-validation-2026-11-06",
   "issuer_id": "jpmorgan_am",
-  "updated_at": "2026-11-06T21:46:45.331135+00:00",
+  "updated_at": "2026-11-07T13:35:30.002214+00:00",
   "status": "bounded_research_complete_source_contract_not_admitted",
   "purpose": "Reviewable M00 source-validation evidence and proposals; not executable importer configuration or a selected pilot roster.",
   "issuer_register_path": "config/issuer_sources.json",
   "production_import_enabled": false,
-  "methodology_changed": false,
+  "methodology_changed": true,
   "directory_counts": {
     "total_ETFs": 78,
     "passive_excluded_from_active_universe": 25,
@@ -87,7 +87,7 @@
     ],
     "funds_meeting_current_full_source_contract": 0,
     "ten_fund_roster_established": false,
-    "conclusion": "All 31 active equity funds in the official US directory were inspected. Eight options/ELN strategies, one short strategy and four additional funds with futures fail current derivative/short exclusions. Eighteen remain as scope-review candidates: eight U.S. Equity and ten International/Global funds. All 31 hold money-market investments, and every International/Global fund has non-USD cash. No fund meets the current full contract. A ten-fund research basket is proposed conditionally; it requires explicit scope, identity, precision and source-use decisions.",
+    "conclusion": "All 31 active equity funds in the official US directory were inspected. Eight options/ELN strategies, one short strategy and four additional funds with futures fail current derivative/short exclusions. Eighteen remain as scope-review candidates: eight U.S. Equity and ten International/Global funds. All 31 hold money-market investments, and every International/Global fund has non-USD cash. Money-market fund-unit support was approved on 7 November, but fund/share-class identities and other admission gates remain unverified. No fund is admitted and no ten-fund roster established.",
     "international_global_with_non_USD_cash": 11
   },
   "screened_funds": [
@@ -201,7 +201,7 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
         "reported_weight_basis_contract_unresolved",
@@ -209,7 +209,8 @@
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted",
         "cash_currency_codes_unresolved_not_assumed_foreign_currency"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844438800",
@@ -316,14 +317,15 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096121200",
@@ -456,7 +458,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "non_USD_cash_outside_explicit_USD_cash_scope",
@@ -466,7 +468,8 @@
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted",
         "cash_currency_codes_unresolved_not_assumed_foreign_currency"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844539800",
@@ -567,14 +570,15 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "ADR_mapping_unverified",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3843891600",
@@ -674,14 +678,15 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096632900",
@@ -813,7 +818,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "spot_contract_classification_unresolved_not_automatically_a_derivative",
@@ -823,7 +828,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3845716100",
@@ -930,13 +936,14 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096633000",
@@ -1098,7 +1105,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "GDR_mapping_and_scope_unverified",
@@ -1111,7 +1118,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3845941400",
@@ -1212,14 +1220,15 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "ADR_mapping_unverified",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844389800",
@@ -1334,7 +1343,7 @@
       "admitted_analytical_W": null,
       "blockers": [
         "observed_equity_index_futures_positions",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
         "reported_weight_basis_contract_unresolved",
@@ -1342,7 +1351,8 @@
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted",
         "cash_currency_codes_unresolved_not_assumed_foreign_currency"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844928900",
@@ -1441,13 +1451,14 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3095349600",
@@ -1611,7 +1622,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "unsupported_rights_position",
@@ -1624,7 +1635,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3849051900",
@@ -1724,14 +1736,15 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846731700",
@@ -1837,14 +1850,15 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846137200",
@@ -1959,7 +1973,7 @@
       "admitted_analytical_W": null,
       "blockers": [
         "observed_equity_index_futures_positions",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "unsupported_rights_position",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
@@ -1968,7 +1982,8 @@
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted",
         "cash_currency_codes_unresolved_not_assumed_foreign_currency"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846731800",
@@ -2074,14 +2089,15 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3095118000",
@@ -2227,7 +2243,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "ADR_mapping_unverified",
         "unsupported_rights_position",
         "GDR_mapping_and_scope_unverified",
@@ -2238,7 +2254,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096432900",
@@ -2366,7 +2383,7 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "non_USD_cash_outside_explicit_USD_cash_scope",
@@ -2374,7 +2391,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846155500",
@@ -2473,13 +2491,14 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846463800",
@@ -2585,14 +2604,15 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096709300",
@@ -2712,7 +2732,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "GDR_mapping_and_scope_unverified",
         "non_USD_cash_outside_explicit_USD_cash_scope",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
@@ -2720,7 +2740,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844893300",
@@ -2828,14 +2849,15 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_options_or_equity_linked_income_hedging_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844698500",
@@ -2934,13 +2956,14 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096936700",
@@ -3043,14 +3066,15 @@
       "admitted_analytical_W": null,
       "blockers": [
         "explicit_short_selling_strategy",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "reported_weight_basis_contract_unresolved",
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096928500",
@@ -3188,7 +3212,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "ADR_mapping_unverified",
         "unsupported_rights_position",
         "GDR_mapping_and_scope_unverified",
@@ -3201,7 +3225,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846307800",
@@ -3303,7 +3328,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
@@ -3311,7 +3336,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3844735400",
@@ -3416,7 +3442,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "ADR_mapping_unverified",
         "non_USD_cash_outside_explicit_USD_cash_scope",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
@@ -3424,7 +3450,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096109700",
@@ -3556,7 +3583,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "ADR_mapping_unverified",
         "spot_contract_classification_unresolved_not_automatically_a_derivative",
@@ -3566,7 +3593,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3096627800",
@@ -3682,7 +3710,7 @@
       "derivative_position_types": {},
       "admitted_analytical_W": null,
       "blockers": [
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "ADR_mapping_unverified",
         "preferred_stock_outside_ordinary_equity_scope",
         "non_USD_cash_outside_explicit_USD_cash_scope",
@@ -3691,7 +3719,8 @@
         "position_identity_namespace_unverified",
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846308200",
@@ -3805,7 +3834,7 @@
       "admitted_analytical_W": null,
       "blockers": [
         "observed_equity_index_futures_positions",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
         "reported_weight_basis_contract_unresolved",
@@ -3813,7 +3842,8 @@
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted",
         "cash_currency_codes_unresolved_not_assumed_foreign_currency"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     },
     {
       "fund_id": "fund-jpmorgan-3846308000",
@@ -3927,7 +3957,7 @@
       "admitted_analytical_W": null,
       "blockers": [
         "observed_equity_index_futures_positions",
-        "money_market_investment_outside_explicit_USD_cash_scope",
+        "money_market_fund_identity_and_eligibility_unverified",
         "REIT_source_type_requires_equity_instrument_mapping",
         "negative_cash_needs_explicit_scope_and_signed_value_treatment",
         "reported_weight_basis_contract_unresolved",
@@ -3935,7 +3965,8 @@
         "only_one_portfolio_date_observed",
         "source_use_basis_not_admitted",
         "cash_currency_codes_unresolved_not_assumed_foreign_currency"
-      ]
+      ],
+      "scope_review_updated_on": "2026-11-07"
     }
   ],
   "screening_measurement_notes": [
@@ -3947,7 +3978,7 @@
     "Source CURRENCIES rows with codes CCC and USQ are unresolved issuer codes; they are not classified as verified non-USD currencies. Known non-USD codes and unresolved codes are counted separately."
   ],
   "history_review": {
-    "status": "second_daily_portfolio_date_not_obtained",
+    "status": "second_distinct_daily_portfolio_date_obtained",
     "repeat_observation": {
       "observation_id": "jpmorgan-jgro-recheck-2026-11-06-213947",
       "evidence_id": "jpmorgan-jgro-current-recheck-2026-11-06-213947",
@@ -3975,6 +4006,60 @@
       "interpretation": "Different XLSX bytes alone do not establish a holdings correction or new date. This is a distinct acquisition observation of the same financial disclosure, with changed document/ZIP metadata."
     },
     "historical_endpoint_review": {
+      "evidence_id": "jpmorgan-jgro-history-data-2026-11-07",
+      "observed_fields": {
+        "historicalHoldings": null,
+        "holdingAvailableDates": null,
+        "pricingCompositionHistoryList": null,
+        "m12Details": null
+      },
+      "daily_price_history": {
+        "historicalETFNAVMarketPriceList": {
+          "row_count": 1067,
+          "earliest_date": "2022-08-09",
+          "latest_date": "2026-11-06",
+          "kind": "NAV/market-price history, not constituent holdings history"
+        },
+        "historicalETFClosingPriceList": {
+          "row_count": 1068,
+          "earliest_date": "2022-08-08",
+          "latest_date": "2026-11-06",
+          "kind": "NAV/market-price history, not constituent holdings history"
+        }
+      },
+      "fund_specific_pcf_flags": [],
+      "daily_holdings_date_parameter": "None in inspected official control.",
+      "conclusion": "JGRO has public daily price/NAV history back to August 2022 in this exact response, but constituent holdings history and available holdings dates remain null. No additional official daily portfolio archive was established. This does not prove older daily holdings are unavailable elsewhere."
+    },
+    "publication_schedule": {
+      "frequency_indication": "Official request/data names dailyETFHoldings and dailyHoldingsAll indicate daily data; these names alone do not establish a publication SLA.",
+      "exact_publication_time": null,
+      "timezone": null,
+      "market_calendar_version": null,
+      "correction_policy": null,
+      "fund_fields": {
+        "cutOffTime": null,
+        "cutOffTimeZone": null,
+        "valuationTimezoneName": null
+      },
+      "interpretation": "Those fields are null and could relate to valuation/dealing rather than publication. NAV display EST labels are not a holdings publication-time contract."
+    },
+    "second_date_requirement": {
+      "distinct_daily_portfolio_dates_observed": [
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "blocked_reason": null,
+      "next_action": "Second-date capture complete for JGRO. Validate both dated samples under fund/date admission rules; continue separate earlier-archive investigation only through verified routes. Other proposed launch funds still need their own dated evidence.",
+      "separate_periodic_report_leads": [
+        "https://am.jpmorgan.com/JPMorgan/TVT/46654Q609/QH1?site=JPMorganv3",
+        "https://am.jpmorgan.com/JPMorgan/TVT/46654Q609/QH3?site=JPMorganv3"
+      ],
+      "periodic_report_status": "Observed product-page document links reported by parallel contract review; not fetched in this subtask. A periodic report could establish a historical portfolio date, but not two comparable daily XLSX captures.",
+      "capture_status": "two_distinct_daily_files_obtained_not_accepted_analytical_snapshots"
+    },
+    "previous_review_status": "second_daily_portfolio_date_not_obtained",
+    "previous_historical_endpoint_review": {
       "evidence_id": "jpmorgan-jgro-history-data-2026-11-06",
       "endpoint_discovery_evidence_id": "jpmorgan-public-product-script-2026-11-06",
       "endpoint_discovery": "Official public product component invokes getHistoricalData(userLoggedIn,cusip,country,role,language,gaiaRedirectUrl+/historicalData) on mount. Public service method in the same script constructs the exact observed query including version9.19_1793249641; no date parameter guessed.",
@@ -3992,30 +4077,52 @@
       },
       "conclusion": "The exact public history response supplies no JGRO historical holdings or available holding dates. The generic script contains date-based PCF/holding controls, but those tabs/fields are not enabled/populated for this fund. No PCF endpoint or speculative archive URL was requested. This bounded review does not prove no historical source exists anywhere."
     },
-    "publication_schedule": {
-      "frequency_indication": "Official request/data names dailyETFHoldings and dailyHoldingsAll indicate daily data; these names alone do not establish a publication SLA.",
-      "exact_publication_time": null,
-      "timezone": null,
-      "market_calendar_version": null,
-      "correction_policy": null,
-      "fund_fields": {
-        "cutOffTime": null,
-        "cutOffTimeZone": null,
-        "valuationTimezoneName": null
+    "followup_reviewed_at": "2026-11-07T13:33:46.028923+00:00",
+    "two_date_comparison": {
+      "portfolio_dates": [
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "old_sample_id": "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+      "new_sample_id": "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176",
+      "row_counts": [
+        140,
+        140
+      ],
+      "column_headers_identical": true,
+      "old_reported_weight_sums_fraction": {
+        "percent_of_market_value": "1.0000",
+        "percent_of_net_assets": "1.0006"
       },
-      "interpretation": "Those fields are null and could relate to valuation/dealing rather than publication. NAV display EST labels are not a holdings publication-time contract."
+      "new_reported_weight_sums_fraction": {
+        "percent_of_market_value": "1.0003",
+        "percent_of_net_assets": "1.0005"
+      },
+      "changed_uncompressed_zip_members": [
+        "docProps/core.xml",
+        "xl/sharedStrings.xml",
+        "xl/worksheets/sheet1.xml"
+      ],
+      "internal_portfolio_date_changed": true,
+      "source_published_at": null,
+      "interpretation": "The current official file has advanced to 6 November. Two daily XLSX files were captured on successive observation dates. This establishes two distinct local source samples, not a public archive or an accepted analytical fund."
     },
-    "second_date_requirement": {
-      "distinct_daily_portfolio_dates_observed": [
-        "2026-11-05"
-      ],
-      "blocked_reason": "Current official file still reports the prior observed portfolio date; the actual public history route provides no holdings archive dates.",
-      "next_action": "Capture a subsequent permitted official daily publication, or inspect a genuinely evidenced historical daily download if one becomes available. Do not backdate observations, modify the as-of field, substitute a pricing basket, or count a quarterly report as two daily-format fixtures.",
-      "separate_periodic_report_leads": [
-        "https://am.jpmorgan.com/JPMorgan/TVT/46654Q609/QH1?site=JPMorganv3",
-        "https://am.jpmorgan.com/JPMorgan/TVT/46654Q609/QH3?site=JPMorganv3"
-      ],
-      "periodic_report_status": "Observed product-page document links reported by parallel contract review; not fetched in this subtask. A periodic report could establish a historical portfolio date, but not two comparable daily XLSX captures."
+    "source_confirmation": {
+      "evidence_id": "jpmorgan-jgro-product-data-2026-11-07",
+      "field": "fundData.dailyHoldingsAll",
+      "effectiveDate": "2026-11-06",
+      "row_count": 140,
+      "json_reported_weight_sums_fraction": {
+        "marketValuePercent": "1.0003",
+        "netAssetValuePercent": "1.0005"
+      },
+      "matches_workbook_date_count_and_weight_sums": true
+    },
+    "explanation_of_previous_gap": "The first review and repeat retrieval both occurred on 6 November while the latest file still reported 5 November; no earlier date was exposed by the checked holdings-history response. On 7 November the official current file reports 6 November, so prospective capture now supplies the second date. Daily publication does not imply a public downloadable daily archive, and daily price history is a different dataset.",
+    "history_leads": {
+      "periodic_reports": "Official quarterly/annual report links are separate dated-source leads, not established daily-format history. The observed prospectus wrapper points to a document host outside active policy; report destinations and contents have not been fetched in this follow-up.",
+      "provider_or_issuer_archive": "An issuer or data provider may retain older daily holdings; availability, access and terms have not been verified. No inquiry sent.",
+      "prospective_retention": "Continue permitted daily captures with actual retrieval times to build our own history; not backdated knowledge. No recurring job created."
     }
   },
   "source_contract": {
@@ -4117,7 +4224,7 @@
     },
     "cash_and_instrument_rules": {
       "negative_cash": "Preserve signed quantities and market values even where reported weight is0.0%. Current long-only/supported-asset contract does not authorize silently ignoring or balancing this row. Record unresolved liability/exposure treatment and withhold eligibility until decided.",
-      "money_market": "Workbook explicitly distinguishes MONEY MARKET from CURRENCIES. It is a fund/investment position, not automatically explicit USD cash. A broader cash-equivalent or pooled-fund scope would require a separate reviewed methodology decision.",
+      "money_market": "Source MONEY MARKET is distinct from CURRENCIES. Identified money-market fund share classes are supported as direct securities following user approval on 7 November. A source label or truncated description does not verify fund/share-class identity. No cash equivalence, look-through or automatic admission.",
       "ADR": "Explicit source ADR category is only a classification observation. Documented underlying/listing identity mapping remains required by current scope.",
       "security_identifiers": "Public JSON securityId is populated, but its namespace remains unverified; dedicated CUSIP/ISIN/SEDOL fields are null. Product HTML explicitly identifies fund-level ISIN US46654Q6098; that does not establish position-level identifiers.",
       "classification": "Sector, industry and country are source labels with unverified provider/methodology/rights. Country is not assumed to mean issuer legal domicile. Keep the internally defined reviewed taxonomy plan."
@@ -4189,9 +4296,9 @@
       "diagnostic_calculated_weight": "MarketValue/publicNAVreference only as diagnostic where same-date currency/basis established; never substitute for source-reported analytical weights under current spec.",
       "position_preservation": "Every All Holdings row, original weight strings, signed quantity/value, source types, and missingness retained. No balancing cash, normalization, rounded-zero deletion or renaming money-market to cash.",
       "numeric_gate": "Keep existing residual and full-overlap/active-share gates. Rounding does not by itself authorize relaxing 1e-9 unit-total tolerance.",
-      "current_eligibility": "JGRO not admitted: negative cash treatment, money-market scope, ADR/position identities, exact denominator and source-use/calendar contract remain unresolved.",
+      "current_eligibility": "JGRO not admitted. Two daily files are captured; 5 November has negative cash, 6 November does not. Actual money-market fund/share-class and ADR/position identities, denominator and source-use/calendar contract remain unresolved. Snapshot eligibility is date-specific.",
       "owner_financial_decisions": [
-        "Whether to retain current narrow ordinary-equity/ADR/explicitUSDcash scope or separately add pooled money-market holdings and signed cash liabilities.",
+        "Resolved on 2026-11-07: identified money-market fund units supported as separate securities. Signed cash liabilities, foreign-currency cash and derivatives remain outside this extension.",
         "Which reported denominator supports intended fund comparisons after source reconciliation; NAV-based reported weights are the proposed default, not silently adopted.",
         "Whether product value under current rounding-related metric suppression is sufficient; changing numerical tolerance or normalizing is a separate methodology decision."
       ],
@@ -4202,15 +4309,19 @@
         "What are the exact holdings publication calendar, timezone, deadline and correction policy?",
         "Which conditions apply to factual internal/customer analysis, bounded recurring download and immutable original-workbook retention?"
       ]
-    }
+    },
+    "supporting_sample_ids": [
+      "jpmorgan-jgro-2026-11-05-xlsx-3c68e5376bb4",
+      "jpmorgan-jgro-2026-11-06-xlsx-6442df9d4176"
+    ]
   },
   "scope_proposal": {
-    "status": "not_approved_not_implemented",
+    "status": "approved_scope_implemented_in_candidate_contract_not_source_admission",
     "recommended_option": {
       "id": "add_money_market_fund_units",
-      "change_required": true,
-      "recommended_as_separate_proposal": true,
-      "action": "Extend supported instruments to explicitly identified money-market fund share classes as direct positions, keeping each actual fund/share-class identity, reported units/value/weight and full provenance.",
+      "change_required": false,
+      "recommended_as_separate_proposal": false,
+      "action": "Supported instruments now include explicitly identified money-market fund share classes as direct positions, keeping actual fund/share-class identity, reported units/value/weight and full provenance.",
       "proposed_rules": [
         "Keep MONEY_MARKET_FUND distinct from Cash. Do not rename or aggregate all such units into explicit USD cash.",
         "No look-through to underlying securities, no valuation-at-par assumption, and no inference that all money-market funds are economically interchangeable.",
@@ -4227,7 +4338,8 @@
         "docs/spec.md:241",
         "docs/spec.md:274",
         "docs/spec.md:282"
-      ]
+      ],
+      "status": "selected_and_approved"
     },
     "excluded_from_this_proposal": [
       "signed_cash_analytics",
@@ -4244,15 +4356,23 @@
       "JPSV"
     ],
     "conditional_research_candidate_count": 5,
-    "candidate_limit": "Five funds pass only this limited structural screen. Money-market, REIT/ADR identity, denominator, source-use and second-date gates remain; none is admitted. This is not a ten-fund roster or proof of future daily eligibility.",
+    "candidate_limit": "Five funds pass only the 5 November structural screen; they are not the JGRO two-date sample. Money-market fund-unit support is approved, but actual instrument identities, denominator, source-use and per-fund evidence remain unresolved. No ten-fund roster or source admission established.",
     "alternative": {
       "id": "retain_strict_scope",
       "change_required": false,
       "action": "Continue source investigation for funds whose actual complete snapshots contain only currently supported instruments, and record unsupported JPMorgan snapshots as ineligible.",
       "tradeoff": "Preserves existing product scope; current screen does not establish ten eligible JPMorgan funds. Other issuers may also hold money-market funds, so success is not guaranteed.",
-      "other_constraints": "Second date, identity, denominator and use-basis gaps remain."
+      "other_constraints": "Second date, identity, denominator and use-basis gaps remain.",
+      "status": "historical_alternative_not_selected"
     },
-    "money_market_identity_note": "Across the five narrow candidates, source labels/descriptions suggest two apparent money-market fund instruments. Names are truncated, dedicated position identifiers are null, and source ID namespace is unverified. Exact fund/share-class identities are not established; identify and map before admission."
+    "money_market_identity_note": "Across the five narrow candidates, source labels/descriptions suggest two apparent money-market fund instruments. Names are truncated, dedicated position identifiers are null, and source ID namespace is unverified. Exact fund/share-class identities are not established; identify and map before admission.",
+    "approved_on": "2026-11-07",
+    "approval_basis": "User explicitly accepted the narrow scope change proposed in the preceding response.",
+    "implementation_paths": [
+      "docs/spec.md",
+      "packages/ledger/src/ledger/types.py",
+      "tests/ledger/test_money_market.py"
+    ]
   },
   "evidence_documents": [
     {
@@ -4615,6 +4735,45 @@
       "observed_iframe_url": "https://connect.rightprospectus.com/JPMorgan/TVT/46654Q609/P?site=JPMorganv3&SPV=",
       "iframe_requested": false,
       "finding": "Official product documents link resolves to a 307-byte wrapper embedding connect.rightprospectus.com. Host is outside active policy; document contents were not read."
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-daily-holdings-xlsx-2026-11-07",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_XLSX_daily_holdings_download",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/excel?type=dailyETFHoldings&cusip=46654Q609&country=us&role=per&fundType=N_ETF&locale=en-US&isUnderlyingHolding=false&isProxyHolding=false",
+      "fetched_at": "2026-11-07T13:30:41.004105+00:00",
+      "http_status": 200,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+      "content_sha256": "6442df9d4176e1d514efd8f974f22b24fc07f3f4f8056a859b05b443b84d7a9c",
+      "byte_length": 27320,
+      "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-product-data-2026-11-07",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "public_product_JSON",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/product-data?cusip=46654Q609&country=us&role=per&language=en&userLoggedIn=false&version=9.19_1793249641",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/product-data?cusip=46654Q609&country=us&role=per&language=en&userLoggedIn=false&version=9.19_1793249641",
+      "fetched_at": "2026-11-07T13:31:34.585503+00:00",
+      "http_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "content_sha256": "7051fefa70df44276b46622b7bddc300d0848cfaccf8058ba7b2e356de11afe3",
+      "byte_length": 203765,
+      "raw_content_in_repository": false
+    },
+    {
+      "evidence_id": "jpmorgan-jgro-history-data-2026-11-07",
+      "issuer_id": "jpmorgan_am",
+      "artifact_kind": "issuer_public_historicalData_JSON",
+      "source_url": "https://am.jpmorgan.com/FundsMarketingHandler/historicalData?cusip=46654Q609&country=us&role=per&userLoggedIn=false&language=en&version=9.19_1793249641",
+      "request_url": "https://am.jpmorgan.com/FundsMarketingHandler/historicalData?cusip=46654Q609&country=us&role=per&userLoggedIn=false&language=en&version=9.19_1793249641",
+      "fetched_at": "2026-11-07T13:31:53.950638+00:00",
+      "http_status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "content_sha256": "010455ca5c54f251c81344e37169db0823ac40c8deb97b319eb86a967b3d50ad",
+      "byte_length": 430696,
+      "raw_content_in_repository": false
     }
   ],
   "network_review": {
@@ -4627,5 +4786,6 @@
     "note": "Official prospectus wrapper links this exact host; added to saved draft preserving existing settings. No request to the inactive host. Existing www.ecfr.gov and Avantis quarterly host remain draft-only."
   },
   "raw_constituent_rows_in_repository": false,
-  "raw_workbooks_or_scripts_in_repository": false
+  "raw_workbooks_or_scripts_in_repository": false,
+  "methodology_change_scope": "User-approved identified money-market fund-unit support on 2026-11-07; numerical gates and all other asset exclusions unchanged."
 }

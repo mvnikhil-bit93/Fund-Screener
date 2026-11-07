@@ -5,6 +5,8 @@ Owner: Nikhil
 Status: active MVP build contract; progress and verification are in docs/decisions.md  
 Repository: Fund-Screener; use the existing checkout
 
+Scope amendment: 7 November 2026 — approved identified money-market fund units.
+
 ## 1. Purpose and relationship to v1.0
 
 Build a trustworthy daily competitor-intelligence product for a small universe of active US equity ETFs. The first release helps a product or distribution analyst compare reported portfolios, understand concentration and overlap, and see what changed between disclosures.
@@ -32,7 +34,8 @@ The product says “reported holdings changes.” A weight change alone does not
 ### Launch universe
 
 - Target 10–25 explicitly named, US-listed, USD-reporting, active, long-only equity ETFs from one or two issuers.
-- Support ordinary equity, documented ADR mappings, and explicitly reported USD cash.
+- Support ordinary equity, documented ADR mappings, explicitly reported USD cash, and identified money-market fund share classes held as direct securities.
+- Money-market fund units retain their own instrument identity and reported weight. They are not Cash, are not looked through, and are not assumed interchangeable or valued at par. A source label alone does not establish a verified fund/share-class identity.
 - Exclude short, leveraged, inverse, option-overlay, futures, swap, and other derivative strategies from the initial roster.
 - A fund advertised as an equity fund is not automatically supported. Its actual positions and disclosure format must satisfy the adapter contract.
 - Source investigation starts with Capital Group and Avantis Investors as candidates. This is a research order, not a claim of current access, daily completeness, or permitted commercial use.
@@ -238,6 +241,9 @@ instrument_id is the internal join key. FIGI, ISIN, CUSIP, ticker, and issuer se
 - If continuity between dates cannot be established, mark the affected comparison unresolved and suppress activity assertions for those positions.
 - Mapping corrections are separate events. Resolve both endpoints through the same pinned identity mapping so an identity change does not become a false new/exit event.
 - Reported USD cash maps to an explicit Cash node and may overlap with reported USD cash. An unexplained residual is never Cash.
+- Identified money-market fund share classes use the distinct money_market_fund asset category. Preserve each share class's identity, quantity, market value and reported weight. Match only the same confidently resolved instrument; do not merge different money-market funds or match them to Cash by asset category.
+- Money-market units remain non-cash securities for concentration and classification coverage. Do not look through to underlying holdings or infer a sector/domicile from the sponsor. Unreviewed mappings remain Unclassified with their reported weight preserved.
+- This extension does not support arbitrary pooled funds, signed-negative-cash analytics, foreign-currency cash or derivatives. Those rows remain candidate evidence with their existing eligibility restrictions.
 - Sector and issuer-domicile taxonomies are independent. Missing classifications retain their full weight in Unclassified.
 - Changes to mappings publish new versions; they do not mutate older results.
 
@@ -480,6 +486,7 @@ New mandatory cases:
 19. A query using the current manifest and an earlier cutoff remains correct after both holdings and mapping corrections.
 20. A later source correction is ingested even after the scheduled job already succeeded for that fund/date.
 21. Tenant owners cannot change shared source or mapping configuration.
+22. Money-market fund units and explicit cash retain distinct asset categories and instrument identities through canonical and Arrow round trips. Different share classes remain distinct; reported precision and negative candidate evidence survive unchanged. Source classification does not itself approve a fund, identity mapping or metric.
 
 Validate financial numbers deterministically. User research feedback and source-health observations are separate evidence from passing unit tests.
 

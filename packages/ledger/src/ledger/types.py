@@ -94,9 +94,12 @@ class Contract(BaseModel):
 
 
 class AssetCategory(StrEnum):
+    """Instrument categories; classification alone does not establish eligibility."""
+
     EQUITY = "equity"
     ADR = "adr"
     CASH = "cash"
+    MONEY_MARKET_FUND = "money_market_fund"
     DERIVATIVE = "derivative"
     OTHER = "other"
 
